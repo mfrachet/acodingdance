@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'A coding dance',
     author: 'Marvin Frachet',
-    description: 'My JavaScript journey',
+    description: 'Just a JavaScript journey',
     siteUrl: 'https://mfrachet.github.io/',
     social: {
       twitter: 'mfrachet',
