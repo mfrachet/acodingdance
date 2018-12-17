@@ -91,7 +91,7 @@ It would be quite harder to compose functions with multiple arguments.
 As mentioned earlier, closures are a way to encapsulate variables and information for later use.
 
 ```javascript
-const createModulo = x => n => x % n === 0
+const createModulo = x => n => n % x === 0
 
 const isMultipleOfThree = createModulo(3)
 const isMultipleOfFive = createModulo(5)
