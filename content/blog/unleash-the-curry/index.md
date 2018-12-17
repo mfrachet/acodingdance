@@ -16,10 +16,10 @@ function add(x) {
 }
 
 var add2 = add(2) // encapsulate the value 2 and create a function
-var six = add2(6) // the result is 6
+var six = add2(4) // the result is 6
 ```
 
-Using the new ES features, we can take advent of the arrow functions to make it one line:
+With the new ES features, we can use the arrow function notation to make it one line:
 
 ```javascript
 const add = x => n => n + x
@@ -29,10 +29,13 @@ Where `x => /* ... */` is the parent function and `n => /* ... */` is the child 
 
 ## Spicy closure with curry
 
-Curry is a principle that allows to use a function that usually takes n arguments by passing only one argument at a time. The curry function
-returns another function with only one argument until the function reaches the initial arity.
+Curry is a principle that allows to use a function that usually takes n arguments by passing only one argument at a time. It strongly relies
+on the closure approach to encapsulate the different arguments between the different function calls.
 
-Using currying, an `add` function with n arguments could be used:
+Each call to a curry function will return a new function with one argument. When the number of returned functions reaches the arity (number of arguments)
+of the initial function, the real result is returned.
+
+It seems quite complicated but not that much, let's take the example of an `add` function:
 
 ```javascript
 const add = (x, n) => n + x
@@ -43,7 +46,7 @@ const seven = add(2, 5)
 // using a curry approach
 const curry = fn => x => n => fn(x, n)
 
-const curryAdd = curry(add) // "add" is the "fn" in the definition
+const curryAdd = curry(add) // "add" is the "fn" in the curry definition
 const curryAdd2 = curryAdd(2) // curryAdd is the "x => /*...*/" function
 const six = curryAdd2(4) // curryAdd2 is the "n => /*...*/" function
 ```
@@ -52,50 +55,65 @@ const six = curryAdd2(4) // curryAdd2 is the "n => /*...*/" function
 
 ### Composability
 
-In functional programming it's pretty common to compose multiple functions between them using an approach like:
+In functional programming it's pretty common to compose multiple functions between them to create new and more complex
+ones using the curry approach.
 
 ```javascript
 const compose = (f, g) => x => f(g(x))
 
-const add1 = x => x + 1
+const addOne = x => x + 1
 
-const double = compose(
-  add1, // "f" in the compose definition
-  add1 // "g" in the compose definition
+const addTwo = compose(
+  addOne, // "f" in the compose definition
+  addOne // "g" in the compose definition
 )
 
-const four = double(2) // "2" is the x in the compose definition
+// addTwo is "x => /* ... */" with f and g encapsulated or "closed"
+// "2" is the x in the compose definition
+const four = addTwo(2)
 
-const quadruple = compose(
-  double,
-  double
+const addFour = compose(
+  addTwo,
+  addTwo
 )
 
-const sixteen = quadruple(4)
+const eight = addFour(4)
 ```
 
-By using composition, we prefer to build simple functions that combine easily together. It's not that uncommon to build
-really complex functions using really smaller ones.
+By using composition, we prefer to build simple functions that combine easily together.
+
+And if you have given attention to the previous examples, you've probably seen
+that all the functions used own an arity of 1: it's a contract dealing with curry functions that allows such composition.
+It would be quite harder to compose functions with multiple arguments.
 
 ### Reusability
 
-As mentioned earlier, closure are a way to encapsulate variables and information for later use. Remember the previous example where
-`curryAdd2` is a variable and thus can be used at any moment. And if you have given attention to the previous examples,
-you've probably seen that the function used owns an arity of 1. It's a contract dealing with curry functions.
-
-If we get in mind these two simple principles, building reusable utilities are super easy:
+As mentioned earlier, closures are a way to encapsulate variables and information for later use.
 
 ```javascript
-const createInEquality = x => n => x > n
+const createModulo = x => n => x > n
 
-const isLessThanFour = createInEquality(4)
-const isLessThanTen = createInEquality(10)
+const isMultipleOfThree = createModulo(3)
+const isMultipleOfFive = createModulo(5)
 
-const array = [1, 3, 10, 15]
+const isMultipleOfThreeAndFive = compose(
+  isMultipleOfThree,
+  isMultipleOfFive
+)
 
-const lessThanFourArray = array.filter(isLessThanFour)
-const lessThanTenArray = array.filter(isLessThanTen)
+// result is [30, 15]
+const newArray = [17, 30, 10, 15].filter(isMultipleOfThreeAndFive)
 ```
 
-As you may have seen, the only contract of the `isLessThanFour` and `isLessThanTen` functions are the fact that they accept one
+The only contract of the `isMultipleOfThree` and `isMultipleOfFive` functions are the fact that they accept one
 value to be compared. The `x` value is encapsulated and hidden for later use in the closure function.
+
+---
+
+All of this is possible thanks to the open nature of JavaScript. We can apply simple functional programming concepts
+to create powerful and maintainable software using stateless approaches with ease.
+
+I suggest you give a try to the functional programming (FP) approach and check how it impacts the way you think and code,
+even in a prototype / OOP world.
+
+JavaScript & FP rock together!
