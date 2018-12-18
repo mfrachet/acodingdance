@@ -96,14 +96,8 @@ const createModulo = x => n => n % x === 0
 const isMultipleOfThree = createModulo(3)
 const isMultipleOfFive = createModulo(5)
 
-const isMultipleOfThreeAndFive = compose(
-  isMultipleOfThree,
-  isMultipleOfFive
-)
-
-// result is [30, 15]
-const newArray = [17, 30, 10, 15].filter(isMultipleOfThreeAndFive)
-```
+// result is [30, 10, 15]
+const newArray = [17, 30, 10, 15].filter(isMultipleOfFive)
 
 The only contract of the `isMultipleOfThree` and `isMultipleOfFive` functions are the fact that they accept one
 value to be compared. The `x` value is encapsulated and hidden for later use in the closure function.
