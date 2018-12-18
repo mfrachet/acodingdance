@@ -101,8 +101,8 @@ const newArray = [17, 30, 10, 15].filter(isMultipleOfFive)
 ```
 
 
-The only contract of the `isMultipleOfThree` and `isMultipleOfFive` functions are the fact that they accept one
-value to be compared. The `x` value is encapsulated and hidden for later use in the closure function.
+The contracts of the `isMultipleOfThree` and `isMultipleOfFive` functions are the fact that they accept one
+value to be compared and that their outputs have the same type as their inputs. The `x` value is encapsulated and hidden for later use in the closure function.
 
 ---
 
