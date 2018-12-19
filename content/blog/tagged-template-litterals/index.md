@@ -34,9 +34,9 @@ On this snippet, the `styled.div` information is a tagged template literal that 
 
 ## Creating a tagged template literal
 
-One of the thing I really like with template literals is their **declarative** syntax.
+One of the thing I really appreciate with template literals is their **declarative** syntax. Over the years, with HTML, JSX and so forth, it has proven to be an excellent way to represent contextual information.
 
-Let's use a `html` tagged template:
+We can use a `html` template literal like this:
 
 ```javascript
 const User = ({ name }) =>
@@ -45,9 +45,11 @@ const User = ({ name }) =>
   `
 ```
 
-Only by reading the 4 lines snippet, you may have a good idea of what it should do: creating an HTML tree with the concatenate string content.
+Only by reading the 4 lines snippet, you may have a good idea of what it should do:
 
-To create the previously used template, we need to create that specific `html`:
+> creating a HTML tree with the concatenate string content.
+
+Let's implement the `html` tag:
 
 ```javascript
 const html = (strings, ...interpolated) =>
@@ -58,12 +60,22 @@ const html = (strings, ...interpolated) =>
   }, '')
 ```
 
-It's just a function !
+It's just a function!
 
-`strings` is an array containing all of the strings that are NOT interpolated. The array is built by splitting the content of the block before each information that needs to be interpolated.
+The first argument `strings` is an array containing all of the strings that are NOT interpolated. The array is built by splitting the content of the block before each information that needs to be interpolated.
 
-`...interpolated` is an array holding all of the interpolated values. As may be have noticed, I've been "forced" to spread information: we don't know how much values we get using tagged template literals. If you know how much information you need to deal with, you're not forced to use this approach.
+```javascript
+['\n    <div>Hello ', '</div>\n  '] // strings representation
+```
+
+The second argument `...interpolated` is an array holding all of the interpolated values. As you may have noticed, I've been "forced" to spread the arguments: we don't know how much values we get using tagged template literals. If you know how much argument you need to deal with your tag, you're not forced to use this approach.
+
+```javascript
+[ 'Marvin' ] // ...interpolated representation
+```
 
 ## Run it in a real context
 
-<iframe src="https://codesandbox.io/embed/7mvjnkpmm0" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+Here's a little codesandbox that shows how it works in real world. Feel free to play and have fun with this awesome tool!
+
+<iframe src="https://codesandbox.io/embed/7mvjnkpmm0?fontsize=12&module=%2Fsrc%2Findex.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
