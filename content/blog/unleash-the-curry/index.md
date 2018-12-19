@@ -82,9 +82,12 @@ const eight = addFour(4)
 
 By using composition, we prefer to build simple functions that combine easily together.
 
-And if you have given attention to the previous examples, you've probably seen
+If you have given attention to the previous examples, you've probably seen
 that all the functions used own an arity of 1: it's a contract dealing with curry functions that allows such composition.
 It would be quite harder to compose functions with multiple arguments.
+
+Another thing that you may have noticed is that the type of the argument of `f` is the type of the output of `g`. We need that contract
+to use compose effectively.
 
 ### Reusability
 
@@ -92,17 +95,19 @@ As mentioned earlier, closures are a way to encapsulate variables and informatio
 
 ```javascript
 const createModulo = x => n => n % x === 0
+const and = (f, g) => x => f(x) && g(x)
 
 const isMultipleOfThree = createModulo(3)
 const isMultipleOfFive = createModulo(5)
 
-// result is [30, 10, 15]
-const newArray = [17, 30, 10, 15].filter(isMultipleOfFive)
+const isMultipleOfFifteen = and(isMultipleOfThree, isMultipleOfFive)
+
+// result is [30, 15]
+const newArray = [17, 30, 10, 15].filter(isMultipleOfFifteen)
 ```
 
-
 The contracts of the `isMultipleOfThree` and `isMultipleOfFive` functions are the fact that they accept one
-value to be compared and that their outputs have the same type as their inputs. The `x` value is encapsulated and hidden for later use in the closure function.
+value to be compared. The `x` value is encapsulated and hidden for later use in the closure function.
 
 ---
 
