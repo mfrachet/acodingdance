@@ -47,7 +47,7 @@ const User = ({ name }) =>
 
 Only by reading the 4 lines snippet, you may have a good idea of what it should do:
 
-> creating a HTML tree with the concatenate string content.
+> creating a HTML tree with the concatenated string content.
 
 Let's implement the `html` tag:
 
