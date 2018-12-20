@@ -79,3 +79,7 @@ The second argument `...interpolated` is an array holding all of the interpolate
 Here's a little codesandbox that shows how it works in real world. Feel free to play and have fun with this awesome tool!
 
 <iframe src="https://codesandbox.io/embed/7mvjnkpmm0?fontsize=12&module=%2Fsrc%2Findex.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+---
+
+Tagged template are used by [lit-html](https://github.com/Polymer/lit-html) to provide a declarative API to build frontend applications using JavaScript standards. It's also used by many other libraries to handle things like styles ([styled-components](https://www.styled-components.com/), [emotion](https://emotion.sh/) etc...).
