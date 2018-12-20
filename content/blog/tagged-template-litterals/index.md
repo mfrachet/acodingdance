@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 
 This syntax is not something that we use to see in other languages. Is this a function? A function call? What does it mean to concatenate such a string just after that `styled.div`?
 
-On this snippet, the `styled.div` information is a tagged template literal that provides **a specific behavior** to the following string. The string only act as a declarative representation and customization of a `styled.div`. We can see this as an argument to the `styled.div` "thing".
+On this snippet, the `styled.div` information is a tag for template literal that provides **a specific behavior** to the following string. The string only acts as a declarative representation and customization of a `styled.div`.
 
 ## Creating a tagged template literal
 
@@ -68,7 +68,7 @@ The first argument `strings` is an array containing all of the strings that are 
 ['\n    <div>Hello ', '</div>\n  '] // strings representation
 ```
 
-The second argument `...interpolated` is an array holding all of the interpolated values. As you may have noticed, I've been "forced" to spread the arguments: we don't know how much values we get using tagged template literals. If you know how much argument you need to deal with your tag, you're not forced to use this approach.
+The second argument `...interpolated` is an array holding all of the interpolated values. As you may have noticed, I've been "forced" to spread the arguments: we don't know how much values we get using tagged template literals. If you know how much argument you need to deal with, you'd better use these argument and name them.
 
 ```javascript
 [ 'Marvin' ] // ...interpolated representation
@@ -76,7 +76,7 @@ The second argument `...interpolated` is an array holding all of the interpolate
 
 ## Run it in a real context
 
-Here's a little codesandbox that shows how it works in real world. Feel free to play and have fun with this awesome tool!
+Here's a little codesandbox that shows how it works in real world. Feel free to play and have fun with this awesome feature!
 
 <iframe src="https://codesandbox.io/embed/7mvjnkpmm0?fontsize=12&module=%2Fsrc%2Findex.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
