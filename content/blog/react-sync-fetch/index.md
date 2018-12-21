@@ -32,26 +32,30 @@ const Component = () => {
 }
 ```
 
-The first time I've been a bit confused. But here's a working [codesandbox sample fetching Bulbasaur](https://codesandbox.io/s/6y0jpl802k).
+The first time I've see these few lives, I've been a bit confused. But here's a working [codesandbox sample fetching Bulbasaur](https://codesandbox.io/s/6y0jpl802k).
 
-After digging a bit and trying to understand what's happening under the hood, I've finally (nope, [@swiip](https://twitter.com/swiip) and I) how it may work.
+After digging a bit and trying to understand what's happening under the hood, I've (nope, [@swiip](https://twitter.com/swiip) and I have) finally found how it may work.
 
 ## React render is stateless
 
-Since [fiber](https://github.com/acdlite/react-fiber-architecture), the new architecture, React computation has been divided in multiple phases:
+Since [fiber](https://github.com/acdlite/react-fiber-architecture), React computations have been divided in multiple phases:
 
-<blockquote class="twitter-tweet" data-lang="fr"><p lang="en" dir="ltr">I just made this diagram of modern React lifecycle methods. Hope you’ll find it helpful! <a href="https://t.co/LJNMae58rp">pic.twitter.com/LJNMae58rp</a></p>&mdash; Dan Abramov (@dan_abramov) <a href="https://twitter.com/dan_abramov/status/981712092611989509?ref_src=twsrc%5Etfw">5 avril 2018</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="fr"><p lang="en" dir="ltr">I just made this diagram of modern React lifecycle methods. Hope you’ll find it helpful! <a href="https://t.co/LJNMae58rp">pic.twitter.com/LJNMae58rp</a></p>&mdash; Dan Abramov (@dan_abramov) <a href="https://twitter.com/dan_abramov/status/981712092611989509?ref_src=twsrc%5Etfw">2018, April 5th</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-An important thing to notice is that the render phase is stateless and has no side effects. It's an important concept because we are now able to call it multiple time while being sure that it won't affect the current DOM representation directly.
+An important thing to notice is that the render phase is stateless and thus has **no side effects**.
+
+It's an important concept because we are now able to call it multiple times without directly affecting the DOM.
 
 ## Synchronous fetch
 
+In this part, I will create a very little system that allows to build components using the same stateless approach to demonstrate how we may build and use such a synchronous API.
+
 ### Our own component definition
 
-For the sake of simplicity, we'll rely on simple and standard concepts to give an idea of how it may be implemented.
+For the sake of simplicity, we'll rely on simple and standard concepts.
 
-Let's say that we have a component defined this way:
+Let's say that we have a component defined by:
 
 ```javascript
 import { createComponent } from './framework'
@@ -79,15 +83,17 @@ const html = (strings, ...interpolated) =>
 
 ### customFetch implementation
 
-The idea behind this synchronous call is to abuse the render phase of React: we will do asynchronous operations **in between** of two render calls. An important thing to notice is that we will **interrupt** the render call to handle the asynchronous function somewhere else.
+The idea behind this synchronous call is to abuse the render phase of React: we will do asynchronous operations **in between** of two render calls. An important thing to notice is that we will **interrupt** the render execution to handle the asynchronous function **somewhere else**.
 
-Let's imagine the following scenario:
+To clear our mind, let's write down what we have to do to make that synchronous fetch:
 
-- first render the component, and interrupt the function when the synchronous fetch is detected
-- fetch some data **outside** the component
-- second render with the asynchronous data resolved
+- render the component and interrupt its rendering when the synchronous fetch is called
+- fetch some data **somwhere else** (to retrieve the real data)
+- re-render the component with the information fetched
 
-Here's a way to implement `customFetch` to handle the interrupting responsibility:
+The last point may be a bit obscure but we'll implement a system that answer this problem.
+
+Let's build the `customFetch` function to only handle the interrupting responsibility without fetching anything:
 
 ```javascript
 let cache
@@ -106,13 +112,17 @@ export const setCache = data => {
 }
 ```
 
-With the previous snippet and the different functions exposed by the module, it's possible to interrupt a function while it's executing or to simply let it pass and return the `cache` content **when it's filled**.
+When we will call the `customFetch` method, it will check for an internal `cache` to exist. If it doesn't exist, it will throw an error and **interrupt** the current function execution(aka our component render function).
+
+Sometimes later, when another function will call the `setCache` method, the `cache` variable will be populated. And then when the `customFetch` method will be called a second time, it will not break and will return the cached value.
 
 ### Handling the "error"
 
-`createComponent` is our way to define a custom components. It's a bit like the `extends React.Component` thing.
+We've implemented a system that allows to interrupt and resume a component render function. We now need to really fetch some remote data.
 
-The idea is to manage the "error" thrown by the component and to make a real world fetch:
+Let's imagine that `createComponent` is our way to define a custom components. It's a bit like the `extends React.Component` thing.
+
+The idea is to manage the "error" thrown by the component during its `customFetch` call and to make a real world fetch:
 
 ```javascript
 // using a simple root element
