@@ -88,10 +88,10 @@ The idea behind this synchronous call is to abuse the render phase of React: we 
 To clear our mind, let's write down what we have to do to make that synchronous fetch:
 
 - render the component and interrupt its rendering when the synchronous fetch is called
-- fetch some data **somwhere else** (to retrieve the real data)
+- fetch some data **somwhere else**
 - re-render the component with the information fetched
 
-The last point may be a bit obscure but we'll implement a system that answer this problem.
+The last point may be a bit obscure but we'll implement a system that answers this problem.
 
 Let's build the `customFetch` function to only handle the interrupting responsibility without fetching anything:
 
