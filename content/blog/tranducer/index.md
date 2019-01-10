@@ -1,6 +1,6 @@
 ---
 title: 'Reducing complexity with transducers'
-date: '2010-01-15T22:12:03.284Z'
+date: '2019-01-15T22:12:03.284Z'
 ---
 
 Since I'm working with React and its ecosystem, I use to work with a more functional approach.
