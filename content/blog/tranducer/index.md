@@ -49,3 +49,7 @@ const newArray = transduce()
 
 console.log(newArray) // [4, 8]
 ```
+
+`transducer` is called to create a container that exposes the different APIs (`filter`, `map` and `run`). `filter` and `map` are similar to the standard one, no magic here.
+
+Calling the `run` function, actually transform the array. If you don't call the `run` method it doesn't transform anything.
