@@ -4,17 +4,21 @@ import { Link, graphql } from 'gatsby'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import { Time } from '../components/time'
 import { rhythm } from '../utils/typography'
 
 class BlogIndex extends React.Component {
   render() {
-    const { data } = this.props;
+    const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" keywords={['blog', 'gatsby', 'javascript', 'react']} />
+        <SEO
+          title="All posts"
+          keywords={['blog', 'gatsby', 'javascript', 'react']}
+        />
         <Bio />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
@@ -29,7 +33,10 @@ class BlogIndex extends React.Component {
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
+              <small>
+                {node.frontmatter.date} -
+                <Time value={node.fields.readingTime.minutes} />
+              </small>
               <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
             </div>
           )
@@ -54,6 +61,9 @@ export const pageQuery = graphql`
           excerpt
           fields {
             slug
+            readingTime {
+              minutes
+            }
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")

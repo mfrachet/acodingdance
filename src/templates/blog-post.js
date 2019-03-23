@@ -5,6 +5,7 @@ import { DiscussionEmbed } from 'disqus-react'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import { Time } from '../components/time'
 import { rhythm, scale } from '../utils/typography'
 
 const disqusShortname = 'acodingdance-io'
@@ -32,7 +33,8 @@ class BlogPostTemplate extends React.Component {
             marginTop: rhythm(-1),
           }}
         >
-          {post.frontmatter.date}
+          <span>{post.frontmatter.date}</span> -
+          <Time value={post.fields.readingTime.minutes} />
         </p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
@@ -90,6 +92,12 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+      }
+      fields {
+        slug
+        readingTime {
+          minutes
+        }
       }
     }
   }
