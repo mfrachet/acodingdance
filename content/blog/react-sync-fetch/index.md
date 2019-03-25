@@ -13,7 +13,7 @@ When [Dan Abramov](https://twitter.com/dan_abramov), at [JSConf Iceland 2018](ht
 
 In the pre-hooks era, when we wanted to get remote data inside a component only one time, we used to rely on `componentDidMount`:
 
-```javascript
+```jsx
 class Pokemon extends React.Component {
   constructor(props) {
     super(props)
@@ -96,7 +96,7 @@ $ cd my-synchronous-fetchapp
 
 Now, let's modify our `App.js` file so that it looks like:
 
-```javascript
+```jsx
 import React from 'react'
 // We re going to implement that module 😎
 import {
@@ -131,7 +131,7 @@ As you've probably mentioned, we're trying to import `./react-cache` which is so
 
 Let's now create the not existing `./src/react-cache` folder with an `index.js` inside. According to the thing we've previously used in the example snippets, we can imagine the following module definition in `index.js`:
 
-```javascript
+```jsx
 import React from 'react'
 /**
  * The usage is:
@@ -160,7 +160,7 @@ _For the purpose of the post, I voluntary redefined Suspense inside this library
 
 Well, react-cache is a library that probably relies on a cache. I think that we should use the least most code to create the simplest possible cache system:
 
-```javascript
+```jsx
 import React from 'react'
 /**
  * The usage is:
@@ -173,7 +173,7 @@ export const unstable_createResource = somethingThatFetches => {
   let cache
 
   const setCache = (...args) => {
-    cache = { ...args }
+    // set the cache in some ways
   }
 
   const ApiResource = {
@@ -195,3 +195,31 @@ export const unstable_createResource = somethingThatFetches => {
  */
 export class Suspense extends React.Component {}
 ```
+
+## The tricky part
+
+We know that, in JavaScript, getting some remote data is an asynchronous operation. It's always true, for any modules or APIs we're familiar with.
+Even more, if you look at the code snippet presenting the library, you've probably mentioned that the `Suspense` component uses a `fallback` props:
+
+```jsx
+const Pokemon = ({ number }) => {
+  const pokemon = ApiResource.read(number)
+
+  return <div>{pokemon.name}</div>
+}
+
+export const App = () => (
+  <Suspense fallback={<Loader label="Waiting for the pokemons" />}>
+    <Pokemon number={6} />
+  </Suspense>
+)
+```
+
+So what if the `Suspense` `fallback` was just a way to handle the delay before we get some remote data?
+
+Imagine the following flow:
+
+- Calling the render function
+- Reaching the `ApiResource.read` statement
+- Displaying the `Suspense` `fallback` until the remote data has finished loading
+- Actually render the component with the remote data
