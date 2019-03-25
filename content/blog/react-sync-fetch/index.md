@@ -92,8 +92,8 @@ const Pokemon = ({ number }) => {
 
 The result is clear: the first log is printed two times while the second one is run only once. I can now take two other information from there:
 
-- `ApiRessource.read` breaks the normal program flow, this is why the second log is reached only once
 - The `Pokemon` (render) function is executed twice
+- `ApiRessource.read` breaks the normal program flow, this is why the second log is reached only once
 
 Let's try to see how we can implement such a system.
 
@@ -216,15 +216,15 @@ export class Suspense extends React.Component {}
 ## The tricky part
 
 It's now time to deal with the "tricky" part. Do you remember that react-cache library interrupts the current component rendering?
-I know one way to make that interruptions is to break the data flow by throwing an exception. And this is the way react-cache handles this.
+I know one way to make that interruptions: throwing an error. And this is the way react-cache handles this.
 
 Let's imagine that:
 
 - `ApiResource.read` will try to read its internal cache
 - If it exists, it returns the value of the cache
-- If not, it throw a `setCache` `function` to a parent
+- If not, it throws a `setCache` `function` to a parent
 - This parent will actually make the asynchronous operation of fetching
-- This parent will call the `function` is has received from the children and call it, setting implicitly the cache
+- This parent will call the `function` it has received from the children and call it, setting implicitly the cache
 
 In our scenario:
 
