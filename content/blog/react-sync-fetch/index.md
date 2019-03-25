@@ -71,12 +71,12 @@ This means that there's probably a trick behind the scene that I wanted to under
 
 ## Sum up the information we have
 
-After reading the previous snippet, we now know that:
+After reading the previous snippet, we know that:
 
 - The library aims to fetch Data
-- It owns a cache in its name so... maybe the data fetched is cached?
-- It can fetch data in the render function, something that was a really bad practice
-- It relies on a synchronous API so fetch data
+- It owns a cache in its name so... maybe the data is cached somehow?
+- It can fetch data in the render function, something that was not possible
+- It relies on a synchronous API
 
 Let's put some `console.log` in our component to check how it behaves:
 
