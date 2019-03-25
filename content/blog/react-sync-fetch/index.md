@@ -221,7 +221,7 @@ I know one way to make that interruptions is to break the data flow by throwing 
 Let's imagine that:
 
 - `ApiResource.read` will try to read its internal cache
-- If it exists, it returnes the value of the cache
+- If it exists, it returns the value of the cache
 - If not, it throw a `setCache` `function` to a parent
 - This parent will actually make the asynchronous operation of fetching
 - This parent will call the `function` is has received from the children and call it, setting implicitly the cache
@@ -297,3 +297,9 @@ export class Suspense extends React.Component {
   }
 }
 ```
+
+🎉🎉🎉 If you run the code, it should be working and fetches remote data using a synchronous API 😎
+
+---
+
+For a full example, check the https://mfrachet.github.io/react-cache-meetup/ application!
