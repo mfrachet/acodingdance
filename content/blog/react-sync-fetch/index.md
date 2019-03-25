@@ -78,7 +78,24 @@ After reading the previous snippet, we now know that:
 - It can fetch data in the render function, something that was a really bad practice
 - It relies on a synchronous API so fetch data
 
-To get a real understanding of the concepts, we're now going to create a possible implementation of the `react-cache` library.
+Let's put some `console.log` in our component to check how it behaves:
+
+```jsx
+const Pokemon = ({ number }) => {
+  console.log("I'm passing here two times 🤔")
+  const pokemon = ApiResource.read(number)
+  console.log("I'm passing here only ONE time 😦")
+
+  return <div>{pokemon.name}</div>
+}
+```
+
+The result is clear: the first log is printed two times while the second one is run only once. I can now take two other information from there:
+
+- `ApiRessource.read` breaks the normal program flow, this is why the second log is reached only once
+- The `Pokemon` (render) function is executed twice
+
+Let's try to see how we can implement such a system.
 
 ## Let's code!
 
@@ -198,28 +215,85 @@ export class Suspense extends React.Component {}
 
 ## The tricky part
 
-We know that, in JavaScript, getting some remote data is an asynchronous operation. It's always true, for any modules or APIs we're familiar with.
-Even more, if you look at the code snippet presenting the library, you've probably mentioned that the `Suspense` component uses a `fallback` props:
+It's now time to deal with the "tricky" part. Do you remember that react-cache library interrupts the current component rendering?
+I know one way to make that interruptions is to break the data flow by throwing an exception. And this is the way react-cache handles this.
+
+Let's imagine that:
+
+- `ApiResource.read` will try to read its internal cache
+- If it exists, it returnes the value of the cache
+- If not, it throw a `setCache` `function` to a parent
+- This parent will actually make the asynchronous operation of fetching
+- This parent will call the `function` is has received from the children and call it, setting implicitly the cache
+
+In our scenario:
+
+- Calling `ApiResource.read` will interrupt the `Pokemon` render function by throwing a function
+- Our own definition of `Suspense` will catch this function, make the HTTP call and set the cache value
+- The `Suspense` parent will now be able to re-render its `Pokemon` children with the cache data
+
+### Handling te scenario:
 
 ```jsx
-const Pokemon = ({ number }) => {
-  const pokemon = ApiResource.read(number)
+import React from 'react'
+export const unstable_createResource = somethingThatFetches => {
+  let cache
 
-  return <div>{pokemon.name}</div>
+  const setCache = (...args) => () => {
+  /**
+  * This create a closure that can be called by the Suspense parent
+  */
+    cache = await somethingThatFetches(...args)
+  }
+
+  const ApiResource = {
+    read(...args) {
+      if (!cache) {
+        /**
+        * Throws the setCache returning closure to be executed by the Suspense parent
+        */
+        throw setCache(...args);
+      }
+
+      return cache
+    },
+  }
+
+  return ApiResource
 }
-
-export const App = () => (
-  <Suspense fallback={<Loader label="Waiting for the pokemons" />}>
-    <Pokemon number={6} />
-  </Suspense>
-)
 ```
 
-So what if the `Suspense` `fallback` was just a way to handle the delay before we get some remote data?
+The `Suspense` parent is now able to deal with this error:
 
-Imagine the following flow:
+```jsx
+/**
+ * React Suspense equivalent
+ */
+export class Suspense extends React.Component {
+  constructor(props) {
+    super(props)
 
-- Calling the render function
-- Reaching the `ApiResource.read` statement
-- Displaying the `Suspense` `fallback` until the remote data has finished loading
-- Actually render the component with the remote data
+    // Creates a simply state verifying that we have an error or not
+    this.state = { hasError: false }
+  }
+
+  // When we get an error, let's ajust the state in consequence
+  static getDerivedStateFromError() {
+    return { hasError: true }
+  }
+
+  // componentDidCatch parameter is the closure function created by setCache 🤯
+  async componentDidCatch(fetchFunction) {
+    await fetchFunction()
+
+    this.setState({ hasError: false })
+  }
+
+  render() {
+    const { children, fallback } = this.props
+
+    // Render the fallback when there is a pending error,
+    return this.state.hasError ? fallback : children
+  }
+}
+```
