@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'A coding dance',
+    title: 'Δ coding dΔnce',
     author: 'Marvin Frachet',
     description: 'Just a JavaScript journey',
     siteUrl: 'https://acodingdance.io',
