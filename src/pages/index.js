@@ -34,11 +34,16 @@ class BlogIndex extends React.Component {
                   {title}
                 </Link>
               </h3>
+
+              <p
+                style={{ marginBottom: 0 }}
+                dangerouslySetInnerHTML={{ __html: node.excerpt }}
+              />
+
               <small>
                 {node.frontmatter.date} -
                 <Time value={node.fields.readingTime.minutes} />
               </small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
             </div>
           )
         })}
