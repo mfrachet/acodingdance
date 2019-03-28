@@ -1,10 +1,11 @@
-.custom-link {
-  padding-bottom: 0.5em;
+.custom-link span {
   transition: all 0.3s;
-  border-bottom: 2px solid transparent;
+  opacity: 0;
+  position: absolute;
+  margin-left: -1em;
 }
 
-.custom-link:hover {
-  padding-bottom: 0.3em;
-  border-bottom: 2px solid #3f51b5;
+.custom-link:hover span {
+  opacity: 1;
+  margin-left: -1.5em;
 }

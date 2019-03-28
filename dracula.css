@@ -401,3 +401,13 @@ div.code-toolbar > .toolbar span:focus {
   text-decoration: none;
   background-color: var(--verde);
 }
+
+span.token > a {
+  color: rgb(241, 250, 140);
+}
+
+:not(pre) > code[class*='language-text'],
+pre[class*='language-text'] {
+  background-color: #efefef;
+  color: rgba(40, 41, 54, 1);
+}
