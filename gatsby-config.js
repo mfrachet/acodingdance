@@ -3,12 +3,13 @@ module.exports = {
     title: 'A coding dance',
     author: 'Marvin Frachet',
     description: 'Just a JavaScript journey',
-    siteUrl: 'https://mfrachet.github.io/',
+    siteUrl: 'https://acodingdance.io',
     social: {
       twitter: 'mfrachet',
     },
   },
   plugins: [
+    'gatsby-plugin-robots-txt',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -86,7 +87,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'UA-136744956-1'
+        trackingId: 'UA-136744956-1',
       },
     },
   ],
