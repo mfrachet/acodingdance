@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import layoutStyle from './layout.module.css'
 
 import { rhythm, scale } from '../utils/typography'
 
 class Layout extends React.Component {
   render() {
+    console.log(layoutStyle)
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     let header
@@ -13,6 +15,9 @@ class Layout extends React.Component {
       header = (
         <h1
           style={{
+            color: '#3F51B5',
+            textAlign: 'center',
+            fontWeight: 400,
             ...scale(1.5),
             marginBottom: rhythm(1.5),
             marginTop: 0,
@@ -35,13 +40,14 @@ class Layout extends React.Component {
         <h3
           style={{
             color: '#3F51B5',
-            fontWeight: 200,
+            fontWeight: 700,
             fontFamily: 'Montserrat, sans-serif',
             marginTop: 0,
             marginBottom: rhythm(-1),
           }}
         >
           <Link
+            className={layoutStyle.customLink}
             style={{
               boxShadow: 'none',
               textDecoration: 'none',
@@ -49,7 +55,7 @@ class Layout extends React.Component {
             }}
             to={'/'}
           >
-            {title}
+            <span>←</span> {title}
           </Link>
         </h3>
       )
@@ -59,7 +65,7 @@ class Layout extends React.Component {
         style={{
           marginLeft: 'auto',
           marginRight: 'auto',
-          maxWidth: rhythm(24),
+          maxWidth: rhythm(32),
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
         }}
       >
