@@ -44,12 +44,10 @@ class BlogPostTemplate extends React.Component {
           <Time value={post.fields.readingTime.minutes} />
         </p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <Bio />
+
+        <div style={{ marginTop: '2rem', marginBottom: '2rem' }}>
+          <Bio />
+        </div>
 
         <ul
           style={{

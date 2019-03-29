@@ -2,40 +2,43 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 
+import { Card } from './card'
 import { rhythm } from '../utils/typography'
 
 function Bio() {
   return (
-    <StaticQuery
-      query={bioQuery}
-      render={data => {
-        const { author, social } = data.site.siteMetadata
-        return (
-          <div
-            style={{
-              display: 'flex',
-            }}
-          >
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author}
+    <Card>
+      <StaticQuery
+        query={bioQuery}
+        render={data => {
+          const { author, social } = data.site.siteMetadata
+          return (
+            <div
               style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: '100%',
+                display: 'flex',
               }}
-            />
-            <p>
-              Written by <strong>{author}</strong>{' '}
-              <a href={`https://twitter.com/${social.twitter}`}>@mfrachet</a>.
-              <br />
-              I'm sharing my understanding discoveries.
-            </p>
-          </div>
-        )
-      }}
-    />
+            >
+              <Image
+                fixed={data.avatar.childImageSharp.fixed}
+                alt={author}
+                style={{
+                  marginRight: rhythm(1 / 2),
+                  marginBottom: 0,
+                  minWidth: 50,
+                  borderRadius: '100%',
+                }}
+              />
+              <p>
+                Written by <strong>{author}</strong>{' '}
+                <a href={`https://twitter.com/${social.twitter}`}>@mfrachet</a>.
+                <br />
+                I'm sharing my understanding discoveries.
+              </p>
+            </div>
+          )
+        }}
+      />
+    </Card>
   )
 }
 
