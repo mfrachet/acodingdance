@@ -28,7 +28,7 @@ function Bio() {
                   borderRadius: '100%',
                 }}
               />
-              <p>
+              <p style={{ marginBottom: 0 }}>
                 Written by <strong>{author}</strong>{' '}
                 <a href={`https://twitter.com/${social.twitter}`}>@mfrachet</a>.
                 <br />
