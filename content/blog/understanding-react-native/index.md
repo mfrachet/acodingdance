@@ -36,7 +36,8 @@ It’s built with a really opened architecture that allows the code to be run, n
 - [Desktop applications](https://github.com/kusti8/proton-native)
 - [Virtual Reality](https://facebook.github.io/react-360/)
 - [Many more](https://news.ycombinator.com/item?id=16198843)
-- It can also be used with other frameworks:
+
+It can also be used with other frameworks:
 
 - [Weex](https://github.com/alibaba/weex), a React Native port of Vuejs.
 - [a custom Angular renderer that allows to run ng apps in devices, with React Native](https://github.com/angular/react-native-renderer).
