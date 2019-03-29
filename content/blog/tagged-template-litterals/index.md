@@ -1,6 +1,9 @@
 ---
 title: 'Tagged template literals'
 date: '2018-12-17T22:12:03.284Z'
+tags:
+  - ecmascript
+  - javascript
 ---
 
 Since recently, with the new ES features, it's possible to use back ticks to interpolate variable values inside strings:
@@ -65,13 +68,13 @@ It's just a function!
 The first argument `strings` is an array containing all of the strings that are NOT interpolated. The array is built by splitting the content of the block before each information that needs to be interpolated.
 
 ```javascript
-['\n    <div>Hello ', '</div>\n  '] // strings representation
+;['\n    <div>Hello ', '</div>\n  '] // strings representation
 ```
 
 The second argument `...interpolated` is an array holding all of the interpolated values. As you may have noticed, I've been "forced" to spread the arguments: we don't know how much values we get using tagged template literals. If you know how much argument you need to deal with, you'd better use these argument and name them.
 
 ```javascript
-[ 'Marvin' ] // ...interpolated representation
+;['Marvin'] // ...interpolated representation
 ```
 
 ## Run it in a real context

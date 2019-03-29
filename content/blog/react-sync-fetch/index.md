@@ -1,6 +1,10 @@
 ---
 title: 'react-cache: the magic behind the synchronous API'
 date: '2018-12-20T22:12:03.284Z'
+tags:
+  - react
+  - react-cache
+  - javascript
 ---
 
 _Before starting, I have to mention that the react-cache library is an unstable library but we can create a similar behavior only dealing with React ;)_

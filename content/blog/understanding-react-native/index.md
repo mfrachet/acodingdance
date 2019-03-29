@@ -1,6 +1,10 @@
 ---
 title: 'Understanding the React Native bridge concept'
 date: '2019-03-28T22:12:03.284Z'
+tags:
+  - react
+  - react-native
+  - javascript
 ---
 
 And why its architecture is awesome, at a top level.

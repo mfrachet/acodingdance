@@ -1,6 +1,10 @@
 ---
 title: 'Unleash the curry: the power of closure'
 date: '2018-12-15T22:12:03.284Z'
+tags:
+  - functional programming
+  - javascript
+  - ecmascript
 ---
 
 Closure is a functional programming tool that allows to **capture** information (aka variable) from a parent function and to completely encapsulate

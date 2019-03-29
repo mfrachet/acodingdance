@@ -6,6 +6,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Time } from '../components/time'
 import { rhythm } from '../utils/typography'
+import { Tag } from '../components/tag'
 
 class BlogIndex extends React.Component {
   render() {
@@ -21,6 +22,7 @@ class BlogIndex extends React.Component {
         />
         <Bio />
         {posts.map(({ node }) => {
+          const tags = node.frontmatter.tags || []
           const title = node.frontmatter.title || node.fields.slug
           return (
             <div key={node.fields.slug}>
@@ -44,6 +46,12 @@ class BlogIndex extends React.Component {
                 {node.frontmatter.date} -
                 <Time value={node.fields.readingTime.minutes} />
               </small>
+
+              <div>
+                {tags.map(tag => (
+                  <Tag key={tag}>{tag}</Tag>
+                ))}
+              </div>
             </div>
           )
         })}
@@ -74,6 +82,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            tags
           }
         }
       }

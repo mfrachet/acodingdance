@@ -1,6 +1,9 @@
 ---
 title: Hello World
 date: '2018-12-14T22:12:03.284Z'
+tags:
+  - chore
+  - global
 ---
 
 This is my first post on my new ~~fake~~ blog! How exciting!
