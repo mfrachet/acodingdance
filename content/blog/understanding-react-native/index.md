@@ -9,7 +9,8 @@ tags:
 
 And why its architecture is awesome, at a top level.
 
-_[This post has also been published on @medium](https://hackernoon.com/understanding-react-native-bridge-concept-e9526066ddb8)_
+- _[This post has also been published on @medium](https://hackernoon.com/understanding-react-native-bridge-concept-e9526066ddb8)_
+- _[Here’s a post concerning the new (future) react-native architecture](../react-native-new-architecture)_
 
 ![React Native](./rn.png)
 
