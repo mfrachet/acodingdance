@@ -1,16 +1,11 @@
 .navbar {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .navbar a {
   padding: 0 0.5em;
   box-shadow: none;
-}
-
-.navbarRight {
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
 }
 
 .custom-link span {

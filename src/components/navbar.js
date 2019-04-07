@@ -2,12 +2,11 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styles from './navbar.module.css'
 
-export const Navbar = ({ showTitle, title }) => (
+export const Navbar = ({ showTitle }) => (
   <nav className={styles.navbar}>
     {showTitle && (
       <h3
         style={{
-          color: 'red',
           fontFamily: 'Montserrat, sans-serif',
           marginTop: '3px',
         }}
@@ -17,9 +16,5 @@ export const Navbar = ({ showTitle, title }) => (
         </Link>
       </h3>
     )}
-    <div className={styles.navbarRight}>
-      <Link to={'/'}>Blog</Link>
-      <Link to={'/about'}>About me</Link>
-    </div>
   </nav>
 )

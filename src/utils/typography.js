@@ -5,6 +5,12 @@ Wordpress2016.overrideThemeStyles = () => ({
   h1: {
     fontWeight: 700,
   },
+  h2: {
+    fontWeight: 700,
+  },
+  h3: {
+    fontWeight: 700,
+  },
 })
 
 delete Wordpress2016.googleFonts
