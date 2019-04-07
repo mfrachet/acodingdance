@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import layoutStyle from './layout.module.css'
+import { Navbar } from '../components/navbar'
+import './layout.module.css'
 
 import { rhythm, scale } from '../utils/typography'
 
@@ -9,54 +10,21 @@ class Layout extends React.Component {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     let header
+    const isRoot = location.pathname === rootPath
 
-    if (location.pathname === rootPath) {
+    if (isRoot) {
       header = (
-        <h1
-          style={{
-            color: '#3F51B5',
-            textAlign: 'center',
-            fontWeight: 400,
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
+        <Link to={'/'}>
+          <h1
             style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: 'inherit',
+              textAlign: 'center',
+              ...scale(1.5),
+              marginBottom: rhythm(1.5),
             }}
-            to={'/'}
           >
             {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            color: '#3F51B5',
-            fontWeight: 700,
-            fontFamily: 'Montserrat, sans-serif',
-            marginTop: 0,
-            marginBottom: rhythm(-1),
-          }}
-        >
-          <Link
-            className={layoutStyle.customLink}
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-            to={'/'}
-          >
-            <span>←</span> {title}
-          </Link>
-        </h3>
+          </h1>
+        </Link>
       )
     }
     return (
@@ -65,9 +33,10 @@ class Layout extends React.Component {
           marginLeft: 'auto',
           marginRight: 'auto',
           maxWidth: rhythm(26),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+          padding: `${rhythm(3 / 4)}`,
         }}
       >
+        <Navbar showTitle={!isRoot} />
         {header}
         {children}
       </div>
