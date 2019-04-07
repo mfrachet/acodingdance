@@ -3,19 +3,7 @@ import Wordpress2016 from 'typography-theme-wordpress-2016'
 
 Wordpress2016.overrideThemeStyles = () => ({
   h1: {
-    fontWeight: 300,
-  },
-  h2: {
-    fontWeight: 200,
-  },
-  h3: {
-    fontWeight: 100,
-  },
-  a: {
-    color: '#3F51B5',
-  },
-  'a.gatsby-resp-image-link': {
-    boxShadow: 'none',
+    fontWeight: 700,
   },
 })
 

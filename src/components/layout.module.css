@@ -1,11 +1,8 @@
-.custom-link span {
-  transition: all 0.3s;
-  opacity: 0;
-  position: absolute;
-  margin-left: -1em;
+a {
+  color: #3f51b5;
+  box-shadow: none;
 }
 
-.custom-link:hover span {
-  opacity: 1;
-  margin-left: -1.5em;
+a:active {
+  color: #283593;
 }

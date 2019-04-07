@@ -26,8 +26,7 @@ class BlogPostTemplate extends React.Component {
         <SEO title={post.frontmatter.title} description={post.excerpt} />
         <h1
           style={{
-            fontWeight: 700,
-            marginTop: rhythm(2),
+            marginTop: rhythm(1),
           }}
         >
           {post.frontmatter.title}

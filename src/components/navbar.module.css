@@ -1,0 +1,25 @@
+.navbar {
+  display: flex;
+}
+
+.navbar a {
+  padding: 0 0.5em;
+  box-shadow: none;
+}
+
+.navbarRight {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.custom-link span {
+  transition: all 0.3s;
+  opacity: 0;
+  position: absolute;
+}
+
+.custom-link:hover span {
+  opacity: 1;
+  margin-left: -1.5em;
+}
