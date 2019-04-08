@@ -1,21 +1,26 @@
 import Typography from 'typography'
-import Wordpress2016 from 'typography-theme-wordpress-2016'
 
-Wordpress2016.overrideThemeStyles = () => ({
-  h1: {
-    fontWeight: 700,
-  },
-  h2: {
-    fontWeight: 700,
-  },
-  h3: {
-    fontWeight: 700,
-  },
+const typography = new Typography({
+  overrideStyles: ({ adjustFontSizeTo, scale, rhythm }, options) => ({
+    blockquote: {
+      ...scale(1 / 5),
+      fontStyle: 'italic',
+      paddingLeft: rhythm(13 / 16),
+      marginLeft: rhythm(-1),
+    },
+    'blockquote > :last-child': {
+      marginBottom: 0,
+    },
+    'blockquote cite': {
+      ...adjustFontSizeTo(options.baseFontSize),
+      color: options.bodyColor,
+      fontWeight: options.bodyWeight,
+    },
+    'blockquote cite:before': {
+      content: '"— "',
+    },
+  }),
 })
-
-delete Wordpress2016.googleFonts
-
-const typography = new Typography(Wordpress2016)
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== 'production') {
