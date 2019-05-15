@@ -2,7 +2,10 @@
 path: rn-new-architecture
 date: 2019-03-28T16:28:24.171Z
 title: 'Tasting the future: the new React Native architecture'
-tags: []
+tags:
+  - react
+  - react-native
+  - javascript
 ---
 And why it has been designed.
 
