@@ -1,6 +1,6 @@
 ---
 path: react-native-bridge
-date: 2019-05-15T16:47:52.672Z
+date: 2019-03-28T16:47:52.672Z
 title: Understanding the React Native bridge concept
 tags:
   - react
