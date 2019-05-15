@@ -9,6 +9,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-netlify-cms`,
     'gatsby-plugin-robots-txt',
     {
       resolve: `gatsby-source-filesystem`,
