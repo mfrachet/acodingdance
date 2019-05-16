@@ -81,3 +81,21 @@ We have now a bit more of experience dealing with React component and we know th
 
 
 First, let's point that a piece of UI doesn't necessarily means one component. It's not always a one for one matching. I invite you reading [Brad Frost Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) if you want more information on of to build complex UIs in a more abstract way.
+
+
+
+_The design we're going to implement is probably the best one but it gives a good idea of the impact of composition in React._
+
+Let's try to split the Card component is a composable manner so that we don't have to modify its implementation when we want to create new piece of UI:
+
+```jsx
+<Card>
+  <CardHeader title="My title" subtitle="subtitle" avatar={pathToImage} />
+  <CardMedia source={pathToImage} />
+  <CardContent>Some content with descriptions</CardContent>
+  <CardActions>
+    <IconButton name="favorite" onClick={handleFav} />
+    <IconButton name="star" onClick={handleStar} />
+  </CardActions>
+</Card>
+```
