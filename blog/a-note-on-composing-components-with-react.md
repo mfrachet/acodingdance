@@ -78,15 +78,11 @@ The idea is to avoid creating one single "thing" with a lot of complexe things i
 
 We have now a bit more of experience dealing with React component and we know that what we are doing is not sufficiently good for now. It's okay, and we'll see how we can improve using the composable nature of React.
 
-
-
 First, let's point that a piece of UI doesn't necessarily means one component. It's not always a one for one matching. I invite you reading [Brad Frost Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) if you want more information on of to build complex UIs in a more abstract way.
-
-
 
 _The design we're going to implement is probably the best one but it gives a good idea of the impact of composition in React._
 
-Let's try to split the Card component is a composable manner so that we don't have to modify its implementation when we want to create new piece of UI:
+Let's try to split the Card component in a composable manner so that we don't have to modify its implementation when we want to create new piece of UI:
 
 ```jsx
 <Card>
@@ -99,3 +95,9 @@ Let's try to split the Card component is a composable manner so that we don't ha
   </CardActions>
 </Card>
 ```
+
+Using this approach, we're able to build any type of cards:
+
+
+
+![Multiple material cards](/assets/cards003.png "Multiple material cards")
