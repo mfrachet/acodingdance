@@ -34,14 +34,31 @@ As a naive developer, here's the way I would defined my API at first:
 
 And to be honest, it would have work in this case.
 
-
-
 The problems comes when you start to customise the Card to handle its variations. Because as mentioned, Card in the material design language is a way to represent heterogeneous information using some homogeneous styles.
-
-
 
 Let's now that we want to modify the actual card component to give it the possibilities to look like:
 
-
-
 ![Another google material card from their website](/assets/mio-design_assets_0b6xusjjsulxcutqtcvl0wurpww8_cards-dividers-2.png "Another google material card from their website")
+
+Keeping the actual naive approach, let's imagine that we have modified the card component to achieve this:
+
+
+```jsx
+<Card
+  avatar="https://some/path.jpg"
+  title="My title"
+  subtitle="My subtitle"
+  image="https://some-other/path.jpg"
+  description="Super funky description"
+  //actionOne={() => alert('Do job')}
+  //actionSecond={() => alert('Do another job')}
+  //actionLike={() => alert('Do action like')}
+  //actionLove={() => alert('Do action love')}
+  // new implementation
+  footerTitle="Footer title"
+  footerSchedules={['5pm', '7am', '2pm']}
+  footerAction={() => alert('Do footer stuff')}
+/>
+```
+
+So as you've probably mentioned, each time we want our card to have a different look, we modify its implementation.
