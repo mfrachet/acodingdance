@@ -42,7 +42,6 @@ Let's now that we want to modify the actual card component to give it the possib
 
 Keeping the actual naive approach, let's imagine that we have modified the card component to achieve this:
 
-
 ```jsx
 <Card
   avatar="https://some/path.jpg"
@@ -61,4 +60,12 @@ Keeping the actual naive approach, let's imagine that we have modified the card 
 />
 ```
 
-So as you've probably mentioned, each time we want our card to have a different look, we modify its implementation.
+So as you've probably mentioned, each time we want our card to have a different look, we modify its implementation. Now let's imagine that you are the owner and maintainer of such a library. Each time people want to have a different organisation on the Card, you are supposed to modify your component, publish it to npm and manage the versions.
+
+It's a lot of work.
+
+So here's the problem. For now, we are simply modifying the component we built in a vertical way: by adding a lots of new props on the component, and making a lot of conditional comparisons to determine the look of the card.
+
+There's another problem. Material Design Cards are not defined specifically. I mean, it's not supposed to provide a way to create a `PrimaryCard`, `TinyCard` and so forth. With the Material Design Card specs, you're supposed to be able to create a lots of different types of Cards without that much pain.
+
+What we have done until now actually breaks a part of the [Opened Close principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle). This principle explains that a code should be closed to modifications and opened to extensions (aka inheritance or in our case, composition).
