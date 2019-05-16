@@ -2,7 +2,9 @@
 path: composing-components
 date: 2019-05-16T18:47:58.055Z
 title: A note on composing components with React
-tags: []
+tags:
+  - react
+  - javascript
 ---
 We often hear about composition when talking about frontend frameworks. Composition is the ability to create complex UIs by assembling component in as less uncoupled manner as possible.
 
@@ -101,3 +103,27 @@ Using this approach, we're able to build any type of cards:
 
 
 ![Multiple material cards](/assets/cards003.png "Multiple material cards")
+
+
+
+## The smell I rely on
+
+So this is a way to rely on composability to avoid getting complicated and unmaintainable components in React.
+
+
+
+In the future, if you have some components that start to grow, here are my "tricks" or at least the code smells (it's opinionated and depends on the cases) that indicates that I have to split my component on something a bit more composable:
+
+\- If a component has more than 5-6 props
+
+\- If a component is more than 100 LoC
+
+\- Can I extract this component in isolation to play in another app?
+
+\- Have I to tweak (or can I tweak) the props of the underlying components? (See this issue for more details [rn-placeholder#38](https://github.com/mfrachet/rn-placeholder/issues/38))
+
+\- Is it easy to move an underlying component somewhere else? 
+
+
+
+But be careful! You have to find a balance between something fully composable but also easy to use. Remember that abstracting is not always a good thing.
