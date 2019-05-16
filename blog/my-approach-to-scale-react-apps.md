@@ -2,7 +2,9 @@
 path: scaling-react-app
 date: 2019-05-16T04:00:00.000Z
 title: My approach to scale React apps
-tags: []
+tags:
+  - react
+  - javascript
 ---
 I'm working in the software industry since 2013 and have worked on different types of codebase. From 10 users apps to 10 millions, I've faced a lot of different ways to approach frontend software development and here's the approach I prefer around all of the ones I've used.
 
