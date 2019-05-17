@@ -22,14 +22,15 @@ class BlogIndex extends React.Component {
           keywords={['blog', 'gatsby', 'javascript', 'react']}
         />
 
+        <h4>Latest Blog Posts</h4>
+
         {posts.map(({ node }) => {
           const tags = node.frontmatter.tags || []
           const title = node.frontmatter.title || node.fields.slug
           return (
-            <div key={node.fields.slug}>
+            <div key={node.fields.slug} style={{ marginBottom: rhythm(2) }}>
               <h3
                 style={{
-                  marginTop: rhythm(2),
                   marginBottom,
                 }}
               >
