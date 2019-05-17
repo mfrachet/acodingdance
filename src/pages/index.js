@@ -13,6 +13,8 @@ class BlogIndex extends React.Component {
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
 
+    const marginBottom = rhythm(1 / 4)
+
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
@@ -28,27 +30,27 @@ class BlogIndex extends React.Component {
               <h3
                 style={{
                   marginTop: rhythm(2),
-                  marginBottom: rhythm(1 / 4),
+                  marginBottom,
                 }}
               >
                 <Link to={node.fields.slug}>{title}</Link>
               </h3>
 
-              <p
-                style={{ marginBottom: 0 }}
-                dangerouslySetInnerHTML={{ __html: node.excerpt }}
-              />
-
-              <small>
-                {node.frontmatter.date} -
-                <Time value={node.fields.readingTime.minutes} />
-              </small>
-
-              <div>
+              <div style={{ marginBottom }}>
                 {tags.map(tag => (
                   <Tag key={tag}>{tag}</Tag>
                 ))}
               </div>
+
+              <p
+                style={{ marginBottom }}
+                dangerouslySetInnerHTML={{ __html: node.excerpt }}
+              />
+
+              <small>
+                {node.frontmatter.date}{' '}
+                <Time value={node.fields.readingTime.minutes} />
+              </small>
             </div>
           )
         })}

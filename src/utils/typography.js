@@ -1,6 +1,9 @@
 import Typography from 'typography'
 
 const typography = new Typography({
+  bodyFontFamily: ['roboto', 'georgia'],
+  baseFontSize: '18px',
+  baseLineHeight: 1.666,
   overrideStyles: ({ adjustFontSizeTo, scale, rhythm }, options) => ({
     blockquote: {
       ...scale(1 / 5),
