@@ -6,7 +6,7 @@ tags:
   - react
   - javascript
 ---
-We often hear about composition when talking about frontend frameworks. Composition is the ability to create complex UIs by assembling components in the less uncoupled manner as possible.
+We often hear about composition when talking about frontend frameworks. Composition is the ability to create complex UIs by assembling components in the less coupled manner as possible.
 
 
 [Ryan Florence has made a video some years ago](https://www.youtube.com/watch?v=hEGg-3pIHlE) concerning compound components and the benefits of having well-defined and composable APIs.
@@ -17,7 +17,7 @@ We often hear about composition when talking about frontend frameworks. Composit
 
 
 
-I'm a software developer and I make mistakes. And some years ago, I've released [rn-placeholder](https://github.com/mfrachet/rn-placeholder) using an API that was not extensible enough because of lack of composability.
+I'm a software developer and I make mistakes. Some years ago, I've released [rn-placeholder](https://github.com/mfrachet/rn-placeholder) using an API that was not extensible enough because of lack of composability.
 
 
 
@@ -49,7 +49,7 @@ As with a naive approach, here's the way I would have defined my API at first:
 
 And to be honest, the previous code snippet is a valid code and it can work in real world applications.
 
-The problem comes when you start customising the Card to handle its variations. Because as I mentioned above, Card in the Material Design specification is a way to represent heterogeneous information using some homogeneous styles.
+The problem comes when you start customizing the Card to handle its variations. As I mentioned above, Card in the Material Design specification is a way to represent heterogeneous information using some homogeneous styles.
 
 Let's imagine that we want to modify the actual card component to look like:
 
@@ -75,13 +75,13 @@ Keeping the actual naive approach, let's imagine that we have modified the card 
 />
 ```
 
-So as you've probably noticed, each time we want our card to have a different look, we modify its implementation. Now imagine yourself as an owner or maintainer of such a library. Each time people want to have a different organisation on the Card, you are supposed to modify your component, publish it to npm and manage the versions.
+As you've probably noticed, each time we want our card to have a different look, we modify its implementation. Now imagine yourself as an owner or maintainer of such a library. Each time people want to have a different organisation on the Card, you are supposed to modify your component, publish it to npm and manage the versions.
 
 It's a lot of work.
 
 ## What are we doing wrong?
 
-So here's the problem. For now, we are simply modifying the component we built in a vertical way: by adding a lot of new props on the component, and making a lot of conditional comparisons to determine the look and feel of the card.
+Here's the problem. For now, we are simply modifying the component we built in a vertical way: by adding a lot of new props on the component, and making a lot of conditional comparisons to determine the look and feel of the card.
 
 There's another problem. Material Design Cards are not defined specifically. I mean, it's not supposed to provide a way to create a `PrimaryCard`, `TinyCard` and so forth. With the Material Design Card specs, you're supposed to be able to create a lots of different types of Cards without that much pain.
 
@@ -95,7 +95,7 @@ We have more of experience dealing with React components and we know what we are
 
 First, it's worth noticing that a piece of UI doesn't necessarily means one component. It's not always a one for one matching. I invite you to read [Brad Frost Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) if you want more information about building complex UIs in a more abstract way.
 
-_The design we're going to implement isn't probably the best one but it gives a good idea of the benefit of composition in React._
+_The design we're going to implement isn't probably the best one but it gives a good idea of the benefits of composition in React._
 
 I've splitted the Card component in a composable manner so we won't have to modify its implementation if we want to create new piece of UI:
 
@@ -117,7 +117,7 @@ Using this approach, we're able to build any type of cards:
 
 ## The smell I rely on
 
-So this is a way to leverage composability to avoid complicated and unmaintainable components in React.
+This is a way to leverage composability to avoid complex and unmaintainable components in React.
 
 In the future, if you have some components that start to grow, here are my "tricks" or at least the code smells (it's opinionated and depends on the use-cases) that indicates I have to split my component on something a bit more composable:
 
@@ -127,15 +127,15 @@ In the future, if you have some components that start to grow, here are my "tric
 * Do I have to tweak (or can I tweak) the props of the underlying components? (See this issue for more details [rn-placeholder#38](https://github.com/mfrachet/rn-placeholder/issues/38))
 * Can I move the underlying component somewhere else in the parent component (top or bottom)? 
 
-But be careful! You have to find the right balance between something fully composable but also easy to use. Remember that abstracting is not always a good thing.
+But be careful! You have to find the right balance between something fully composable and easy to use. Remember that abstracting is not always a good thing.
 
 
 
-If you find yourself writing tons of line to create a component you know you'll use only one time, it's probably not necessary to find a good abstraction. However if it's a component that will leave in multiple places and that can probably move in terms of shape, you maybe have to think twice while implementing.
+If you find yourself writing tons of lines to create a component you know you'll use only one time, it's probably not necessary to find a good abstraction. However if it's a component that will leave in multiple places and that can probably move in terms of shape, you maybe have to think twice while implementing.
 
 
 
-And don't forget that with the new composable API, we can create a component that just looks like the old one!
+And don't forget with the new composable API, we can create a component that just looks like the old one!
 
 
 
