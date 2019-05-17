@@ -7,12 +7,14 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Time } from '../components/time'
 import { rhythm, scale } from '../utils/typography'
+import { Tag } from '../components/tag'
 
 const disqusShortname = 'acodingdance-io'
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
+    const tags = post.frontmatter.tags
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
@@ -31,17 +33,24 @@ class BlogPostTemplate extends React.Component {
         >
           {post.frontmatter.title}
         </h1>
-        <p
+
+        <div>
+          {tags.map(tag => (
+            <Tag key={tag}>{tag}</Tag>
+          ))}
+        </div>
+
+        <div
           style={{
             ...scale(-1 / 5),
             display: 'block',
             marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
+            marginTop: rhythm(1),
           }}
         >
-          <span>{post.frontmatter.date}</span> -
+          <span>{post.frontmatter.date}</span>{' '}
           <Time value={post.fields.readingTime.minutes} />
-        </p>
+        </div>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
 
         <div style={{ marginTop: '2rem', marginBottom: '2rem' }}>
@@ -96,6 +105,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        tags
       }
       fields {
         slug
