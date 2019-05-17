@@ -8,10 +8,12 @@ tags:
 ---
 We often hear about composition when talking about frontend frameworks. Composition is the ability to create complex UIs by assembling components in the less uncoupled manner as possible.
 
+
 [Ryan Florence has made a video some years ago](https://www.youtube.com/watch?v=hEGg-3pIHlE) concerning compound components and the benefits of having well-defined and composable APIs.
 
-[![Ryan Florence concerning compound components](https://img.youtube.com/vi/hEGg-3pIHlE/0.jpg)](https://www.youtube.com/watch?v=hEGg-3pIHlE "Ryan Florence concerning compound components")
 
+
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/hEGg-3pIHlE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
