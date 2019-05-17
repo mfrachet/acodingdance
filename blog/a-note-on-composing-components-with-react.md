@@ -10,7 +10,7 @@ We often hear about composition when talking about frontend frameworks. Composit
 
 [Ryan Florence has made a video some years ago](https://www.youtube.com/watch?v=hEGg-3pIHlE) concerning compound components and the benefits of having well-defined and composable APIs.
 
-[![Ryan Florence concerning compound components](http://img.youtube.com/vi/hEGg-3pIHlE/0.jpg)](https://www.youtube.com/watch?v=hEGg-3pIHlE "Ryan Florence concerning compound components")
+[![Ryan Florence concerning compound components](https://img.youtube.com/vi/hEGg-3pIHlE/0.jpg)](https://www.youtube.com/watch?v=hEGg-3pIHlE "Ryan Florence concerning compound components")
 
 
 
