@@ -123,3 +123,15 @@ In the future, if you have some components that start to grow, here are my "tric
 * Can I move the underlying component somewhere else in the parent component (top or bottom)? 
 
 But be careful! You have to find the right balance between something fully composable but also easy to use. Remember that abstracting is not always a good thing.
+
+
+
+If you find yourself writing tons of line to create a component you know you'll use only one time, it's probably not necessary to find a good abstraction. However if it's a component that will leave in multiple places and that can probably move in terms of shape, you maybe have to think twice while implementing.
+
+
+
+And don't forget that with the new composable API, we can create a component that just looks like the old one!
+
+
+
+Happy coding :blush: :tada: !
