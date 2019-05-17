@@ -1,11 +1,9 @@
 import React from 'react'
 import Layout from '../components/layout'
-
-// Components
+import { Time } from '../components/time'
 import { Link, graphql } from 'gatsby'
 
 const Tags = ({ pageContext, data, location }) => {
-  console.log(data)
   const { tag } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
   const tagHeader = `${totalCount} post${
@@ -17,11 +15,13 @@ const Tags = ({ pageContext, data, location }) => {
       <h1>{tagHeader}</h1>
       <ul>
         {edges.map(({ node }) => {
-          const { slug } = node.fields
+          const { slug, readingTime } = node.fields
           const { title } = node.frontmatter
           return (
             <li key={slug}>
-              <Link to={slug}>{title}</Link>
+              <Link to={slug}>
+                {title} - <Time value={readingTime.minutes} />
+              </Link>
             </li>
           )
         })}
@@ -49,6 +49,9 @@ export const pageQuery = graphql`
         node {
           fields {
             slug
+            readingTime {
+              minutes
+            }
           }
           frontmatter {
             title

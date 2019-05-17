@@ -33,7 +33,6 @@ exports.createPages = ({ graphql, actions }) => {
         `
       ).then(result => {
         if (result.errors) {
-          console.log(result.errors)
           reject(result.errors)
         }
 
@@ -60,7 +59,6 @@ exports.createPages = ({ graphql, actions }) => {
         let tags = []
         // Iterate through each post, putting all found tags into `tags`
         _.each(posts, edge => {
-          console.log(edge.node.frontmatter.tags)
           if (_.get(edge, 'node.frontmatter.tags')) {
             tags = tags.concat(edge.node.frontmatter.tags)
           }
