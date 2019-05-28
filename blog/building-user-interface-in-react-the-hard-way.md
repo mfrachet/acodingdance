@@ -23,11 +23,3 @@ The first one is that I'm building the UI component library with React Native an
 By definition, they are defined as a group of selectable element where only one element can be selected. [Here's a quick link to the MDN definition of **radio** and **radio groups**](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio).
 
 So it means that if we want to build a `<Radio />` component, it has to share some information with its other `Radio` "friends"
-
-## Composability
-
-Present the mindset + link to previous blog post
-
-## Components
-
-* UI components
