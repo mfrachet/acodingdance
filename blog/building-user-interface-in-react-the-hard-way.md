@@ -22,4 +22,20 @@ The first one is that I'm building the UI component library with React Native an
 
 By definition, they are defined as a group of selectable element where only one element can be selected. [Here's a quick link to the MDN definition of **radio** and **radio groups**](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio).
 
-So it means that if we want to build a `<Radio />` component, it has to share some information with its other `Radio` "friends"
+So it means that if we want to build a `<Radio />` component, it has to share some information with its other `Radio` "friends".
+
+## Handling the shared behaviours
+
+To handle this kind of shared behaviour, we can rely on different approaches.
+
+We can for example define a state in the parent and handle each child selection from that parent or we can rely on a global state management that will store the actually selected value.
+
+Both the approach are good and will actually work in an application.
+
+But there is something that we lost: the linked nature of radio buttons. In HTML this link is managed by the `input` `name` attribute:
+
+```jsx
+// this is from MDN
+```
+
+
