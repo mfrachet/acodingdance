@@ -6,11 +6,11 @@ tags:
   - react
   - javascript
 ---
-Building reusable UI components is really hard. I'm always banging my head around three times before writing a component that I want to be reusable. It's kind of a game to find the good abstraction and the good way to build them.
+Building reusable UI components is hard. I'm always banging my head around three times before writing a component that I want to be reusable. It's kind of a game to find the good abstraction and the good way to build them.
 
-In [A note on composing components with React](https://acodingdance.io/a-note-on-composing-components-with-react/), I've briefly talked about my conception of composition by taking as example the [Google Material Design Cards](https://material.io/design/components/cards.html) and how I would have implemented such a thing. Feel free to talk a look if you're interested ☺️.
+In [A note on composing components with React](https://acodingdance.io/a-note-on-composing-components-with-react/), I've briefly talked about my conception of composition by taking as example the [Google Material Design Cards](https://material.io/design/components/cards.html) and how I would have implemented such a thing. Feel free to take a look if you're interested ☺️.
 
-Today, I wanted to talk about building UI components. I'm actually implementing a UI component library based on a design system and I wanted to share with you my point on _more complex_ components.
+Today, I wanted to share with you my experience while implementing a UI component library based on a design system and how my team and I have managed to build a _bit more complex components_.
 
 So let's talk about components that _share something_.
 
@@ -32,16 +32,18 @@ We can for example define a state in the parent and handle each child selection 
 
 Both the approach are good and will actually work in an application.
 
-But there is something that we lost: the linked nature of radio buttons. In HTML this link is managed by the `input` `name` attribute:
+But there is something that we lost: the linked nature of radio buttons.
+
+In HTML this link is managed by the `input` `name` attribute:
 
 ```jsx
 // this is from MDN
 
-<input type="radio" id="contactChoice1" name="contact" value="email">
+<input type="radio" name="contact" value="email">
 
-<input type="radio" id="contactChoice2" name="contact" value="phone">
+<input type="radio" name="contact" value="phone">
 
-<input type="radio" id="contactChoice3" name="contact" value="mail">
+<input type="radio" name="contact" value="mail">
 ```
 
 
