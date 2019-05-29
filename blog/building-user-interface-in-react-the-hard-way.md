@@ -48,4 +48,33 @@ In HTML this link is managed by the `input` `name` attribute:
 <input type="radio" name="contact" value="mail">
 ```
 
+In React, it's possible to mimic this behaviour with a strong parent / children relationship.
 
+Depending on the kind of component I'm working on, I use to rely on two approaches:
+
+- The React context for components that share informations
+- `React.cloneElement` for structural and layout components
+
+Let's dig into these two ones.
+
+## The React context
+
+Let's continue talking about the `Radio` components. For this exercice, I have imagined an API that would look like:
+
+```jsx
+const MyComponent = () => {
+  const [selected, setSelected] = useState('first')
+
+  return (
+    <RadioGroup selected={selected} onChange={setSelected}>
+      <View style={styles.someStyle}>
+        <Radio name="first" />
+      </View>
+
+      <View style={styles.someDifferentStyle}>
+        <Radio name="second" />
+      </View>
+    </RadioGroup>
+  )
+}
+```
