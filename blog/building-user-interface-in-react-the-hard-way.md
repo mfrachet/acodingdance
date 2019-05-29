@@ -16,9 +16,11 @@ So let's talk about components that _share something_.
 
 ## Radio _buttons_
 
-I'm going to take the example of radio buttons in this example. I've taken this one for two reason.
+I'm going to take the example of radio buttons and this for two reasons.
 
-The first one is that I'm building the UI component library with React Native and that we don't have any built-in Radio component, and the second one is that radio buttons are kind of "special".
+The first one is that I'm building the UI component library with React Native and that it doesn't provide a built-in Radio component. 
+
+And the second one is because radio buttons are kind of "special". 
 
 By definition, they are defined as a group of selectable element where only one element can be selected. [Here's a quick link to the MDN definition of **radio** and **radio groups**](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio).
 
