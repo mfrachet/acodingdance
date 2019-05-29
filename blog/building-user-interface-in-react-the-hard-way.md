@@ -78,3 +78,9 @@ const MyComponent = () => {
   )
 }
 ```
+
+Where `RadioGroup` is the link between all of its `Radio` children. Its role is to ensure that only one element can be selected inside its own context, which is its children tree.
+
+It owns a `selected` property that correspond to the **unique name** of the selected radio component.
+
+Using the context of React in that specific case allows to have consistency with the components but it also doesn't block the composability nature of React: I can position my radio element almost anywhere without losing its behaviour.
