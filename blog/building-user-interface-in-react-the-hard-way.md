@@ -36,6 +36,12 @@ But there is something that we lost: the linked nature of radio buttons. In HTML
 
 ```jsx
 // this is from MDN
+
+<input type="radio" id="contactChoice1" name="contact" value="email">
+
+<input type="radio" id="contactChoice2" name="contact" value="phone">
+
+<input type="radio" id="contactChoice3" name="contact" value="mail">
 ```
 
 
