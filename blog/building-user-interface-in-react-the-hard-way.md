@@ -59,7 +59,7 @@ Let's dig into these two ones.
 
 ## The React context
 
-Let's continue talking about the `Radio` components. For this exercice, I have imagined an API that would look like:
+Let's continue talking about the `Radio` components. For this exercise, I have imagined an API that would look like:
 
 ```jsx
 const MyComponent = () => {
