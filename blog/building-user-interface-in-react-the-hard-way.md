@@ -84,3 +84,7 @@ Where `RadioGroup` is the link between all of its `Radio` children. Its role is 
 It owns a `selected` property that correspond to the **unique name** of the selected radio component.
 
 Using the context of React in that specific case allows to have consistency with the components but it also doesn't block the composability nature of React: I can position my radio element almost anywhere without losing its behaviour.
+
+This is what we call _implicit state passing_.
+
+It also exist another way to implicitly rely on the state of components: using `React.cloneElement`.
