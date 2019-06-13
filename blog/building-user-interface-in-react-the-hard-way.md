@@ -48,6 +48,10 @@ In HTML this link is managed by the `input` `name` attribute:
 <input type="radio" name="contact" value="mail">
 ```
 
+I think that we can call these **compound semantic elements**
+
+---
+
 In React, it's possible to mimic this behaviour with a strong parent / children relationship.
 
 Depending on the kind of component I'm working on, I use to rely on two approaches:
@@ -81,9 +85,9 @@ const MyComponent = () => {
 
 Where `RadioGroup` is the link between all of its `Radio` children. Its role is to ensure that only one element can be selected inside its own context, which is its children tree.
 
-It owns a `selected` property that correspond to the **unique name** of the selected radio component.
+It owns a `selected` property that corresponds to the **unique name** of the selected radio component.
 
-Using the context of React in that specific case allows to have consistency between the components but it also doesn't block the composability nature of React: I can position my radio element almost anywhere without losing its behaviour.
+Using the context of React in that specific case allows to keep consistency between the components but it also doesn't block the composability nature of React: I can position my radio element almost anywhere without losing the current form state.
 
 This is what we call _implicit state passing_. We manage the state in a way that the user doesn't have to care about.
 
