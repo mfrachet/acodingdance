@@ -1,7 +1,7 @@
 ---
 path: compound-component-implicit-state
 date: 2019-05-27T16:18:47.583Z
-title: 'Don''t fear the context, compound components and implicit state'
+title: The story of bounded components
 tags:
   - react
   - javascript
