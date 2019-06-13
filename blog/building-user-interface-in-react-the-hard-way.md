@@ -233,6 +233,6 @@ const TabsBody = ({ selectedIndex, children }) =>
   React.Children.toArray(children).find((_, index) => selectedIndex === index);
 ```
 
-
+[Here's a link to a codesandbox of the previous snippets.](https://codesandbox.io/s/hardcore-thompson-ibxow)
 
 MORE GENERALLY COMPONENTS THAT CONCERNS LAYOUT AND LAYOUTING EXPERIENCE
