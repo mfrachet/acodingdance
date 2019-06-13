@@ -135,6 +135,6 @@ const Component = () => (
 )
 ```
 
-It's a bit more verbose but it works all of my cases.
+It's a bit more verbose but it works, and most importantly it can be shipped in a module that can be reused across apps with creating a dedicated data model.
 
-It also exist another way to implicitly rely on the state of components: using `React.cloneElement`.
+It also exists another way to implicitly rely on the state of components: using `React.cloneElement`.
