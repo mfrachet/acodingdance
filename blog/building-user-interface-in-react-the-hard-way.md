@@ -137,4 +137,25 @@ const Component = () => (
 
 It's a bit more verbose but it works, and most importantly it can be shipped in a module that can be reused across apps with creating a dedicated data model.
 
+
+## `React.cloneElement` approach
+
+This function allows to clone a React element with its props and also gives the ability to override or add new props.
+
+It can be used as following:
+
+```jsx
+const element = <div>Hello world</div>;
+const clone = React.cloneElement(element, {
+  style: { backgroundColor: "red" }
+});
+
+const App = () => (
+  <>
+    {element}
+    {clone}
+  </>
+);
+```
+
 It also exists another way to implicitly rely on the state of components: using `React.cloneElement`.
