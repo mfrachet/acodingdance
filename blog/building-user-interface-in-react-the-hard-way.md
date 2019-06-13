@@ -159,3 +159,5 @@ const App = () => (
 ```
 
 It also exists another way to implicitly rely on the state of components: using `React.cloneElement`.
+
+THIS APPROACH ALLOWS TO BIND ELEMENT BY THE UI INSTEAD OF THEIR BEHAVIOURS
