@@ -105,8 +105,8 @@ const Component = () => {
       <Button onPress={() => setStep(0)} title="First Element!" />
       <Button onPress={() => setStep(1)} title="Second Element!" />
       
-      {currentStep=== 0 ? <FirstComponent />}
-      {currentStep=== 1 ? <SecondComponent />}
+      {currentStep === 0 ? <FirstComponent />}
+      {currentStep === 1 ? <SecondComponent />}
     </View>
   )
 }
@@ -135,7 +135,7 @@ const Component = () => (
 )
 ```
 
-It's a bit more verbose but it works, and most importantly it can be shipped in a module that can be reused across apps with creating a dedicated data model.
+It's a bit more verbose but it's mostly way more declarative. On top of that, it's not bounded to the actual application context and can be reused in any application. It can also be shipped and published as an npm package so that people can work with it.
 
 
 ## `React.cloneElement` approach
