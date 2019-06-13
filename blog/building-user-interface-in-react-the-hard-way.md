@@ -193,7 +193,21 @@ If we want to move the `TabsHeader` to the bottom of the component, we simply ca
 
 ### Implementing the `Tabs` component
 
-The `Tabs` component is the owner, the one that knows everything. It owns the actual selected index and is the one that knows how to modify that index.
+The `Tabs` component is the owner, the one that knows everything. It owns the actual selected index and is the one that knows how to modify that index:
+
+```jsx
+const Tabs = ({ children }) => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  return React.Children.toArray(children).map(child =>
+    React.cloneElement(child, { selectedIndex, selectIndex: setSelectedIndex })
+  );
+};
+```
+
+In this specific case `React.cloneElement` allows us to enhance the child component by adding it two props: the actual selected index and a way to modify that selected index.
+
+In fact, we'll pass down these two props respectively to the `TabHead`s and the `Tab`s.
 
 
 
