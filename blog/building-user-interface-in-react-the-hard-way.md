@@ -209,6 +209,30 @@ In this specific case `React.cloneElement` allows us to enhance the child compon
 
 In fact, we'll pass down these two props respectively to the `TabHead`s and the `Tab`s.
 
+The `TabsHeads` component will receive the `selectIndex` function as props and will pass it down to its `TabHead` children with a subtle variant: we'll scope the actual index of the `TabHead` component so that they can call the `selectIndex` function without passing their index explicitly:
+
+```jsx
+const TabsHeader = ({ selectIndex, children }) =>
+  React.Children.toArray(children).map((child, index) =>
+    React.cloneElement(child, { selectIndex: () => selectIndex(index) })
+  );
+```
+
+`TabHead` will simply look like this:
+
+```jsx
+const TabHead = ({ selectIndex, ...props }) => (
+  <button onClick={selectIndex} {...props} />
+);
+```
+
+The `TabsBody` role is to display only the element that matches the selected index. This can be achieved using a simple `Array.prototype.find` call on the children:
+
+```jsx
+const TabsBody = ({ selectedIndex, children }) =>
+  React.Children.toArray(children).find((_, index) => selectedIndex === index);
+```
+
 
 
 MORE GENERALLY COMPONENTS THAT CONCERNS LAYOUT AND LAYOUTING EXPERIENCE
