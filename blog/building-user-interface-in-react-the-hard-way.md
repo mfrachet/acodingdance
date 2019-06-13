@@ -137,10 +137,13 @@ const Component = () => (
 
 It's a bit more verbose but it's mostly way more declarative. On top of that, it's not bounded to the actual application context and can be reused in any application. It can also be shipped and published as an npm package so that people can work with it.
 
+As you may have noticed, the context approach allows to bind elements by their **behaviours** anywhere in the tree.
+
+The next approach will bind element by their **UIs**. 
 
 ## `React.cloneElement` approach
 
-This function allows to clone a React element with its props and also gives the ability to override or add new props.
+This function allows to clone a React element with its props and also gives the ability to override them (or to add new ones).
 
 It can be used as following:
 
@@ -158,6 +161,40 @@ const App = () => (
 );
 ```
 
-It also exists another way to implicitly rely on the state of components: using `React.cloneElement`.
+### The `Tabs` example
 
-THIS APPROACH ALLOWS TO BIND ELEMENT BY THE UI INSTEAD OF THEIR BEHAVIOURS
+I'm talking a lot about the Tabs example that Ryan Florence has provided in [this video](https://www.youtube.com/watch?v=hEGg-3pIHlE). It's this video that made me realise that I was doing some things wrong and that I had to understand the "composing" thing.
+
+`Tabs` are UI elements that define (UI) interfaces sharing a visual link. They have to be closed to each other to provide a good user experience. It doesn't make sense to create a tab at the top left side of the corner with another one at the bottom right side.
+
+We can imagine some tabs in a composable way with the following API:
+
+```jsx
+  <Tabs>
+    <TabsHeader>
+      <TabHead>First button</TabHead>
+      <TabHead>Second button</TabHead>
+    </TabsHeader>
+
+    <TabsBody>
+      <Tab>
+        <FirstComponent />
+      </Tab>
+      <Tab>
+        <SecondComponent />
+      </Tab>
+    </TabsBody>
+  </Tabs>
+```
+
+When clicking a `TabHead`, it will switch the actual visual component to the associated (based on index) `Tab` in the `TabsBody` component.
+
+If we want to move the `TabsHeader` to the bottom of the component, we simply can thanks to the composable approach the these compound components.
+
+### Implementing the `Tabs` component
+
+The `Tabs` component is the owner, the one that knows everything. It owns the actual selected index and is the one that knows how to modify that index.
+
+
+
+MORE GENERALLY COMPONENTS THAT CONCERNS LAYOUT AND LAYOUTING EXPERIENCE
