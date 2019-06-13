@@ -91,4 +91,52 @@ Using the context of React in that specific case allows to keep consistency betw
 
 This is what we call _implicit state passing_. We manage the state in a way that the user doesn't have to care about.
 
+
+#### The `Stepper` example
+
+To take another example, let's imagine something like a page `Stepper`: display a view based on an id, something like:
+
+```jsx
+const Component = () => {
+  const [currentStep, setStep] = useState(0)
+
+  return (
+    <View>
+      <Button onPress={() => setStep(0)} title="First Element!" />
+      <Button onPress={() => setStep(1)} title="Second Element!" />
+      
+      {currentStep=== 0 ? <FirstComponent />}
+      {currentStep=== 1 ? <SecondComponent />}
+    </View>
+  )
+}
+```
+
+I have written this kind of code (or variants) a million times for different purpose like tutorials and so forth.
+
+The problem with that code is that **I had to rewrite it a million time** because it's not composable and thus it can be used only in my context. _Of course, it could also have been design in a data driven way, but we create a coupling between the data shape and the component. But that's another story._
+
+Now, if I had implemented something like this one time, I could have been able to reuse it in my different cases:
+
+```jsx
+const Component = () => (
+  <Stepper>
+    <StepperAction name="first">
+      <Text>First element!</Text>
+    </StepperAction>
+
+    <StepperAction name="second">
+      <Text>Second element!</Text>
+    </StepperAction>
+
+    <Steps>
+      <Step name="first">This is the first section</Step>
+      <Step name="first">This is the second section</Step>
+    </Steps>
+  </Stepper>
+)
+```
+
+It's a bit more verbose but it works all of my cases.
+
 It also exist another way to implicitly rely on the state of components: using `React.cloneElement`.
