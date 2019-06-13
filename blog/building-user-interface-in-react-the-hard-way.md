@@ -121,18 +121,16 @@ Now, if I had implemented something like this one time, I could have been able t
 ```jsx
 const Component = () => (
   <Stepper>
-    <StepperAction name="first">
+    <StepperAction to="first">
       <Text>First element!</Text>
     </StepperAction>
 
-    <StepperAction name="second">
+    <StepperAction to="second">
       <Text>Second element!</Text>
     </StepperAction>
 
-    <Steps>
-      <Step name="first">This is the first section</Step>
-      <Step name="first">This is the second section</Step>
-    </Steps>
+    <Step name="first">This is the first section</Step>
+    <Step name="second">This is the second section</Step>
   </Stepper>
 )
 ```
