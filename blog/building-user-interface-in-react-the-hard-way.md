@@ -1,7 +1,7 @@
 ---
 path: compound-component-implicit-state
 date: 2019-05-27T16:18:47.583Z
-title: The story of bounded components
+title: A tale of bounded components
 tags:
   - react
   - javascript
@@ -235,4 +235,7 @@ const TabsBody = ({ selectedIndex, children }) =>
 
 [Here's a link to a codesandbox of the previous snippets.](https://codesandbox.io/s/hardcore-thompson-ibxow)
 
-MORE GENERALLY COMPONENTS THAT CONCERNS LAYOUT AND LAYOUTING EXPERIENCE
+_I suggest you take some times to analyse and get familiar with this kind of code. It's something that I wasn't used to before diving into it._
+
+---
+In my mind this approach better fits for layout based components like the tabs example, or even routing etc...
