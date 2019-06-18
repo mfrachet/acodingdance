@@ -237,5 +237,8 @@ const TabsBody = ({ selectedIndex, children }) =>
 
 _I suggest you take some times to analyse and get familiar with this kind of code. It's something that I wasn't used to before diving into it._
 
----
 In my mind this approach better fits for layout based components like the tabs example, or even routing etc...
+
+---
+
+So there we are, these are examples with some explanations of more complex and linked components!
