@@ -6,7 +6,7 @@ import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Time } from '../components/time'
-import { rhythm, scale } from '../utils/typography'
+import { rhythm } from '../utils/typography'
 import { Tag } from '../components/tag'
 
 const disqusShortname = 'acodingdance-io'
@@ -29,28 +29,25 @@ class BlogPostTemplate extends React.Component {
         <h1
           style={{
             marginTop: rhythm(1),
+            marginBottom: 0,
           }}
         >
           {post.frontmatter.title}
         </h1>
 
-        <div>
+        <span>
+          <small>
+            <em>{post.frontmatter.date}</em> {' • '}
+            <Time value={post.fields.readingTime.minutes} />
+          </small>
+        </span>
+
+        <div style={{ marginBottom: rhythm(1) }}>
           {tags.map(tag => (
             <Tag key={tag}>{tag}</Tag>
           ))}
         </div>
 
-        <div
-          style={{
-            ...scale(-1 / 5),
-            display: 'block',
-            marginBottom: rhythm(1),
-            marginTop: rhythm(1),
-          }}
-        >
-          <span>{post.frontmatter.date}</span>{' '}
-          <Time value={post.fields.readingTime.minutes} />
-        </div>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
 
         <div style={{ marginTop: '2rem', marginBottom: '2rem' }}>
