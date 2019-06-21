@@ -34,9 +34,9 @@ We can for example define a state in the parent and handle each child selection 
 
 Both the approaches are good and will work in an application.
 
-But there is something that we lost: the linked nature of radio buttons.
+But there is something that we lost: **the linked nature of radio buttons**.
 
-In HTML this link is managed by the `input` `name` attribute:
+In HTML this link is handled by the `input` `name` attribute:
 
 ```jsx
 // this is from MDN
@@ -57,13 +57,13 @@ In React, it's possible to mimic this behaviour with a strong parent / children 
 Depending on the kind of component I'm working on, I use to rely on two approaches:
 
 - The React context for components that share informations
-- `React.cloneElement` for structural and layout components
+- `React.cloneElement` for structural and layout components (or to enhance child with more props)
 
 Let's dig into these two ones.
 
 ## The React context
 
-Let's continue talking about the `Radio` components. For this exercise, I have imagined an API that would look like:
+Let's get back to the `Radio` components. For this exercise, I have imagined an API that looks like:
 
 ```jsx
 const MyComponent = () => {
@@ -85,16 +85,16 @@ const MyComponent = () => {
 
 Where `RadioGroup` is the link between all of its `Radio` children. Its role is to ensure that only one element can be selected inside its own context, which is its children tree.
 
-It owns a `selected` property that corresponds to the **unique name** of the selected radio component.
+It owns a `selected` property that corresponds to the **unique name** of the selected radio component **in this context**.
 
 Using the context of React in that specific case allows to keep consistency between the components but it also doesn't block the composability nature of React: I can position my radio element almost anywhere without losing the current form state.
 
-This is what we call _implicit state passing_. We manage the state in a way that the user doesn't have to care about.
+The technique of _hiding_ the state management between this kind of components is called _implicit state passing_. We manage the state in a way that the end user(the developer) doesn't have to care about.
 
 
 #### The `Stepper` example
 
-To take another example, let's imagine something like a page `Stepper`: display a view based on an id, something like:
+To take another example, let's imagine something like a page `Stepper`. If you have ever implemented a wizard, a tutorial or a carousel, it's like a way to display a specific view based on a state, just like a router:
 
 ```jsx
 const Component = () => {
@@ -112,9 +112,22 @@ const Component = () => {
 }
 ```
 
-I have written this kind of code (or variants) a million times for different purpose like tutorials and so forth.
+I have written this kind of code (or variants) a million times.
 
-The problem with that code is that **I had to rewrite it a million time** because it's not composable and thus it can be used only in my context. _Of course, it could also have been design in a data driven way, but we create a coupling between the data shape and the component. But that's another story._
+And this is exactly the problem: **I had to rewrite it a million time** because the previous code can only be used in the specific context of my app.
+
+I also could have written it with a bit more abstract approach and rely on some specific data type. For example, I could create a specific data type that could be understood by the UI component. For example, using an array of:
+
+```tsx
+interface Step {
+  title: string
+  Component: React.ComponentType
+}
+```
+
+This is good and would have worked for this specific case. 
+
+_Of course, it could also have been designed in a data driven way meaning that we would have created a coupling between the component and the shape of the data it needs. But that's another story._
 
 Now, if I had implemented something like this one time, I could have been able to reuse it in my different cases:
 
