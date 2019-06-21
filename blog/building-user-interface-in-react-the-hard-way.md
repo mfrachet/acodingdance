@@ -116,16 +116,36 @@ I have written this kind of code (or variants) a million times.
 
 And this is exactly the problem: **I had to rewrite it a million time** because the previous code can only be used in the specific context of my app.
 
-I also could have written it with a bit more abstract approach and rely on some specific data type. For example, I could create a specific data type that could be understood by the UI component. For example, using an array of:
+I also could have written it with a bit more abstract approach and rely on some specific data type. This specific data type could be understood by the UI component:
 
 ```tsx
 interface Step {
   title: string
   Component: React.ComponentType
 }
+
+interface Props {
+  items: Step[]
+}
+
+export const Stepper: React.FC<Props> = ({ items }) => {
+  const [currentStep, setStep] = useState(0)
+
+  const SelectedComponent = items.find((_, index) => index === currentStep)
+
+  return (
+    <>
+      {items.map((item, index) => (
+        <Button title={item.title} onPress={() => setStep(index)} />
+      ))}
+
+      <SelectedComponent />
+    </>
+  )
+}
 ```
 
-This is good and would have worked for this specific case. 
+
 
 _Of course, it could also have been designed in a data driven way meaning that we would have created a coupling between the component and the shape of the data it needs. But that's another story._
 
