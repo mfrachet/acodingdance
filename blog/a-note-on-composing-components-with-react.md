@@ -6,24 +6,15 @@ tags:
   - react
   - javascript
 ---
-We often hear about composition when talking about frontend frameworks. Composition is the ability to create complex UIs by assembling components in the less coupled manner as possible.
-
+We often hear about composition when talking about frontend frameworks. Composition is a concept that allows to create complex and scalable UI components by "assembling them".
 
 [Ryan Florence has made a video some years ago](https://www.youtube.com/watch?v=hEGg-3pIHlE) concerning compound components and the benefits of having well-defined and composable APIs.
 
-
-
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/hEGg-3pIHlE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
 
 I'm a software developer and I make mistakes. Some years ago, I've released [rn-placeholder](https://github.com/mfrachet/rn-placeholder) using an API that was not extensible enough because of lack of composability.
 
-
-
 In this blog post, I will drive you all the way long to learn and understand the impact of having a good composable API and avoid the mistakes I've made with the rn-placeholder library.
-
-
 
 ## Implementing using a naive approach
 
@@ -129,14 +120,8 @@ In the future, if you have some components that start to grow, here are my "tric
 
 But be careful! You have to find the right balance between something fully composable and easy to use. Remember that abstracting is not always a good thing.
 
-
-
-If you find yourself writing tons of lines to create a component you know you'll use only one time, it's probably not necessary to find a good abstraction. However if it's a component that will leave in multiple places and that can probably move in terms of shape, you maybe have to think twice while implementing.
-
-
+If you find yourself writing tons of lines to create a component you know you'll use only one time, it's probably not necessary to find a good abstraction. However if it's a component that will live in multiple places and that can probably move in terms of shape, you maybe have to think twice while implementing.
 
 And don't forget with the new composable API, we can create a component that just looks like the old one!
-
-
 
 Happy coding :blush: :tada: !
