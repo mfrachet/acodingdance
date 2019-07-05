@@ -23,9 +23,23 @@ The first one is that I'm building the UI component library with [React Native](
 
 And the second one is because radio buttons are kind of _special_.
 
-By definition, it's as a group of selectable elements where only one element can be selected at a time. [Here's a quick link to the MDN definition of **radio** and **radio groups**](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio).
+By definition, it's a group of selectable elements where only one element can be selected at a time. [Here's a quick link to the MDN definition of **radio** and **radio groups**](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio).
 
 It means that if we want to build a `<Radio />` component that matches this definition, it has to share some information with some other `Radio` _friends_.
+
+In HTML this link is handled by the `input` `name` attribute:
+
+```jsx
+// this is from MDN
+
+<input type="radio" name="contact" value="email">
+
+<input type="radio" name="contact" value="phone">
+
+<input type="radio" name="contact" value="mail">
+```
+
+I think that we can call these **compound semantic elements**
 
 In the [React](https://reactjs.org/) world, it means that the different components **are sharing some state**.
 
@@ -87,23 +101,9 @@ This is also a _fine_ approach and it has the benefit of keeping the linked natu
 
 However, we have to define a new Redux key in the store for every different kind of Radio component. We also have to create a reducer for each kind of Radio groups and so forth. And this will be the same even if you don't use Redux but an other global state management system.
 
-In HTML this link is handled by the `input` `name` attribute:
-
-```jsx
-// this is from MDN
-
-<input type="radio" name="contact" value="email">
-
-<input type="radio" name="contact" value="phone">
-
-<input type="radio" name="contact" value="mail">
-```
-
-I think that we can call these **compound semantic elements**
-
 ---
 
-In React, it's possible to mimic this behaviour with a strong parent / children relationship.
+As we've seen, it's possible to mimic the share state with a strong parent / children relationship or using a global state management system.
 
 Depending on the kind of component I'm working on, I use to rely on two approaches:
 
