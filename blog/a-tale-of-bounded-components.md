@@ -146,7 +146,7 @@ It's the `RadioGroup` responsability to coordinates its children state and to ow
 
 We can create this behavior and feeling of link using [React's context API](https://reactjs.org/docs/context.html) where the `RadioGroup` component owns the actual selected `name` in its context and share it across its different `Radio` children.
 
-**This technique of _hiding_ the state management between components is called _implicit state passing_**. We manage the state in a way that the develop doesn't have to care about and does not have to implement multiple times.
+**This technique of _hiding_ the state management between components is called _implicit state passing_**. We manage the state in a way that the developer doesn't have to care about and does not have to implement multiple times.
 
 #### Another example, The `Stepper`
 
@@ -161,8 +161,8 @@ const Component = () => {
       <Button onPress={() => setStep(0)} title="First Element!" />
       <Button onPress={() => setStep(1)} title="Second Element!" />
 
-      {currentStep === 0 ? <FirstComponent />}
-      {currentStep === 1 ? <SecondComponent />}
+      {currentStep === 0 && <FirstComponent />}
+      {currentStep === 1 && <SecondComponent />}
     </View>
   )
 }
@@ -170,7 +170,7 @@ const Component = () => {
 
 I have written this kind of code (or variants) a million times.
 
-And this is exactly the problem: **I had to rewrite it a million times** because the previous code can only be used in **the specific application context**.
+And this is exactly the problem: **I had to rewrite it a million times** because the previous code can only be used in **the specific context of my application**.
 
 #### The `Stepper` using a Data driven approach
 
@@ -206,10 +206,10 @@ export const Stepper: React.FC<Props> = ({ items }) => {
 }
 ```
 
-This approach has some drawbacks:
+This approach is also perfectly fine and will work in some applications.
 
-- What if I want to move the step switcher somewhere else for a specific page?
-- What if I want to add more information that the `title` and the `Component` in my step?
+- What if I want to move the step switcher somewhere else (like above or below the steps)for a specific page?
+- What if I want to add more information than the `title` and the `Component` in my step?
 
 #### Composability first
 
