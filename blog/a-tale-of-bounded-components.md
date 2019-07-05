@@ -1,5 +1,5 @@
 ---
-path: compound-component-implicit-state
+path: a-tale-of-bounded-components
 date: 2019-05-27T16:18:47.583Z
 title: A tale of bounded components
 tags:
@@ -7,35 +7,85 @@ tags:
   - javascript
 ---
 
-Building reusable UI components is hard. I'm always banging my head around three times before writing a component that I want to be reusable. It's kind of a game to find the good abstraction and the good way to build them.
+Building reusable UI components is hard. I always rely on an iterative approach and write my component 2-3 times before getting something that I find useful and reusable across my applications. It's kind of a game to find the "good" abstraction and the "good" way to create them.
 
-In [A note on composing components with React](https://acodingdance.io/a-note-on-composing-components-with-react/), I've briefly talked about my conception of composition by taking the example of [Google Material Design Cards](https://material.io/design/components/cards.html) and how I would have implemented such a thing. Feel free to take a look if you're interested ☺️.
+In [A note on composing components with React](https://acodingdance.io/a-note-on-composing-components-with-react/), I've briefly talked about my conception of composition by taking the example of [Google Material Design Cards](https://material.io/design/components/cards.html) and how I would have implemented such a thing. This post is an extension of the previous one so I recommend you take a look ☺️.
 
-Today, I wanted to share with you my experience while implementing a UI component library based on a design system and how my team and I have managed to build a _bit more complex components_.
+Today I want to share with you my experience while implementing a UI component library based on a design system and how my team and I have managed to build a _bit more complex components_.
 
-So let's talk about components that _share something_.
+Let's talk about components that _share something_.
 
 ## Radio _buttons_
 
 I'm going to take the example of radio buttons and this for two reasons.
 
-The first one is that I'm building the UI component library with React Native and that it doesn't provide a built-in Radio component.
+The first one is that I'm building the UI component library with [React Native](https://facebook.github.io/react-native/) and that it doesn't provide a built-in Radio component.
 
-And the second one is because radio buttons are kind of "special".
+And the second one is because radio buttons are kind of _special_.
 
 By definition, it's as a group of selectable elements where only one element can be selected at a time. [Here's a quick link to the MDN definition of **radio** and **radio groups**](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio).
 
-It means that if we want to build a `<Radio />` component, it has to share some information with some other `Radio` "friends".
+It means that if we want to build a `<Radio />` component that matches this definition, it has to share some information with some other `Radio` _friends_.
 
-## Handling the shared behaviours
+In the [React](https://reactjs.org/) world, it means that the different components **are sharing some state**.
 
-To handle this kind of shared behaviour, we can rely on different approaches.
+## Handling the shared state
 
-We can for example define a state in the parent and handle each child selection from that parent or we can rely on a global state management that will store the actually selected value.
+To handle this kind of shared state, we can rely on different approaches.
 
-Both the approaches are good and will work in an application.
+### Through the parent state
+
+The simplest thing to do in a React world is to rely on the parent component state.
+
+Let's imagine the following snippet:
+
+```jsx
+const Parent = () => {
+  const [selectedRadio, selectRadio] = useState(0)
+
+  return (
+    <>
+      <Radio onPress={() => selectRadio(0)} isSelected={selectedRadio === 0} />
+      <Radio onPress={() => selectRadio(1)} isSelected={selectedRadio === 1} />
+
+      <Text>The selected value is {selectedRadio}</Text>
+    </>
+  )
+}
+```
+
+This is a _fine_ approach and it works as long as we accept to manage the state of the `<Radio />` components in every of their parents.
 
 But there is something that we lost: **the linked nature of radio buttons**.
+
+### Using a global state management (let's say Redux)
+
+We can also rely on a global state management that will store the actual selected value and provide it across the app:
+
+```jsx
+const mapStateToProps = (state, ownProps) => ({
+  isSelected: state.selectedRadio === ownProps.name,
+})
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  selectMe = () => dispatch({ type: 'SELECT_RADIO', payload: { newSelectedRadio: ownProps.name } })
+})
+
+const RadioEnhanced = connect(mapStateToProps, mapDispatchToProps)(Radio)
+
+const Parent = ({ selectedRadio }) => (
+  <>
+    <RadioEnhanced />
+    <RadioEnhanced />
+
+    <Text>The selected value is {selectedRadio}</Text>
+  </>
+)
+```
+
+This is also a _fine_ approach and it has the benefit of keeping the linked nature of the Radio element.
+
+However, we have to define a new Redux key in the store for every different kind of Radio component. We also have to create a reducer for each kind of Radio groups and so forth. And this will be the same even if you don't use Redux but an other global state management system.
 
 In HTML this link is handled by the `input` `name` attribute:
 
