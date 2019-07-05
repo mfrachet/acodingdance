@@ -19,15 +19,11 @@ Let's talk about components that _share something_.
 
 I'm going to take the example of radio buttons and this for two reasons.
 
-The first one is that I'm building the UI component library with [React Native](https://facebook.github.io/react-native/) and that it doesn't provide a built-in Radio component.
-
-And the second one is because radio buttons are kind of _special_.
+The first one is that I'm building the UI component library with [React Native](https://facebook.github.io/react-native/) and that it doesn't provide a built-in Radio component and the second one is because radio buttons are kind of _special_.
 
 By definition, it's a group of selectable elements where only one element can be selected at a time. [Here's a quick link to the MDN definition of **radio** and **radio groups**](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio).
 
-It means that if we want to build a `<Radio />` component that matches this definition, it has to share some information with some other `Radio` _friends_.
-
-In HTML this link is handled by the `input` `name` attribute:
+In HTML this link is represented by the `input` `name` attribute:
 
 ```jsx
 // this is from MDN
@@ -41,11 +37,11 @@ In HTML this link is handled by the `input` `name` attribute:
 
 I think that we can call these **compound semantic elements**
 
-In the [React](https://reactjs.org/) world, it means that the different components **are sharing some state**.
+If we want to build [React](https://reactjs.org/) components that matches the previous definition of radio elements, these components have to share some information with some other ones.
 
-## Handling the shared state
+In the React world, we can say that these components **are sharing some state**.
 
-To handle this kind of shared state, we can rely on different approaches.
+To manage this kind of shared state, we can rely on different approaches.
 
 ### Through the parent state
 
@@ -70,11 +66,13 @@ const Parent = () => {
 
 This is a _fine_ approach and it works as long as we accept to manage the state of the `<Radio />` components in every of their parents.
 
-But there is something that we lost: **the linked nature of radio buttons**.
+However, in this code, there is something that we lost: **the linked nature of radio buttons**. Or at least the _family_ link of the radio elements.
 
-### Using a global state management (let's say Redux)
+Of course the selected value will be reflected thanks to the parent state. But the radio group is dependent on the parent and not only on itself. On the web platform for example, there are no parent to manage the link between the elements.
 
-We can also rely on a global state management that will store the actual selected value and provide it across the app:
+### Using a global state management tool (let's say Redux)
+
+We can also rely on a global state management tool that will store the actual selected value and provide it across the app:
 
 ```jsx
 const mapStateToProps = (state, ownProps) => ({
@@ -97,24 +95,30 @@ const Parent = ({ selectedRadio }) => (
 )
 ```
 
-This is also a _fine_ approach and it has the benefit of keeping the linked nature of the Radio element.
+This is also a _fine_ approach and it has the benefit of keeping the linked nature of the Radio element using the global state.
 
 However, we have to define a new Redux key in the store for every different kind of Radio component. We also have to create a reducer for each kind of Radio groups and so forth. And this will be the same even if you don't use Redux but an other global state management system.
 
 ---
 
-As we've seen, it's possible to mimic the share state with a strong parent / children relationship or using a global state management system.
+**TL;DR**: it's possible to mimic the shared state with a strong parent / children relationship or using a global state management system.
 
-Depending on the kind of component I'm working on, I use to rely on two approaches:
+However, we lose the natural link between the `<Radio />` components that exist by default on the web without extra tooling.
 
-- The React context for components that share informations
+---
+
+## Sharing state with advanced React tricks
+
+Depending on the kind of component I'm working on, I use to rely on two advanced approaches:
+
+- The React context for components that share state
 - `React.cloneElement` for structural and layout components (or to enhance child with more props)
 
 Let's dig into these two ones.
 
-## The React context
+### The React context
 
-Let's get back to the `Radio` components. For this exercise, I have imagined an API that looks like:
+What I suggest before writing any component implementation is to imagine your best way to use that component. I often start by writing the shape I want it to have (its API), let's say:
 
 ```jsx
 const MyComponent = () => {
@@ -122,29 +126,31 @@ const MyComponent = () => {
 
   return (
     <RadioGroup selected={selected} onChange={setSelected}>
-      <View style={styles.someStyle}>
-        <Radio name="first" />
-      </View>
+      <Radio name="first">
+        <Text>My first radio</Text>
+      </Radio>
 
-      <View style={styles.someDifferentStyle}>
-        <Radio name="second" />
-      </View>
+      <Radio name="second">
+        <Text>My second radio</Text>
+      </Radio>
     </RadioGroup>
   )
 }
 ```
 
-Where `RadioGroup` is the link between all of its `Radio` children. Its role is to ensure that only one element can be selected inside its own context, which is its children tree.
+This code aims to represent a group of radio component that acts together. When the `<Radio name="first" />` is selected, every other radio components in the `RadioGroup` children tree will be unselected.
 
-It owns a `selected` property that corresponds to the **unique name** of the selected radio component **in this context**.
+The `selected` prop of the `RadioGroup` component corresponds to the actual `name` of the selected radio component. If I want to select the `first` radio then the code will look like `<RadioGroup selected="first">...</RadioGroup>`.
 
-Using the context of React in that specific case allows to keep consistency between the components but it also doesn't block the composability nature of React: I can position my radio element almost anywhere without losing the current form state.
+It's the `RadioGroup` responsability to coordinates its children state and to own the information of which one is selected.
 
-The technique of _hiding_ the state management between this kind of components is called _implicit state passing_. We manage the state in a way that the end user(the developer) doesn't have to care about.
+We can create this behavior and feeling of link using [React's context API](https://reactjs.org/docs/context.html) where the `RadioGroup` component owns the actual selected `name` in its context and share it across its different `Radio` children.
 
-#### The `Stepper` example
+**This technique of _hiding_ the state management between components is called _implicit state passing_**. We manage the state in a way that the develop doesn't have to care about and does not have to implement multiple times.
 
-To take another example, let's imagine something like a page `Stepper`. If you have ever implemented a wizard, a tutorial or a carousel, it's like a way to display a specific view based on a state, just like a router:
+#### Another example, The `Stepper`
+
+Let's imagine something like a page `Stepper`. If you have ever implemented a wizard, a tutorial or a carousel, it's like a way to display a specific view based on a state, just like a router:
 
 ```jsx
 const Component = () => {
@@ -164,11 +170,13 @@ const Component = () => {
 
 I have written this kind of code (or variants) a million times.
 
-And this is exactly the problem: **I had to rewrite it a million time** because the previous code can only be used in the specific context of my app.
+And this is exactly the problem: **I had to rewrite it a million times** because the previous code can only be used in **the specific application context**.
 
-#### Data driven component
+#### The `Stepper` using a Data driven approach
 
-I also could have written it with a bit more abstract approach and rely on some specific data type. This specific data type could be understood by the UI component:
+I sometime write components that are data driven. It means that my data should have a specific shape that my component knows about. It's like a contract (or a tight bound?) between the data and the component.
+
+_The following code is written in TypeScript to show the link between the Step interface and the Stepper component._
 
 ```tsx
 interface Step {
@@ -184,6 +192,7 @@ export const Stepper: React.FC<Props> = ({ items }) => {
   const [currentStep, setStep] = useState(0)
 
   const SelectedComponent = items.find((_, index) => index === currentStep)
+    .Component
 
   return (
     <>
