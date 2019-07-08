@@ -109,16 +109,18 @@ However, we lose the natural link between the `<Radio />` components that exist 
 
 ## Sharing state with advanced React tricks
 
-Depending on the kind of component I'm working on, I use to rely on two advanced approaches:
+Depending on the kind of component I'm working on, I use to rely on two advanced approaches to manage this shared state:
 
-- The React context for components that share state
-- `React.cloneElement` for structural and layout components (or to enhance child with more props)
+- The React context
+- [`React.cloneElement`](https://reactjs.org/docs/react-api.html#cloneelement) for structural and layout components (or to enhance children with more props)
 
-Let's dig into these two ones.
+Let's dig into these two things.
 
-### The React context
+### [React's context API](https://reactjs.org/docs/context.html)
 
-What I suggest before writing any component implementation is to imagine your best way to use that component. I often start by writing the shape I want it to have (its API), let's say:
+_I often here that using the React context is a bad practice. I don't totally agree with this statement. I think that we have to understand when not to use it and to use it sparsely. The context is a feature that is built in in React, so they may probably be some good use-cases for it._
+
+What I suggest before writing any component implementation is to imagine your ideal way to use that component. I often start by writing the shape I want it to have (its API), let's say:
 
 ```jsx
 const MyComponent = () => {
@@ -138,11 +140,11 @@ const MyComponent = () => {
 }
 ```
 
-This code aims to represent a group of radio component that acts together. When the `<Radio name="first" />` is selected, every other radio components in the `RadioGroup` children tree will be unselected.
+I like this kind of API because it's straightforward to read.
 
-The `selected` prop of the `RadioGroup` component corresponds to the actual `name` of the selected radio component. If I want to select the `first` radio then the code will look like `<RadioGroup selected="first">...</RadioGroup>`.
+This code represents a group of radio components that act together. When the `<Radio name="first" />` is selected, every other radio components in the `RadioGroup` children tree will be unselected.
 
-It's the `RadioGroup` responsability to coordinates its children state and to own the information of which one is selected.
+The `selected` prop of the `RadioGroup` component corresponds to the `name` of the selected radio component. If I want to select the `first` radio then the code will look like `<RadioGroup selected="first">...</RadioGroup>`.
 
 We can create this behavior and feeling of link using [React's context API](https://reactjs.org/docs/context.html) where the `RadioGroup` component owns the actual selected `name` in its context and share it across its different `Radio` children.
 
@@ -150,7 +152,7 @@ We can create this behavior and feeling of link using [React's context API](http
 
 #### Another example, The `Stepper`
 
-Let's imagine something like a page `Stepper`. If you have ever implemented a wizard, a tutorial or a carousel, it's like a way to display a specific view based on a state, just like a router:
+Let's take another example and imagine something like a page `Stepper`. If you have ever implemented a wizard, a tutorial or a carousel, it's like a way to display a specific view based on a state, just like a router:
 
 ```jsx
 const Component = () => {
