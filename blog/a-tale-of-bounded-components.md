@@ -157,6 +157,68 @@ We can imagine this components using multiple approaches and one that often come
 
 ### Data Driven approach
 
+A data driven approach is a way to build component so that a component requires its props to have a specific shape to be used. For example:
+
+```jsx
+const items = [
+  { title: 'First', Component: () => <div>First</div> },
+  { title: 'Second', Component: () => <div>Second</div> },
+]
+
+const Tabs = ({ items }) => {
+  const [selected, setSelected] = useState()
+  let SelectedComponent
+
+  if (selected) {
+    SelectedComponent = items[selected].Component
+  }
+
+  return (
+    <div>
+      {items.map((item, index) => (
+        <div
+          key={item.title}
+          onClick={() => setSelected(index)}
+          style={{ color: selected === index ? 'green' : 'black' }}
+        >
+          {item.title}
+        </div>
+      ))}
+
+      {SelectedComponent && <SelectedComponent />}
+    </div>
+  )
+}
+
+// would be used <Tabs item={items} />
+```
+
+In this example, the `Tabs` component has to know the shape of each of its item to be able to display them correctly. It's a contract between the object shape and the component.
+
+While it's okay to work using this approach, I think that it's good to think of a way to avoid this kind of tight coupling. Composition can help to achieve this.
+
+As I have mentioned before, let's image our perfect world API. Something like the following one looks great to me:
+
+```jsx
+<Tabs>
+  <TabsHeader>
+    <TabHead>First button</TabHead>
+    <TabHead>Second button</TabHead>
+  </TabsHeader>
+
+  <TabsBody>
+    <Tab>
+      <FirstComponent />
+    </Tab>
+    <Tab>
+      <SecondComponent />
+    </Tab>
+  </TabsBody>
+</Tabs>
+```
+
+Using React, how can we create the different `TabXXX` component so that it works this way? Let's talk about the `React.cloneElement` function.
+
 ### React.cloneElement
 
 This function allows to clone a React element with its props and also gives the ability to override them (or to add new ones).
@@ -180,24 +242,6 @@ const App = () => (
 We will use this definition of the `React.cloneElement` function to pass props to the children of a _component_ without to write extra code when using _this_ component.
 
 We can imagine some tabs with the following API:
-
-```jsx
-<Tabs>
-  <TabsHeader>
-    <TabHead>First button</TabHead>
-    <TabHead>Second button</TabHead>
-  </TabsHeader>
-
-  <TabsBody>
-    <Tab>
-      <FirstComponent />
-    </Tab>
-    <Tab>
-      <SecondComponent />
-    </Tab>
-  </TabsBody>
-</Tabs>
-```
 
 When clicking a `TabHead`, it will switch the actual visible component to the associated (based on index) `Tab` in the `TabsBody` component.
 
