@@ -99,12 +99,6 @@ This is also a _fine_ approach and it has the benefit of keeping the linked natu
 
 However, we have to define a new Redux key in the store for every different kind of Radio component. We also have to create a reducer for each kind of Radio groups and so forth. And this will be the same even if you don't use Redux but an other global state management system.
 
----
-
-**TL;DR**: it's possible to mimic the shared state with a strong parent / children relationship or using a global state management system.
-
-However, we lose the natural link between the `<Radio />` components that exist by default on the web without extra tooling.
-
 ### [React's context API](https://reactjs.org/docs/context.html)
 
 _I often here that using the React context is a bad practice. I don't totally agree with this statement. I think that we have to understand when not to use it and to use it sparsely. The context is a feature that is built in in React, so they may probably be some good use-cases for it._
@@ -137,7 +131,7 @@ The `selected` prop of the `RadioGroup` component corresponds to the `name` of t
 
 We can create this behavior and feeling of link using [React's context API](https://reactjs.org/docs/context.html) where the `RadioGroup` component owns the actual selected `name` in its context and share it across its different `Radio` children.
 
-**This technique of _hiding_ the state management between components is called _implicit state passing_**. We manage the state in a way that the developer doesn't have to care about and does not have to implement multiple times.
+**This technique of _hiding_ the state management between components is called _implicit state passing_**. We manage the state in a way the developer doesn't have to care about and does not have to implement multiple times.
 
 [Here's a running codesandbox of the `Radio` and `RadioGroup` implementation](https://codesandbox.io/s/elastic-surf-pxxdt).
 
@@ -149,15 +143,15 @@ We now have a good understanding of the `React context` API. Let's explore anoth
 
 In my posts, I'm talking a lot about the Tabs example that [Ryan Florence](https://twitter.com/ryanflorence) has provided in [this video](https://www.youtube.com/watch?v=hEGg-3pIHlE). It's this video that made me realise that I was doing some things wrong and that I had to understand the "composition" concept.
 
-`Tabs` are UI elements that define (UI) interfaces sharing a visual link. They have to be close to each other to provide a good user experience. It doesn't make sense to create a tab at the top left side of the corner with another one at the bottom right side.
+`Tabs` are UI elements that define (UI) interfaces sharing a visual link. They have to be close to each other to provide a good user experience. It doesn't make sense to create a tab at the top left side of the device with another one at the bottom right side.
 
-I like to put `Tabs` in the category of layout components: they are really business oriented nor atomic UI components. They represent a way to display information and how to navigate between different types of information.
+I like to put `Tabs` in the category of layout components: they are not really business oriented nor atomic UI components. They represent a way to display information and how to navigate between different types of information.
 
 We can imagine this components using multiple approaches and one that often comes and that I used to work with was the data driven approach.
 
 ### Data Driven approach
 
-A data driven approach is a way to build component so that a component requires its props to have a specific shape to be used. For example:
+A data driven approach is a way to build components so that a component requires its props to have a specific shape to be used. For example:
 
 ```jsx
 const items = [
@@ -193,7 +187,7 @@ const Tabs = ({ items }) => {
 // would be used <Tabs item={items} />
 ```
 
-In this example, the `Tabs` component has to know the shape of each of its item to be able to display them correctly. It's a contract between the object shape and the component.
+In this example, the `Tabs` component knows the shape of each of its item to be able to display them correctly. It's a contract between the object and the component.
 
 While it's okay to work using this approach, I think that it's good to think of a way to avoid this kind of tight coupling. Composition can help to achieve this.
 
@@ -217,11 +211,13 @@ As I have mentioned before, let's image our perfect world API. Something like th
 </Tabs>
 ```
 
-Using React, how can we create the different `TabXXX` component so that it works this way? Let's talk about the `React.cloneElement` function.
+Using React, how can we create the different `TabXXX` component so that it works this way?
+
+We could have done this using the context API, but for now, I want to introduce the `React.cloneElement` function.
 
 ### React.cloneElement
 
-This function allows to clone a React element with its props and also gives the ability to override them (or to add new ones).
+This function allows to clone a React element with its actual props with the possibility to override them or to add new ones.
 
 It can be used as following:
 
@@ -239,13 +235,10 @@ const App = () => (
 )
 ```
 
-We will use this definition of the `React.cloneElement` function to pass props to the children of a _component_ without to write extra code when using _this_ component.
+We will use this definition of the `React.cloneElement` function to provide some props to the children of a component, implicitly.
 
-We can imagine some tabs with the following API:
-
-When clicking a `TabHead`, it will switch the actual visible component to the associated (based on index) `Tab` in the `TabsBody` component.
-
-_The composed nature of `Tabs` allows to move the `TabsHeader` to the bottom really easily._
+For example, we will add a props to the `TabHead` components so that they become clickable.
+We will also add a `selectIndex` prop to the `TabsBody` component so that he knows which component has to be displayed or not.
 
 #### Implementing the `Tabs` component
 
@@ -265,7 +258,7 @@ In this case `React.cloneElement` enhances the child component by adding them tw
 
 In fact, we'll pass down these two props respectively to the `TabHead`s and the `Tab`s.
 
-The `TabsHeads` component will receive the `selectIndex` function and will pass it down to its `TabHead` children with a subtle variant: we'll scope the actual index of the `TabHead` component so that they can call the `selectIndex` function without passing their index explicitly:
+The `TabsHeader` component will receive the `selectIndex` function and will pass it down to its `TabHead` children with a subtle variant: we'll scope the actual index of the `TabHead` component so that they can call the `selectIndex` function without passing their index explicitly:
 
 ```jsx
 const TabsHeader = ({ selectIndex, children }) =>
