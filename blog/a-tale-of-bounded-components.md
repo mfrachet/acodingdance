@@ -101,7 +101,7 @@ However, we have to define a new Redux key in the store for every different kind
 
 ### [React's context API](https://reactjs.org/docs/context.html)
 
-_I often here that using the React context is a bad practice. I don't totally agree with this statement. I think that we have to understand when not to use it and to use it sparsely. The context is a feature that is built in in React, so they may probably be some good use-cases for it._
+_I often hear that using the React context is a bad practice. I don't totally agree with this statement. I think that we have to understand when not to use it and to use it sparsely. The context is a feature that is built in in React, so they may probably be some good use-cases for it._
 
 What I suggest before writing any component implementation is to imagine your ideal way to use that component. I often start by writing the shape I want it to have (its API), let's say:
 
