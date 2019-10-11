@@ -1,21 +1,19 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import styles from './navbar.module.css'
+import { Menu, Input } from 'antd'
 
-export const Navbar = () => {
-  return (
-    <nav className={styles.navbar}>
-      <h3
-        style={{
-          fontFamily: 'Montserrat, sans-serif',
-          margin: 0,
-          textAlign: 'center',
-        }}
-      >
-        <Link className={styles.customLink} to={'/'}>
-          Δ coding dΔnce
-        </Link>
-      </h3>
-    </nav>
-  )
-}
+const { Search } = Input
+
+export const Navbar = () => (
+  <Menu mode="horizontal">
+    <Menu.Item>
+      <Link to="/">Acoding Dance</Link>
+    </Menu.Item>
+
+    <Search
+      placeholder="input search text"
+      onSearch={value => console.log(value)}
+      style={{ width: 200 }}
+    />
+  </Menu>
+)
