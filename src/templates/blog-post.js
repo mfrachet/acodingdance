@@ -1,17 +1,20 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import { Icon } from 'antd'
 import { DiscussionEmbed } from 'disqus-react'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Time } from '../components/time'
-import { Tag } from '../components/tag'
 
 const disqusShortname = 'acodingdance-io'
 
+const PostTitle = ({ children }) => (
+  <div style={{ paddingBottom: '1rem' }}>{children}</div>
+)
+
 const BlogPostTemplate = ({ data, location, pageContext }) => {
   const post = data.markdownRemark
-  const tags = post.frontmatter.tags
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
 
@@ -23,20 +26,22 @@ const BlogPostTemplate = ({ data, location, pageContext }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
-      <h1>{post.frontmatter.title}</h1>
 
-      <span>
-        <small>
-          <em>{post.frontmatter.date}</em> {' • '}
-          <Time value={post.fields.readingTime.minutes} />
-        </small>
-      </span>
+      <PostTitle>
+        <h1>
+          <Link to="/">
+            <Icon type="arrow-left" />
+          </Link>{' '}
+          {post.frontmatter.title}
+        </h1>
 
-      <div>
-        {tags.map(tag => (
-          <Tag key={tag}>{tag}</Tag>
-        ))}
-      </div>
+        <span>
+          <small>
+            <em>{post.frontmatter.date}</em> {' • '}
+            <Time value={post.fields.readingTime.minutes} />
+          </small>
+        </span>
+      </PostTitle>
 
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
 

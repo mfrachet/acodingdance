@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Time } from '../components/time'
-import { Tag } from '../components/tag'
+
+const PostItem = ({ children }) => (
+  <div style={{ paddingTop: '1rem' }}>{children}</div>
+)
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -17,30 +19,23 @@ const BlogIndex = ({ data, location }) => {
         keywords={['blog', 'gatsby', 'javascript', 'react']}
       />
 
-      <h4>Latest Blog Posts</h4>
-
       {posts.map(({ node }) => {
         const tags = node.frontmatter.tags || []
         const title = node.frontmatter.title || node.fields.slug
-        return (
-          <div key={node.fields.slug}>
-            <h3>
-              <Link to={node.fields.slug}>{title}</Link>
-            </h3>
 
-            <span>
-              <small>
-                <em>{node.frontmatter.date}</em> {' • '}
-                <Time value={node.fields.readingTime.minutes} />
-              </small>
-            </span>
+        return (
+          <PostItem key={node.fields.slug}>
+            <h2>
+              <Link to={node.fields.slug}>{title}</Link>
+            </h2>
+
+            <small>
+              <em>{node.frontmatter.date}</em> {' • '}
+              <Time value={node.fields.readingTime.minutes} />
+            </small>
 
             <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-
-            {tags.map(tag => (
-              <Tag key={tag}>{tag}</Tag>
-            ))}
-          </div>
+          </PostItem>
         )
       })}
     </Layout>

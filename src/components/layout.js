@@ -1,12 +1,13 @@
 import React from 'react'
-import { Navbar } from '../components/navbar'
 import { Container } from './container'
+import { Wrapper } from './wrapper'
 import { Layout as AntLayout } from 'antd'
 
 const Layout = ({ children }) => (
   <AntLayout>
-    <Navbar />
-    <Container>{children}</Container>
+    <Container>
+      <Wrapper>{children}</Wrapper>
+    </Container>
   </AntLayout>
 )
 
