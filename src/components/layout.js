@@ -3,17 +3,11 @@ import { Navbar } from '../components/navbar'
 import { Container } from './container'
 import { Layout as AntLayout } from 'antd'
 
-class Layout extends React.Component {
-  render() {
-    const { children } = this.props
-
-    return (
-      <AntLayout>
-        <Navbar />
-        <Container>{children}</Container>
-      </AntLayout>
-    )
-  }
-}
+const Layout = ({ children }) => (
+  <AntLayout>
+    <Navbar />
+    <Container>{children}</Container>
+  </AntLayout>
+)
 
 export default Layout

@@ -4,7 +4,6 @@ import { Link, graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Time } from '../components/time'
-import { rhythm } from '../utils/typography'
 import { Tag } from '../components/tag'
 
 class BlogIndex extends React.Component {
@@ -12,8 +11,6 @@ class BlogIndex extends React.Component {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
-
-    const marginBottom = 0
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -28,12 +25,8 @@ class BlogIndex extends React.Component {
           const tags = node.frontmatter.tags || []
           const title = node.frontmatter.title || node.fields.slug
           return (
-            <div key={node.fields.slug} style={{ marginBottom: rhythm(2) }}>
-              <h3
-                style={{
-                  marginBottom,
-                }}
-              >
+            <div key={node.fields.slug}>
+              <h3>
                 <Link to={node.fields.slug}>{title}</Link>
               </h3>
 
@@ -44,12 +37,7 @@ class BlogIndex extends React.Component {
                 </small>
               </span>
 
-              <p
-                style={{
-                  marginBottom,
-                }}
-                dangerouslySetInnerHTML={{ __html: node.excerpt }}
-              />
+              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
 
               {tags.map(tag => (
                 <Tag key={tag}>{tag}</Tag>

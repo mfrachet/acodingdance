@@ -1,12 +1,11 @@
 import React from 'react'
-import { rhythm } from '../utils/typography'
-import { Layout, Menu, Breadcrumb } from 'antd'
+import { Layout } from 'antd'
 
 const { Content } = Layout
 
 export const Container = ({ children }) => (
-  <Content style={{ padding: '0 20%' }}>
-    <div style={{ background: '#fff', padding: 24, margin: 24 }}>
+  <Content>
+    <div style={{ background: '#fff', padding: '1rem', margin: '1rem' }}>
       {children}
     </div>
   </Content>
