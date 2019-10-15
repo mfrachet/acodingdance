@@ -1,12 +1,10 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { DiscussionEmbed } from 'disqus-react'
-
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Time } from '../components/time'
-import { rhythm } from '../utils/typography'
 import { Tag } from '../components/tag'
 
 const disqusShortname = 'acodingdance-io'
@@ -26,14 +24,7 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title={post.frontmatter.title} description={post.excerpt} />
-        <h1
-          style={{
-            marginTop: rhythm(1),
-            marginBottom: 0,
-          }}
-        >
-          {post.frontmatter.title}
-        </h1>
+        <h1>{post.frontmatter.title}</h1>
 
         <span>
           <small>
@@ -42,7 +33,7 @@ class BlogPostTemplate extends React.Component {
           </small>
         </span>
 
-        <div style={{ marginBottom: rhythm(1) }}>
+        <div>
           {tags.map(tag => (
             <Tag key={tag}>{tag}</Tag>
           ))}
@@ -50,19 +41,9 @@ class BlogPostTemplate extends React.Component {
 
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
 
-        <div style={{ marginTop: '2rem', marginBottom: '2rem' }}>
-          <Bio />
-        </div>
+        <Bio />
 
-        <ul
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            listStyle: 'none',
-            padding: 0,
-          }}
-        >
+        <ul>
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">

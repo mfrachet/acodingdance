@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import tagStyle from './tag.module.css'
+import { Tag as AntTag } from 'antd';
 
 export const Tag = ({ children }) => (
   <Link to={`/tags/${children}`}>
-    <span className={tagStyle.tag}>{children}</span>
+    <AntTag>{children}</AntTag>
   </Link>
 )
