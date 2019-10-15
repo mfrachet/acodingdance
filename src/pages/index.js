@@ -1,53 +1,45 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Time } from '../components/time'
-import { Tag } from '../components/tag'
 
-class BlogIndex extends React.Component {
-  render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+const PostItem = ({ children }) => (
+  <div style={{ paddingTop: '1rem' }}>{children}</div>
+)
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title="All posts"
-          keywords={['blog', 'gatsby', 'javascript', 'react']}
-        />
+const BlogIndex = ({ data, location }) => {
+  const siteTitle = data.site.siteMetadata.title
+  const posts = data.allMarkdownRemark.edges
 
-        <h4>Latest Blog Posts</h4>
+  return (
+    <Layout location={location} title={siteTitle}>
+      <SEO
+        title="All posts"
+        keywords={['blog', 'gatsby', 'javascript', 'react']}
+      />
 
-        {posts.map(({ node }) => {
-          const tags = node.frontmatter.tags || []
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h3>
-                <Link to={node.fields.slug}>{title}</Link>
-              </h3>
+      {posts.map(({ node }) => {
+        const tags = node.frontmatter.tags || []
+        const title = node.frontmatter.title || node.fields.slug
 
-              <span>
-                <small>
-                  <em>{node.frontmatter.date}</em> {' • '}
-                  <Time value={node.fields.readingTime.minutes} />
-                </small>
-              </span>
+        return (
+          <PostItem key={node.fields.slug}>
+            <h2>
+              <Link to={node.fields.slug}>{title}</Link>
+            </h2>
 
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+            <small>
+              <em>{node.frontmatter.date}</em> {' • '}
+              <Time value={node.fields.readingTime.minutes} />
+            </small>
 
-              {tags.map(tag => (
-                <Tag key={tag}>{tag}</Tag>
-              ))}
-            </div>
-          )
-        })}
-      </Layout>
-    )
-  }
+            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+          </PostItem>
+        )
+      })}
+    </Layout>
+  )
 }
 
 export default BlogIndex

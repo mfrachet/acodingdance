@@ -1,30 +1,39 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import { Icon } from 'antd'
 import { DiscussionEmbed } from 'disqus-react'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Time } from '../components/time'
-import { Tag } from '../components/tag'
 
 const disqusShortname = 'acodingdance-io'
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = this.props.data.markdownRemark
-    const tags = post.frontmatter.tags
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
+const PostTitle = ({ children }) => (
+  <div style={{ paddingBottom: '1rem' }}>{children}</div>
+)
 
-    const disqusConfig = {
-      identifier: post.id,
-      title: post.frontmatter.title,
-    }
+const BlogPostTemplate = ({ data, location, pageContext }) => {
+  const post = data.markdownRemark
+  const siteTitle = data.site.siteMetadata.title
+  const { previous, next } = pageContext
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title={post.frontmatter.title} description={post.excerpt} />
-        <h1>{post.frontmatter.title}</h1>
+  const disqusConfig = {
+    identifier: post.id,
+    title: post.frontmatter.title,
+  }
+
+  return (
+    <Layout location={location} title={siteTitle}>
+      <SEO title={post.frontmatter.title} description={post.excerpt} />
+
+      <PostTitle>
+        <h1>
+          <Link to="/">
+            <Icon type="arrow-left" />
+          </Link>{' '}
+          {post.frontmatter.title}
+        </h1>
 
         <span>
           <small>
@@ -32,38 +41,32 @@ class BlogPostTemplate extends React.Component {
             <Time value={post.fields.readingTime.minutes} />
           </small>
         </span>
+      </PostTitle>
 
-        <div>
-          {tags.map(tag => (
-            <Tag key={tag}>{tag}</Tag>
-          ))}
-        </div>
+      <div dangerouslySetInnerHTML={{ __html: post.html }} />
 
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <Bio />
 
-        <Bio />
+      <ul>
+        <li>
+          {previous && (
+            <Link to={previous.fields.slug} rel="prev">
+              ← {previous.frontmatter.title}
+            </Link>
+          )}
+        </li>
+        <li>
+          {next && (
+            <Link to={next.fields.slug} rel="next">
+              {next.frontmatter.title} →
+            </Link>
+          )}
+        </li>
+      </ul>
 
-        <ul>
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-
-        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
-      </Layout>
-    )
-  }
+      <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+    </Layout>
+  )
 }
 
 export default BlogPostTemplate
