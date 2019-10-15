@@ -1,4 +1,5 @@
 import React from 'react'
+import '../index.css'
 import { Container } from './container'
 import { Wrapper } from './wrapper'
 import { Layout as AntLayout } from 'antd'
