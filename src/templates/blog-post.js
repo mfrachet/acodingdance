@@ -9,61 +9,59 @@ import { Tag } from '../components/tag'
 
 const disqusShortname = 'acodingdance-io'
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = this.props.data.markdownRemark
-    const tags = post.frontmatter.tags
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
+const BlogPostTemplate = ({ data, location, pageContext }) => {
+  const post = data.markdownRemark
+  const tags = post.frontmatter.tags
+  const siteTitle = data.site.siteMetadata.title
+  const { previous, next } = pageContext
 
-    const disqusConfig = {
-      identifier: post.id,
-      title: post.frontmatter.title,
-    }
-
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title={post.frontmatter.title} description={post.excerpt} />
-        <h1>{post.frontmatter.title}</h1>
-
-        <span>
-          <small>
-            <em>{post.frontmatter.date}</em> {' • '}
-            <Time value={post.fields.readingTime.minutes} />
-          </small>
-        </span>
-
-        <div>
-          {tags.map(tag => (
-            <Tag key={tag}>{tag}</Tag>
-          ))}
-        </div>
-
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-
-        <Bio />
-
-        <ul>
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-
-        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
-      </Layout>
-    )
+  const disqusConfig = {
+    identifier: post.id,
+    title: post.frontmatter.title,
   }
+
+  return (
+    <Layout location={location} title={siteTitle}>
+      <SEO title={post.frontmatter.title} description={post.excerpt} />
+      <h1>{post.frontmatter.title}</h1>
+
+      <span>
+        <small>
+          <em>{post.frontmatter.date}</em> {' • '}
+          <Time value={post.fields.readingTime.minutes} />
+        </small>
+      </span>
+
+      <div>
+        {tags.map(tag => (
+          <Tag key={tag}>{tag}</Tag>
+        ))}
+      </div>
+
+      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+
+      <Bio />
+
+      <ul>
+        <li>
+          {previous && (
+            <Link to={previous.fields.slug} rel="prev">
+              ← {previous.frontmatter.title}
+            </Link>
+          )}
+        </li>
+        <li>
+          {next && (
+            <Link to={next.fields.slug} rel="next">
+              {next.frontmatter.title} →
+            </Link>
+          )}
+        </li>
+      </ul>
+
+      <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+    </Layout>
+  )
 }
 
 export default BlogPostTemplate
