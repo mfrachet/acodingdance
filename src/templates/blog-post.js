@@ -1,13 +1,10 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { Icon } from 'antd'
-import { DiscussionEmbed } from 'disqus-react'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Time } from '../components/time'
-
-const disqusShortname = 'acodingdance-io'
 
 const PostTitle = ({ children }) => (
   <div style={{ paddingBottom: '1rem' }}>{children}</div>
@@ -18,17 +15,12 @@ const BlogPostTemplate = ({ data, location, pageContext }) => {
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
 
-  const disqusConfig = {
-    identifier: post.id,
-    title: post.frontmatter.title,
-  }
-
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
 
       <PostTitle>
-        <h1>
+        <h1 className="no-margin">
           <Link to="/">
             <Icon type="arrow-left" />
           </Link>{' '}
@@ -63,8 +55,6 @@ const BlogPostTemplate = ({ data, location, pageContext }) => {
           )}
         </li>
       </ul>
-
-      <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
     </Layout>
   )
 }

@@ -5,7 +5,7 @@ import SEO from '../components/seo'
 import { Time } from '../components/time'
 
 const PostItem = ({ children }) => (
-  <div style={{ paddingTop: '1rem' }}>{children}</div>
+  <div style={{ paddingBottom: '1rem' }}>{children}</div>
 )
 
 const BlogIndex = ({ data, location }) => {
@@ -25,7 +25,7 @@ const BlogIndex = ({ data, location }) => {
 
         return (
           <PostItem key={node.fields.slug}>
-            <h2>
+            <h2 className="no-margin">
               <Link to={node.fields.slug}>{title}</Link>
             </h2>
 
