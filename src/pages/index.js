@@ -2,7 +2,6 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { Time } from '../components/time'
 
 const PostItem = ({ children }) => (
   <div style={{ paddingBottom: '1rem' }}>{children}</div>
@@ -28,11 +27,6 @@ const BlogIndex = ({ data, location }) => {
             <h2 className="no-margin">
               <Link to={node.fields.slug}>{title}</Link>
             </h2>
-
-            <small>
-              <em>{node.frontmatter.date}</em> {' • '}
-              <Time value={node.fields.readingTime.minutes} />
-            </small>
 
             <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
           </PostItem>

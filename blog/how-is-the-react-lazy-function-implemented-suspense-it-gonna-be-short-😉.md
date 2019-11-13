@@ -24,9 +24,9 @@ And today, I wanted to talk about a `Suspense` specific feature which is the `la
 This function aims to provide a simple way to rely on bundler's code splitting using some code like:
 
 ```jsx
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react'
 
-const LazyComponent = lazy(() => import('./components/myComponent'));
+const LazyComponent = lazy(() => import('./components/myComponent'))
 
 const App = () => (
   <Suspense fallback={<div>Waiting...</div>}>
@@ -47,7 +47,6 @@ using 2-3 lines?...!
 
 ![What the?..](https://media.giphy.com/media/Vfie0DJryAde8/giphy.gif)
 
-
 ## Suspense...🤯
 
 This is not _that_ magic and can exist thanks to the `Suspense` component.
@@ -62,31 +61,31 @@ I tried to write about it in [this Medium post](https://medium.com/free-code-cam
 
 I won't keep the "suspense" for now, so let's check _one_ implementation of the `lazy` function I've came across:
 
-```javascript
-import React from "react";
+```js
+import React from 'react'
 
-let IDS = 0;
-const loaded = {};
+let IDS = 0
+const loaded = {}
 
 export const lazy = modulePathResolver => {
-  const id = IDS++;
+  const id = IDS++
 
   return props => {
-    const LoadedComponent = loaded[id];
+    const LoadedComponent = loaded[id]
 
     if (LoadedComponent) {
-      return <LoadedComponent {...props} />;
+      return <LoadedComponent {...props} />
     }
 
     throw modulePathResolver().then(lazyModule => {
-      const Component = lazyModule.default;
-      loaded[id] = Component;
-    });
-  };
-};
+      const Component = lazyModule.default
+      loaded[id] = Component
+    })
+  }
+}
 ```
 
-__[It's available on github gist if you want to play with it.](https://gist.github.com/mfrachet/a04cc57a500de85170e2ade4b9406305)__
+**[It's available on github gist if you want to play with it.](https://gist.github.com/mfrachet/a04cc57a500de85170e2ade4b9406305)**
 
 Obviously, this snippet only works if the component is used inside a `Suspense` parent.
 
