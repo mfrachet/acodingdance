@@ -4,125 +4,63 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Wrapper } from '../components/wrapper'
 import { css } from '@emotion/core'
+import styled from '@emotion/styled'
+import { MdKeyboardBackspace } from 'react-icons/md'
+import { Container } from '../components/container'
 
-const classes = css`
-  margin: 3rem 0;
+const DateBlock = styled.div`
+  float: right;
+  color: #373737;
+`
 
-  hr {
-    margin: 2rem 0;
+const backLink = css`
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-flex;
+  align-self: center;
+  border-bottom: 0px !important;
+
+  & svg {
+    transition: all 0.3s;
   }
 
-  p,
-  li {
-    letter-spacing: 0.05em;
-    font-size: 1.2em;
-    line-height: 1.6em;
-    color: #373737;
-  }
-
-  p {
-    margin-bottom: 1.5rem;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  ul {
-    margin: 1.5rem 0;
-  }
-
-  li {
-    margin-left: 2rem;
-  }
-
-  h1 {
-    font-size: 2.5em;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-  }
-
-  h2 {
-    font-size: 2em;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-  }
-
-  h3 {
-    font-size: 1.6em;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-  }
-
-  h4 {
-    font-size: 1.2em;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-  }
-
-  img,
-  iframe {
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-    max-width: 100%;
-  }
-
-  pre {
-    margin: 5rem 5vw;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 1px 15px rgba(27, 31, 35, 0.15);
-    border: 1px solid #dfdfdf;
-    padding: 0 1rem 1rem 1rem;
-    font-family: inherit;
-
-    &.language-jsx:before {
-      content: 'JSX Snippet';
-    }
-
-    &.language-js:before {
-      content: 'JavaScript Snippet';
-    }
-
-    &.language-shell:before {
-      content: 'Shell Snippet';
-    }
-
-    &:before {
-      content: 'Code snippet';
-      background: red;
-      display: block;
-      padding: 0.3rem 1rem;
-      border-radius: 5px 5px 0 0;
-      border-bottom: 1px solid #dfdfdf;
-      background-color: #f4f4f4;
-      margin: 0 -1rem 1rem -1rem;
-    }
+  &:hover svg {
+    transform: translateX(-0.5rem);
   }
 `
 
 const BlogPostTemplate = ({ data, location, pageContext }) => {
   const { markdownRemark } = data
   const { frontmatter, html, excerpt } = markdownRemark
-  const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
 
   return (
     <Layout>
       <SEO title={frontmatter.title} description={excerpt} />
 
-      <Link to="/">Go back</Link>
-
       <Wrapper>
-        <div css={classes}>
-          <Date>{frontmatter.date}</Date>
+        <Container>
+          <Link to="/" css={backLink}>
+            <MdKeyboardBackspace
+              css={css`
+                margin-right: 0.3rem;
+              `}
+            />{' '}
+            Go back
+          </Link>
+
+          <DateBlock>
+            {' '}
+            {new Intl.DateTimeFormat('en-US').format(
+              new Date(frontmatter.date)
+            )}
+          </DateBlock>
 
           <h1>{frontmatter.title}</h1>
 
           <div dangerouslySetInnerHTML={{ __html: html }} />
-        </div>
+        </Container>
       </Wrapper>
     </Layout>
   )
