@@ -1,60 +1,67 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import { Icon } from 'antd'
-import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { Time } from '../components/time'
+import { Wrapper } from '../components/wrapper'
+import { css } from '@emotion/core'
+import styled from '@emotion/styled'
+import { MdKeyboardBackspace } from 'react-icons/md'
+import { Container } from '../components/container'
 
-const PostTitle = ({ children }) => (
-  <div style={{ paddingBottom: '1rem' }}>{children}</div>
-)
+const DateBlock = styled.div`
+  float: right;
+  color: #373737;
+`
+
+const backLink = css`
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-flex;
+  align-self: center;
+  border-bottom: 0px !important;
+
+  & svg {
+    transition: all 0.3s;
+  }
+
+  &:hover svg {
+    transform: translateX(-0.5rem);
+  }
+`
 
 const BlogPostTemplate = ({ data, location, pageContext }) => {
-  const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata.title
+  const { markdownRemark } = data
+  const { frontmatter, html, excerpt } = markdownRemark
   const { previous, next } = pageContext
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title={post.frontmatter.title} description={post.excerpt} />
+    <Layout>
+      <SEO title={frontmatter.title} description={excerpt} />
 
-      <PostTitle>
-        <h1 className="no-margin">
-          <Link to="/">
-            <Icon type="arrow-left" />
-          </Link>{' '}
-          {post.frontmatter.title}
-        </h1>
+      <Wrapper>
+        <Container>
+          <Link to="/" css={backLink}>
+            <MdKeyboardBackspace
+              css={css`
+                margin-right: 0.3rem;
+              `}
+            />{' '}
+            Go back
+          </Link>
 
-        <span>
-          <small>
-            <em>{post.frontmatter.date}</em> {' • '}
-            <Time value={post.fields.readingTime.minutes} />
-          </small>
-        </span>
-      </PostTitle>
+          <DateBlock>
+            {' '}
+            {new Intl.DateTimeFormat('en-US').format(
+              new Date(frontmatter.date)
+            )}
+          </DateBlock>
 
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          <h1>{frontmatter.title}</h1>
 
-      <Bio />
-
-      <ul>
-        <li>
-          {previous && (
-            <Link to={previous.fields.slug} rel="prev">
-              ← {previous.frontmatter.title}
-            </Link>
-          )}
-        </li>
-        <li>
-          {next && (
-            <Link to={next.fields.slug} rel="next">
-              {next.frontmatter.title} →
-            </Link>
-          )}
-        </li>
-      </ul>
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+        </Container>
+      </Wrapper>
     </Layout>
   )
 }

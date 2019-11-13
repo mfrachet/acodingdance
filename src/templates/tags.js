@@ -1,6 +1,5 @@
 import React from 'react'
 import Layout from '../components/layout'
-import { Time } from '../components/time'
 import { Link, graphql } from 'gatsby'
 
 const Tags = ({ pageContext, data, location }) => {
@@ -19,9 +18,7 @@ const Tags = ({ pageContext, data, location }) => {
           const { title } = node.frontmatter
           return (
             <li key={slug}>
-              <Link to={slug}>
-                {title} - <Time value={readingTime.minutes} />
-              </Link>
+              <Link to={slug}>{title}</Link>
             </li>
           )
         })}

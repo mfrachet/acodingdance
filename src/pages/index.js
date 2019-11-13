@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import { MdModeEdit } from 'react-icons/md'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { Time } from '../components/time'
+import { Container } from '../components/container'
+import { Wrapper } from '../components/wrapper'
+import { Title } from '../components/title'
 
 const PostItem = ({ children }) => (
   <div style={{ paddingBottom: '1rem' }}>{children}</div>
@@ -19,25 +22,26 @@ const BlogIndex = ({ data, location }) => {
         keywords={['blog', 'gatsby', 'javascript', 'react']}
       />
 
-      {posts.map(({ node }) => {
-        const tags = node.frontmatter.tags || []
-        const title = node.frontmatter.title || node.fields.slug
+      <Wrapper>
+        <Title>
+          <MdModeEdit /> A coding dance
+        </Title>
+        <Container>
+          {posts.map(({ node }) => {
+            const title = node.frontmatter.title || node.fields.slug
 
-        return (
-          <PostItem key={node.fields.slug}>
-            <h2 className="no-margin">
-              <Link to={node.fields.slug}>{title}</Link>
-            </h2>
+            return (
+              <PostItem key={node.fields.slug}>
+                <h2>
+                  <Link to={node.fields.slug}>{title}</Link>
+                </h2>
 
-            <small>
-              <em>{node.frontmatter.date}</em> {' • '}
-              <Time value={node.fields.readingTime.minutes} />
-            </small>
-
-            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-          </PostItem>
-        )
-      })}
+                <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+              </PostItem>
+            )
+          })}
+        </Container>
+      </Wrapper>
     </Layout>
   )
 }
