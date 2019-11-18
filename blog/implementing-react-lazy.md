@@ -1,7 +1,7 @@
 ---
 path: how-to-react-lazy
 date: 2019-07-31T00:04:14.208Z
-title: "How is the React lazy function implemented? Suspense... It gonna be short \U0001F609"
+title: 'Implementing the React.lazy() function by hand'
 tags:
   - react
   - javascript
@@ -45,7 +45,7 @@ It can be a bit disturbing at first, how can we:
 
 using 2-3 lines?...!
 
-![What the?..](https://media.giphy.com/media/Vfie0DJryAde8/giphy.gif)
+![What the?..](https://media.giphy.com/media/pPhyAv5t9V8djyRFJH/giphy.gif)
 
 ## Suspense...🤯
 

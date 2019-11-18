@@ -1,4 +1,5 @@
 import { css } from '@emotion/core'
+import { colors } from './theme'
 
 const classes = css`
   margin: 3rem 0;
@@ -12,7 +13,7 @@ const classes = css`
     letter-spacing: 0.05em;
     font-size: 1.2em;
     line-height: 1.6em;
-    color: #373737;
+    color: ${colors.text};
   }
 
   p {
@@ -27,6 +28,7 @@ const classes = css`
   h6,
   ul {
     margin: 1.5rem 0;
+    color: ${colors.brand};
   }
 
   li {
@@ -61,7 +63,7 @@ const classes = css`
   iframe {
     margin-bottom: 2rem;
     margin-top: 2rem;
-    max-width: 100%;
+    width: 100%;
   }
 
   pre {
@@ -98,7 +100,7 @@ const classes = css`
   }
 
   a {
-    color: black;
+    color: ${colors.brand};
     font-weight: bold;
     padding-bottom: 0.05em;
     text-decoration: none;
