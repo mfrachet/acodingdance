@@ -194,10 +194,6 @@ export const unstable_createResource = somethingThatFetches => {
   // The cache itself
   let cache
 
-  const setCache = (...args) => {
-    // set the cache in some ways
-  }
-
   const ApiResource = {
     // Read some data somewhere using some arguments
     read(...args) {
@@ -227,15 +223,14 @@ Let's imagine that:
 
 - `ApiResource.read` will try to read its internal cache
 - If it exists, it returns the value of the cache
-- If not, it throws a `setCache` `function` to a parent
-- This parent will actually make the asynchronous operation of fetching
-- This parent will call the `function` it has received from the children and call it, setting implicitly the cache
+- If not, it throws a `Promise` that the parent can resolve
+- The parent will re-render and resolve the `Promise` that **modifies the cached value**
 
 In our scenario:
 
-- Calling `ApiResource.read` will interrupt the `Pokemon` render function by throwing a function
-- Our own definition of `Suspense` will catch this function, make the HTTP call and set the cache value
-- The `Suspense` parent will now be able to re-render its `Pokemon` children with the cache data
+- Calling `ApiResource.read` will interrupt the `Pokemon` render function by throwing a `Promise`
+- Our own definition of `Suspense` will catch that `Promise`, make the HTTP call and set the cache value
+- The `Suspense` parent will now be able to re-render its `Pokemon` children with the cached data
 
 ### Handling te scenario:
 
@@ -244,20 +239,19 @@ import React from 'react'
 export const unstable_createResource = somethingThatFetches => {
   let cache
 
-  const setCache = (...args) => () => {
-  /**
-  * This create a closure that can be called by the Suspense parent
-  */
-    cache = await somethingThatFetches(...args)
-  }
-
   const ApiResource = {
     read(...args) {
       if (!cache) {
         /**
-        * Throws the setCache returning closure to be executed by the Suspense parent
-        */
-        throw setCache(...args);
+         * Throws the promise that modifies the cached data
+         */
+        const toResolve = {
+          toResolve: somethingThatFetches(...args).then(data => {
+            cache = data
+          }),
+        }
+
+        throw toResolve
       }
 
       return cache
@@ -287,9 +281,9 @@ export class Suspense extends React.Component {
     return { hasError: true }
   }
 
-  // componentDidCatch parameter is the closure function created by setCache 🤯
-  async componentDidCatch(fetchFunction) {
-    await fetchFunction()
+  // componentDidCatch parameter is an error olding a promise to resolve that will modify the cached value 🤯
+  async componentDidCatch(error) {
+    await error.toResolve
 
     this.setState({ hasError: false })
   }
