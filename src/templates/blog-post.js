@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import { FaRegCalendarAlt } from 'react-icons/fa'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Wrapper } from '../components/wrapper'
@@ -11,6 +12,7 @@ import { Container } from '../components/container'
 const DateBlock = styled.div`
   float: right;
   color: #373737;
+  font-weight: bold;
 `
 
 const backLink = css`
@@ -51,7 +53,7 @@ const BlogPostTemplate = ({ data, location, pageContext }) => {
           </Link>
 
           <DateBlock>
-            {' '}
+            <FaRegCalendarAlt />{' '}
             {new Intl.DateTimeFormat('en-US').format(
               new Date(frontmatter.date)
             )}

@@ -104,7 +104,7 @@ const classes = css`
     font-weight: bold;
     padding-bottom: 0.05em;
     text-decoration: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid ${colors.brand};
   }
 
   h1 a,
