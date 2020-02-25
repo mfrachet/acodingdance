@@ -1,14 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Global, css } from '@emotion/core'
-import { colors } from './theme'
 
 const Layout = ({ children }) => (
   <div>
     <Global
       styles={css`
         body {
-          border: 0.5rem solid ${colors.brand};
         }
         * {
           font-family: -apple-system, blinkmacsystemfont, segoeUI, Roboto,

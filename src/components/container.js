@@ -11,7 +11,7 @@ const classes = css`
   p,
   li {
     letter-spacing: 0.05em;
-    font-size: 1.2em;
+    font-size: 1em;
     line-height: 1.6em;
     color: ${colors.text};
   }
@@ -67,36 +67,14 @@ const classes = css`
   }
 
   pre {
-    margin: 5rem 5vw;
+    width: 100%;
+    margin: 5rem 0;
     background: #fff;
     border-radius: 5px;
     box-shadow: 0 1px 15px rgba(27, 31, 35, 0.15);
     border: 1px solid #dfdfdf;
-    padding: 0 1rem 1rem 1rem;
+    padding: 1rem;
     font-family: inherit;
-
-    &.language-jsx:before {
-      content: 'JSX Snippet';
-    }
-
-    &.language-js:before {
-      content: 'JavaScript Snippet';
-    }
-
-    &.language-shell:before {
-      content: 'Shell Snippet';
-    }
-
-    &:before {
-      content: 'Code snippet';
-      background: red;
-      display: block;
-      padding: 0.3rem 1rem;
-      border-radius: 5px 5px 0 0;
-      border-bottom: 1px solid #dfdfdf;
-      background-color: #f4f4f4;
-      margin: 0 -1rem 1rem -1rem;
-    }
   }
 
   a {
