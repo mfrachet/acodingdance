@@ -31,7 +31,7 @@ export const Navbar = () => (
         <NavBrand>
           <Link to="/">Marvin Frachet</Link>
         </NavBrand>
-        <NavItem>f</NavItem>
+        <NavItem />
       </NavItems>
     </Wrapper>
   </Nav>
