@@ -10,9 +10,9 @@ const classes = css`
 
   p,
   li {
-    letter-spacing: 0.05em;
+    letter-spacing: 0.07em;
     font-size: 1em;
-    line-height: 1.6em;
+    line-height: 2em;
     color: ${colors.text};
   }
 
@@ -28,7 +28,6 @@ const classes = css`
   h6,
   ul {
     margin: 1.5rem 0;
-    color: ${colors.brand};
   }
 
   li {
@@ -68,8 +67,7 @@ const classes = css`
 
   pre {
     width: 100%;
-    margin: 5rem 0;
-    background: #fff;
+    margin: 2rem 0 3rem 0;
     border-radius: 5px;
     box-shadow: 0 1px 15px rgba(27, 31, 35, 0.15);
     border: 1px solid #dfdfdf;

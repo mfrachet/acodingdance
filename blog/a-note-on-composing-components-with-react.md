@@ -6,6 +6,7 @@ tags:
   - react
   - javascript
 ---
+
 We often hear about composition when talking about frontend frameworks. Composition is a concept that allows to create complex and scalable UI components by "assembling them".
 
 [Ryan Florence has made a video some years ago](https://www.youtube.com/watch?v=hEGg-3pIHlE) concerning compound components and the benefits of having well-defined and composable APIs.
@@ -20,7 +21,7 @@ In this blog post, I will drive you all the way long to learn and understand the
 
 Let's take the example of the [Material Design Cards](https://material.io/design/components/cards.html). A "Card" in the Material Design specification is a way to present heterogeneous content using a homogeneous UI representation.
 
-![A card definition from the Material Design Card specification](/assets/mio-design_assets_1ezntdj8h1j0bfkbl23lyzewjjvmzy_uv_cards-elements-2b.png "A card definition from the Material Design Card specification")
+![A card definition from the Material Design Card specification](/assets/mio-design_assets_1ezntdj8h1j0bfkbl23lyzewjjvmzy_uv_cards-elements-2b.png 'A card definition from the Material Design Card specification')
 
 As with a naive approach, here's the way I would have defined my API at first:
 
@@ -44,7 +45,7 @@ The problem comes when you start customizing the Card to handle its variations. 
 
 Let's imagine that we want to modify the actual card component to look like:
 
-![Another Material Card from their website](/assets/mio-design_assets_0b6xusjjsulxcutqtcvl0wurpww8_cards-dividers-2.png "Another Material Card from their website")
+![Another Material Card from their website](/assets/mio-design_assets_0b6xusjjsulxcutqtcvl0wurpww8_cards-dividers-2.png 'Another Material Card from their website')
 
 Keeping the actual naive approach, let's imagine that we have modified the card component to achieve this:
 
@@ -104,7 +105,7 @@ I've splitted the Card component in a composable manner so we won't have to modi
 
 Using this approach, we're able to build any type of cards:
 
-![Multiple material cards](/assets/cards003.png "Multiple material cards")
+![Multiple material cards](/assets/cards003.png 'Multiple material cards')
 
 ## The smell I rely on
 
@@ -112,11 +113,11 @@ This is a way to leverage composability to avoid complex and unmaintainable comp
 
 In the future, if you have some components that start to grow, here are my "tricks" or at least the code smells (it's opinionated and depends on the use-cases) that indicates I have to split my component on something a bit more composable:
 
-* If a component has more than 5-6 props
-* If a component contains more than 100 lines of code
-* Can I extract this component and reuse it in another app?
-* Do I have to tweak (or can I tweak) the props of the underlying components? (See this issue for more details [rn-placeholder#38](https://github.com/mfrachet/rn-placeholder/issues/38))
-* Can I move the underlying component somewhere else in the parent component (top or bottom)? 
+- If a component has more than 5-6 props
+- If a component contains more than 100 lines of code
+- Can I extract this component and reuse it in another app?
+- Do I have to tweak (or can I tweak) the props of the underlying components? (See this issue for more details [rn-placeholder#38](https://github.com/mfrachet/rn-placeholder/issues/38))
+- Can I move the underlying component somewhere else in the parent component (top or bottom)?
 
 But be careful! You have to find the right balance between something fully composable and easy to use. Remember that abstracting is not always a good thing.
 

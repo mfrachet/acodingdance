@@ -1,14 +1,13 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import { MdModeEdit } from 'react-icons/md'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Container } from '../components/container'
 import { Wrapper } from '../components/wrapper'
-import { Title } from '../components/title'
+import { Navbar } from '../components/navbar'
 
 const PostItem = ({ children }) => (
-  <div style={{ paddingBottom: '1rem' }}>{children}</div>
+  <div style={{ paddingBottom: '4rem' }}>{children}</div>
 )
 
 const BlogIndex = ({ data, location }) => {
@@ -22,21 +21,22 @@ const BlogIndex = ({ data, location }) => {
         keywords={['blog', 'gatsby', 'javascript', 'react']}
       />
 
+      <Navbar />
+
       <Wrapper>
-        <Title>
-          <MdModeEdit /> A coding dance
-        </Title>
         <Container>
+          <h3>Latest</h3>
+
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
 
             return (
               <PostItem key={node.fields.slug}>
-                <h2>
-                  <Link to={node.fields.slug}>{title}</Link>
-                </h2>
+                <h4>{title}</h4>
 
                 <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+
+                <Link to={node.fields.slug}>Read the post</Link>
               </PostItem>
             )
           })}

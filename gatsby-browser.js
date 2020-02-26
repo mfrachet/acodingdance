@@ -1,1 +1,1 @@
-require('./assets/github.css')
+require('./assets/theme.css')

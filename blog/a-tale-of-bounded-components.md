@@ -54,12 +54,12 @@ const Parent = () => {
   const [selectedRadio, selectRadio] = useState(0)
 
   return (
-    <>
+    <div>
       <Radio onPress={() => selectRadio(0)} isSelected={selectedRadio === 0} />
       <Radio onPress={() => selectRadio(1)} isSelected={selectedRadio === 1} />
 
       <Text>The selected value is {selectedRadio}</Text>
-    </>
+    </div>
   )
 }
 ```
