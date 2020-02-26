@@ -36,30 +36,31 @@ const classes = css`
 
   h1 {
     font-size: 2.5em;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    font-weight: normal;
+    letter-spacing: 0.07em;
   }
 
   h2 {
     font-size: 2em;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    font-weight: normal;
+    letter-spacing: 0.07em;
   }
 
   h3 {
     font-size: 1.6em;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    font-weight: normal;
+    letter-spacing: 0.07em;
   }
 
   h4 {
     font-size: 1.2em;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    font-weight: normal;
+    letter-spacing: 0.07em;
   }
 
   img,
   iframe {
+    border-radius: 10px;
     margin-bottom: 2rem;
     margin-top: 2rem;
     width: 100%;
@@ -68,10 +69,8 @@ const classes = css`
   pre {
     width: 100%;
     margin: 2rem 0 3rem 0;
-    border-radius: 5px;
-    box-shadow: 0 1px 15px rgba(27, 31, 35, 0.15);
-    border: 1px solid #dfdfdf;
-    padding: 1rem;
+    border-radius: 10px;
+    padding: 1.6rem;
     font-family: inherit;
   }
 
@@ -89,6 +88,16 @@ const classes = css`
   h4 a,
   h5 a {
     border-bottom: 0px;
+  }
+
+  /** App */
+  h3.main-subtitle {
+    font-size: 1em;
+    font-weight: normal;
+  }
+
+  h4.post-title {
+    font-weight: bold;
   }
 `
 

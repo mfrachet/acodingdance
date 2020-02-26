@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import styled from '@emotion/styled'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Container } from '../components/container'
@@ -25,14 +26,14 @@ const BlogIndex = ({ data, location }) => {
 
       <Wrapper>
         <Container>
-          <h3>Latest</h3>
+          <h3 className="main-subtitle">Latest</h3>
 
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
 
             return (
               <PostItem key={node.fields.slug}>
-                <h4>{title}</h4>
+                <h4 className="post-title">{title}</h4>
 
                 <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
 
