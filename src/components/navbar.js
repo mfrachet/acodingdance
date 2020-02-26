@@ -3,12 +3,17 @@ import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import { Wrapper } from './wrapper'
 
-const Nav = styled.nav``
+const Nav = styled.nav`
+  height: 60px;
+  background: #fff;
+`
 
 const NavItems = styled.ul`
+  height: 40px;
   display: flex;
   flex-direction: row;
   list-style-type: none;
+  align-items: center;
 `
 
 const NavItem = styled.li`
@@ -16,18 +21,18 @@ const NavItem = styled.li`
 `
 
 const NavBrand = styled.li`
-  padding: 0.5rem 1rem 1rem 0;
+  padding: 0.5rem 1rem;
 `
 
 export const Navbar = () => (
-  <Wrapper>
-    <Nav>
+  <Nav>
+    <Wrapper>
       <NavItems>
         <NavBrand>
           <Link to="/">Marvin Frachet</Link>
         </NavBrand>
         <NavItem>f</NavItem>
       </NavItems>
-    </Nav>
-  </Wrapper>
+    </Wrapper>
+  </Nav>
 )

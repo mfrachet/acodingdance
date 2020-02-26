@@ -26,8 +26,6 @@ const BlogIndex = ({ data, location }) => {
 
       <Wrapper>
         <Container>
-          <h3 className="main-subtitle">Latest</h3>
-
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
 

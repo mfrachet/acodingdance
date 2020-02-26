@@ -2,8 +2,6 @@ import { css } from '@emotion/core'
 import { colors } from './theme'
 
 const classes = css`
-  margin: 3rem 0;
-
   hr {
     margin: 2rem 0;
   }
@@ -91,11 +89,6 @@ const classes = css`
   }
 
   /** App */
-  h3.main-subtitle {
-    font-size: 1em;
-    font-weight: normal;
-  }
-
   h4.post-title {
     font-weight: bold;
   }

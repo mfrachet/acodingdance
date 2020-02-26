@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Wrapper } from '../components/wrapper'
-import { css } from '@emotion/core'
+import { Hero, HeroTime, HeroTitle } from '../components/hero'
 import { Container } from '../components/container'
 import { Navbar } from '../components/navbar'
 
@@ -16,23 +16,26 @@ const BlogPostTemplate = ({ data, location, pageContext }) => {
     <Layout>
       <SEO title={frontmatter.title} description={excerpt} />
 
-      <Wrapper>
-        <Navbar />
+      <Navbar />
 
-        <Container>
-          {/* 
-          <DateBlock>
-            <FaRegCalendarAlt />{' '}
+      <Hero>
+        <Wrapper>
+          <HeroTitle className="post-title">{frontmatter.title}</HeroTitle>
+
+          <HeroTime>
+            Published the{' '}
             {new Intl.DateTimeFormat('en-US').format(
               new Date(frontmatter.date)
             )}
-          </DateBlock> */}
+          </HeroTime>
+        </Wrapper>
+      </Hero>
 
-          <h1>{frontmatter.title}</h1>
-
+      <Container>
+        <Wrapper>
           <div dangerouslySetInnerHTML={{ __html: html }} />
-        </Container>
-      </Wrapper>
+        </Wrapper>
+      </Container>
     </Layout>
   )
 }
