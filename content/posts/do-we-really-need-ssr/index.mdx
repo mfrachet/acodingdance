@@ -1,0 +1,37 @@
+---
+title: "Do we really need server side rendering?"
+date: 2020-05-19
+slug: "/do-we-really-need-server-side-rendering"
+---
+
+Server Side Rendering (or SSR) is a really big trend. In the React ecosystem, we have plenty of tools that rely on this like [Gatsbyjs](https://www.gatsbyjs.org/) or [Nextjs](https://nextjs.org/).
+
+Before getting further about SSR, let's try to see what happens when a user makes a query on a site that is NOT using SSR:
+
+- The browser makes a query on a specific URI
+- It downloads an empty HTML file that only has a bunch of `<script>` tags inside to load some JS code
+- It resolves / parses / compiles the JS code
+- It executes the JS code and that's only then the application is ready and displays content to the user
+
+This is how the good old [Angularjs](https://angularjs.org/) or [JQuery](https://jquery.com/) applications were working. And this is also what happens when we use [create-react-app](https://github.com/facebook/create-react-app).
+We call this way of building an application "Client Side Rendering" (or CSR).
+
+#### Why SSR has been invented?
+
+When building an application using CSR, we **always** have to wait for the JS code to be resolved / parsed / compiled / executed **before** having anything displayed on the screen.
+And this can be problematic because:
+
+- CSR apps are not optimized for SEO (SEO works, but it takes longer)
+- We don't benefit from a good media sharing experience
+- It can take time to boot a huge JS application in the browser
+
+_I remember having worked on an Angularjs application in 2013 where it took around 7 seconds to display the first content on the page._
+
+#### How did they solve these problems?
+
+The main idea behind server side rendering is to generate HTML content and make it available the sooner to the end user.
+
+This way, when a user makes a request:
+
+- The browser makes a query on a specific URI
+- It downloads **an already filled HTML file** and can already display it to the user
