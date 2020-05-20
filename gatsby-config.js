@@ -5,13 +5,22 @@ require(`dotenv`).config({
 module.exports = {
   siteMetadata: {
     siteTitle: "Just a blog",
-    siteTitleAlt: `Just a blog`,
+    siteTitleAlt: "Just a blog",
+    siteHeadline: "Just a blog",
+    siteUrl: `https://mfrachet.github.io/`,
+    siteDescription:
+      "A product engineer journey across the world of JavaScript applications",
+    siteLanguage: `en`,
+    // Used for og:image and must be placed inside the `static` folder
+    siteImage: `/me.jpg`,
+    author: `@mfrachet`,
   },
   plugins: [
     {
       resolve: `@lekoarts/gatsby-theme-minimal-blog`,
       // See the theme's README for all available options
       options: {
+        feedTitle: "Just a blog",
         navigation: [
           {
             title: `Blog`,
@@ -40,7 +49,6 @@ module.exports = {
         trackingId: process.env.GOOGLE_ANALYTICS_ID,
       },
     },
-    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
