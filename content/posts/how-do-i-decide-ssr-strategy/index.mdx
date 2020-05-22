@@ -1,7 +1,7 @@
 ---
-title: "Do we really need server side rendering?"
+title: "How do I decide which SSR strategy to adopt?"
 date: 2020-05-20
-slug: "/do-we-really-need-server-side-rendering"
+slug: "/how-do-i-decide-ssr-strategy"
 ---
 
 Server Side Rendering (or SSR) is a really big trend. In the React ecosystem, we have plenty of tools that rely on this like [Gatsbyjs](https://www.gatsbyjs.org/) or [Nextjs](https://nextjs.org/).
@@ -50,8 +50,8 @@ None of the previous solutions are mutually exclusive. It's up to you to rely on
 
 And this is where it gets tricky and where the title of this post comes from.
 
-####  Do we need server side rendering in our application?
+#### How do I decide which SSR strategy to adopt?
 
-I'm sharing down one of the mental representation I rely on when I have to make a choice when starting to build an application. But remember, everything is a matter of tradeoffs. You will have pros and cons with any of the following system.
+The following diagram is one of the mental representations I'm using when I build a new application that potentially needs SSR. Weirdly, everything starts with: "Do we have public pages?"
 
 ![Mental SSR path to make a choice](./ssr.png)
