@@ -4,39 +4,39 @@ date: 2020-05-20
 slug: "/how-do-i-choose-a-ssr-strategy"
 ---
 
-Server Side Rendering (or SSR) is a really big trend. In the React ecosystem, we have plenty of tools that rely on this like [Gatsbyjs](https://www.gatsbyjs.org/) or [Nextjs](https://nextjs.org/).
+Server Side Rendering (or SSR) is a really big trend. In the React ecosystem, we have plenty of tools that rely on it such as [Gatsbyjs](https://www.gatsbyjs.org/) or [Nextjs](https://nextjs.org/).
 
-Before getting further about SSR, let's try to see what happens when a user makes a request on a site that is NOT using SSR:
+Before getting further, let's see what happens when a user makes a request on a site that is not built using SSR:
 
-- The browser makes a request on a specific URI
-- It downloads an empty HTML file that only has a bunch of `<script>` tags inside to load some JS code
+- The browser makes a request on a specific endpoint
+- It downloads an empty HTML file that only owns a bunch of `<script>` tags to load some JS code
 - It resolves / parses / compiles the JS code
-- It executes the JS code and that's only then the application is ready and displays content to the user
+- It executes the JS code and only then the application can display the content
 
 This is how the good old [Angularjs](https://angularjs.org/) or [JQuery](https://jquery.com/) applications were working. And this is also what happens when we use [create-react-app](https://github.com/facebook/create-react-app).
 We say that these applications rely on "Client Side Rendering" (or CSR).
 
 #### Why SSR has been invented?
 
-When building an application using CSR, we **always** have to wait for the JS code to be resolved / parsed / compiled / executed **before** having anything displayed on the screen.
+When building an application using CSR, we **always** have to wait for the JS code to be resolved / parsed / compiled / executed **before** displaying anything on the screen.
 And this can be problematic because:
 
-- CSR apps are not optimized for SEO (SEO works, but it takes longer)
+- CSR applications are not optimized for SEO ([SEO works, but it's a bit more complicated](https://developers.google.com/web/updates/2019/02/rendering-on-the-web#seo))
 - We don't benefit from a good media sharing experience
-- It can take time to boot a huge JS application in the browser
+- It can take time to boot a big JS application in the browser
 
-_I remember having worked on an Angularjs application in 2013 where it took around 7 seconds to display the first content on the page._
+_I remember having worked on an Angularjs application in 2013 where it took around 10 seconds to display the first content on the page._
 
 #### How does it solve these problems?
 
-The main idea behind SSR is to generate HTML content and make it available the sooner to the end user.
+The main idea behind SSR is to generate HTML content and display it to the user the sooner. HTML is easy to understand for browsers, they know how to execute it really fast.
 
-This way, when a user makes a request:
+This way, when a user navigates:
 
-- The browser makes a request on a specific URI
+- The browser makes a request on a specific endpoint
 - It downloads **an already filled HTML content** and can already display it to the user
 
-This is the most basic idea behind the term SSR. Starting back from this, we can create really complex mechanisms.
+This is the most basic idea behind the term SSR. With this in mind, we can create really complex mechanisms.
 
 
 **Runtime SSR**
