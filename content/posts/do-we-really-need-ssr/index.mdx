@@ -29,12 +29,29 @@ _I remember having worked on an Angularjs application in 2013 where it took arou
 
 #### How does it solve these problems?
 
-The main idea behind server side rendering is to generate HTML content and make it available the sooner to the end user.
+The main idea behind SSR is to generate HTML content and make it available the sooner to the end user.
 
 This way, when a user makes a request:
 
 - The browser makes a request on a specific URI
 - It downloads **an already filled HTML file** and can already display it to the user
-- Optionnally, an application can be started in the browser for interactivity reasons.
 
-#### Mental SSR path and representations
+This is the most basic idea behind the term SSR. Starting back from this, we can create really complex mechanisms.
+
+
+We can, for example, start a nodejs server that will render HTML content every time a request is made, and when the HTML is displayed to the user, it can start a JavaScript
+application for a high interactivity experience. This is what [Nextjs](https://nextjs.org/) does and this is the first way of SSR we've seen in the React ecosystem, we can call it _runtime SSR_.
+
+We can also rely on SSR at build time (the moment you run `npm run build` or `yarn build` to generate your app). In that case, the idea is to generate as many filled HTML pages as needed (like real `.html` files). Once it's done, when a user makes a request, it directly access the pre-generated HTML content, which is super fast! This is how [Docusaurus](https://docusaurus.io/) works.
+
+If you combine the last point and tells the HTML pages to start lightweight JavaScript applications, you end up in a system that looks like [Gatsby](https://www.gatsbyjs.org/), without the plugins.
+
+None of the previous solutions are mutually exclusive. It's up to you to rely on one or the others (maybe mixing them?) depending on your use case.
+
+And this is where it gets tricky and where the title of this post comes from.
+
+####  Do we need server side rendering in our application?
+
+I'm sharing down one of the mental representation I rely on when I have to make a choice when starting to build an application. But remember, everything is a matter of tradeoffs. You will have pros and cons with any of the following system.
+
+![Mental SSR path to make a choice](./ssr.png)
