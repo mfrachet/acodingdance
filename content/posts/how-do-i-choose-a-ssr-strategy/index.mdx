@@ -67,9 +67,14 @@ And this is where it gets tricky.
 
 #### How to choose?
 
-The following diagram is one of the mental representations I'm using when I build a new application that potentially needs SSR. Weirdly, everything starts with: "Do we have public pages?"
+Stepping back from the last few years, I'm feeling that we tend to use Server Side Rendering almost everywhere and as much as we can.
+While it's an amazing tool that helps in many situations, I think
+we should keep in mind that **it's just a tool** - not a miracle solution. If we don't face the problem it's supposed to solve, I'm not convinced we should introduce it in a project.
+
+I'm personally in favor of Client Side Rendering since it's the reason why I embraced frontend development at first: create highly interactive user experiences in the browser.
+
+But loving CSR doesn't mean I don't have to deal with SSR. The following diagram is one of my mental representation on when to use SSR and using which approach. It's, as this blog, highly opionated
+and reflects my mind:
 
 ![Mental SSR path to make a choice](./ssr.png)
 
-
-Keep in mind that none of these technics are mutually exclusive. It's up to you to pick one or to combine multiple to create the best user experience.
