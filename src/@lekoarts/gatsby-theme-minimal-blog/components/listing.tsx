@@ -19,14 +19,21 @@ type ListingProps = {
   showTags?: boolean;
 };
 
-const Listing = ({ posts, className, showTags = true }: ListingProps) => (
-  <section sx={{ mb: [5, 6, 7] }} className={className}>
-    {posts
-      .filter((post) => !post.slug.includes(`__draft`))
-      .map((post) => (
-        <BlogListItem key={post.slug} post={post} showTags={showTags} />
-      ))}
-  </section>
-);
+const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV;
+
+const Listing = ({ posts, className, showTags = true }: ListingProps) => {
+  return (
+    <section sx={{ mb: [5, 6, 7] }} className={className}>
+      {posts
+        .filter(
+          (post) =>
+            activeEnv === "development" || !post.slug.includes(`__draft`)
+        )
+        .map((post) => (
+          <BlogListItem key={post.slug} post={post} showTags={showTags} />
+        ))}
+    </section>
+  );
+};
 
 export default Listing;
