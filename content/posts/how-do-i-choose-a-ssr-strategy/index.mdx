@@ -37,7 +37,20 @@ This way, when a user navigates:
 - The browser makes a request on a specific endpoint
 - It downloads **an already filled HTML content** and can already display it to the user
 
-This is the most basic idea behind the term SSR. With this in mind, we can create complex and powerful mechanisms.
+Which is enough to solve the 3 problems we had:
+
+```git
+- CSR applications are not optimized for SEO
++ HTML is optimized for SEO
+
+- We don't benefit from a good media sharing experience
++ Pre-filled HTML owns the necessary meta to have a good sharing experience
+
+- Displaying the first meaningful content or wait for the application to be interactive can take time
++ Displaying HTML content is probably one of the fastest things a browser can do
+```
+
+This is the most basic idea behind the term SSR and with this in mind, we can create complex and powerful mechanisms:
 
 
 **Runtime SSR**
@@ -74,6 +87,7 @@ technic that provides **the most benefit in our context** than it provides drawb
 Also, I'm feeling that the last few years we tend to use SSR almost everywhere and as much as we can.
 While it's an amazing tool that helps in many situations, I think
 we should keep in mind that **it's just a tool** - not a silver bullet solution. If we don't face the problems it's supposed to solve, I'm not convinced we should introduce it in a project.
+**Remember that introducing SSR is not free**, it has a technical cost and a potential infrastructure cost.
 
 The following diagram is one of the mental representations I'm using to determine when I would consider using a technic over another one. It's not a source a truth at all. 
 
