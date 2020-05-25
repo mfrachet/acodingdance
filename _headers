@@ -65,7 +65,7 @@
   Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-tags-query-tsx-ab4eccf3396f61e4ea2f.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </page-data/tags/page-data.json>; rel=preload; as=fetch; crossorigin
-/how-do-i-choose-a-ssr-strategy__draft
+/how-do-i-choose-a-ssr-strategy
   Link: </webpack-runtime-aa1d06cdf75d585496d3.js>; rel=preload; as=script
   Link: </framework-9fa3c3527bf76bdd7ce7.js>; rel=preload; as=script
   Link: </f0e45107-a2e1fcaad0457bbaad75.js>; rel=preload; as=script
@@ -74,17 +74,7 @@
   Link: </a75e6e4d1b7feebda3ca1479eef2fbcc6776bb12-094b0ee1ce9cf57033d3.js>; rel=preload; as=script
   Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-post-query-tsx-bae5a1225c07c88b1cba.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/how-do-i-choose-a-ssr-strategy__draft/page-data.json>; rel=preload; as=fetch; crossorigin
-/why-i-dont-like-gitflow
-  Link: </webpack-runtime-aa1d06cdf75d585496d3.js>; rel=preload; as=script
-  Link: </framework-9fa3c3527bf76bdd7ce7.js>; rel=preload; as=script
-  Link: </f0e45107-a2e1fcaad0457bbaad75.js>; rel=preload; as=script
-  Link: </app-5c5e98a3d8e046faf9f3.js>; rel=preload; as=script
-  Link: </styles-f12963b3798c232a68f6.js>; rel=preload; as=script
-  Link: </a75e6e4d1b7feebda3ca1479eef2fbcc6776bb12-094b0ee1ce9cf57033d3.js>; rel=preload; as=script
-  Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-post-query-tsx-bae5a1225c07c88b1cba.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/why-i-dont-like-gitflow/page-data.json>; rel=preload; as=fetch; crossorigin
+  Link: </page-data/how-do-i-choose-a-ssr-strategy/page-data.json>; rel=preload; as=fetch; crossorigin
 /my-toolbelt
   Link: </webpack-runtime-aa1d06cdf75d585496d3.js>; rel=preload; as=script
   Link: </framework-9fa3c3527bf76bdd7ce7.js>; rel=preload; as=script
@@ -95,6 +85,16 @@
   Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-post-query-tsx-bae5a1225c07c88b1cba.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </page-data/my-toolbelt/page-data.json>; rel=preload; as=fetch; crossorigin
+/why-i-dont-like-gitflow
+  Link: </webpack-runtime-aa1d06cdf75d585496d3.js>; rel=preload; as=script
+  Link: </framework-9fa3c3527bf76bdd7ce7.js>; rel=preload; as=script
+  Link: </f0e45107-a2e1fcaad0457bbaad75.js>; rel=preload; as=script
+  Link: </app-5c5e98a3d8e046faf9f3.js>; rel=preload; as=script
+  Link: </styles-f12963b3798c232a68f6.js>; rel=preload; as=script
+  Link: </a75e6e4d1b7feebda3ca1479eef2fbcc6776bb12-094b0ee1ce9cf57033d3.js>; rel=preload; as=script
+  Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-post-query-tsx-bae5a1225c07c88b1cba.js>; rel=preload; as=script
+  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
+  Link: </page-data/why-i-dont-like-gitflow/page-data.json>; rel=preload; as=fetch; crossorigin
 /about
   Link: </webpack-runtime-aa1d06cdf75d585496d3.js>; rel=preload; as=script
   Link: </framework-9fa3c3527bf76bdd7ce7.js>; rel=preload; as=script
