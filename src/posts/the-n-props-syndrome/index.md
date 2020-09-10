@@ -31,9 +31,11 @@ At that time, if you wanted to use the library, you would have to include the fo
 
 ## Why I do think this is not a good API?
 
-The first thing that I have in mind is about the consumer experience. I'm feeling that if the consumer is wondering what things actually are, they may not end up having a good experience with the tool.
+### From a customer perspective
 
-Here are some question that I could have as a developer that wants to use the library:
+People are using tools because they solve a problem but also because they are easy to use. I have strong feelings that if a library is not easy to use when trying to solve simple problems, the customer will likely find something else. This is the same as the User Experience when building a product.
+
+According to the previous API, a customer might end up having a lot of questions that can frustrate them.
 
 - What does the `size` refer to? The square? The line? The whole thing?
 - `animate` looks hardcoded, should I upgrade the library every time a new animation comes out?
