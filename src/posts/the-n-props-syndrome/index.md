@@ -67,7 +67,7 @@ So let's start with the question the customer may have.
 
 ### What does the `size` refer to? The square? The line? The whole thing?
 
-What is the real need behind this question? I understand this in the sense that the customer wants to make the lines and shapes customizable, being able to decide the line width or heights or even the shape radius etc...
+What is the real need behind this question? The way I understand this is that the customer wants to make the lines and shapes customizable, being able to decide the line width or heights or even the shape radius etc...
 
 ## Last note on this
 
