@@ -129,7 +129,7 @@ Using this new API, the user is able to provide a custom animation that will act
 
 ### I think `position` refers to the squares, or maybe the lines? I don't know
 
-Historically, I wanted to prop to get some harmony in terms of spacing between the elements on each side and the "main" placeholder content.
+Historically, I wanted the prop to get some harmony in terms of spacing between the elements on each side and the "main" placeholder content.
 
 But what I find annoying with that is that we don't now if it's the lines that should be positioned or if it's the shape. Let's get more explicit about what should be positioned on the right side or the left side:
 
