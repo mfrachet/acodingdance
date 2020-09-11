@@ -61,7 +61,7 @@ Getting back to the rn-placeholder story, let's analyze its API with a fresh eye
 
 - I think `position` refers to the squares, or maybe the lines? I don't know
 
-These are all pertinent questions. Some are simple enough to get answered in a github issue, but some other needs attention and potentially modifications of the codebase and so, a new release.
+These are all pertinent questions. Some are simple enough to get answered in a github issue, but some other needs attention and potentially modifications of the codebase and so, new releases.
 
 ### From a maintainer perspective
 
@@ -144,6 +144,10 @@ But what I find annoying with that is that we don't now if it's the lines that s
   <PlaceholderLine width="30%" />
 </Placeholder>
 ```
+
+This new API is known to be "more composable" than the old one. The old one acts as a standalone block, it was hard to customize it because we only have access to one set of `props` at one level only.
+
+Taking benefit from composition, we can spread the responsibility at different levels where each component has its own API and is responsible for one thing only. Combining all together creates a better experience for the consumer that can basically do whatever it needs but also for the maintainer since everything is in its tiny box with clear responsibilities.
 
 ## Last note on this
 
