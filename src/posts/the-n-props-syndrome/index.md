@@ -63,6 +63,10 @@ If the implementation is complex, then there are places for bugs implying more t
 
 ## Last note on this
 
-While I'm a strong believer on the smaller the component is, the easier it is to manage, I think that this approach fits very well for highly composable components like the one we like to use on UI components libraries.
+While I'm a strong believer on the smaller the component is, the easier it is to manage, I think that this approach fits very well for highly composable components like the one we like to use with UI components libraries.
 
-If you work on business oriented components, I think it's important to focus the API on business oriented things. For example, if you create a blog post make sure that your `BlogPostItem` owns the necessary business information (aka: the date, a link, a title, maybe a description) as props to fill the actual need. This `BlogPostItem` can use some highly composable UI elements as its implementation and leverage the things I've shared in this post.
+If you work on business oriented components, I think it's important to focus the API on business oriented things.
+
+For example, if you create a new live streaming service, I think it's important to make sure that your `<LiveStream />` component owns the necessary business information (aka: the date, the stream URL, a title, maybe a description, the author etc...) as props to fill the actual need.
+
+This `<LiveStream />` can be written with highly composable components and leverage the things I've shared in this post.
