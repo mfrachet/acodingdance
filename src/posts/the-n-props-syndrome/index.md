@@ -36,13 +36,13 @@ At that time, if you wanted to use the library, you had to include the following
 
 ### From a consumer perspective
 
-As a developer (and a consumer in this situation), I'm using other people tools because I have problems that need to be solved and that I don't want to solve by myself.
+As a developer, I'm using other people tools because I have problems that need to be solved and that I don't want to solve by myself.
 
 I know that if a library that tries to solve my problems is not easy or not practical enough, I won't use it and try to find something else that better fits my needs. This is the same as the User Experience when building a product - if the experience is not good enough, people will use another product.
 
-A component with a lot of `props` scares me in the sense that it doesn't look easy to use but also because I'm feeling that the library is trying to expose some customization capabilities - with restrictions. We are limited by what the API is offering us.
+A component with a lot of `props` scares me in the sense that it doesn't look easy to use but also because I'm feeling that it is trying to expose _some_ customization capabilities - with restrictions. We are limited by what the API is offering us.
 
-Let's jump in something more concrete and analyze the library I've written. Looking at its API with a fresh eye, I have multiple questions coming to mind:
+Let's illustrate these statements by analyzing the rn-placeholder API above. Looking at it with a fresh eye, I have multiple questions coming to mind:
 
 - What does the `size` refer to? The square? The line? The whole thing?
 - `lineNumber` is `4` and the components exposes `lastLineWidth` and `firstLineWidth`. How can I modify the third line width or color?
