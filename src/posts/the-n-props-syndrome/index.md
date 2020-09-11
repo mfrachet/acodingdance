@@ -51,17 +51,17 @@ A component with a lot of `props` scares me in the sense that it doesn't look ea
 />
 ```
 
-Since I don't have a total control over the form `label`. How am I supposed to add an additional props?
+Since I don't have a total control over the form `label`. How am I supposed to add additional props?
 
-Let's analyze the rn-placeholder API showed above for a real world example. Looking at its API with a fresh eye, I have multiple questions coming to mind:
+Getting back to the rn-placeholder story, let's analyze its API with a fresh eye. As a consumer of the API, I have multiple questions coming to mind:
 
 - What does the `size` refer to? The square? The line? The whole thing?
-- `lineNumber` is `4` and the components exposes `lastLineWidth` and `firstLineWidth`. How can I modify the third line width or color?
+- `lineNumber` is `4` and the component exposes `lastLineWidth` and `firstLineWidth`. How can I modify the third line width or color?
 - `animate` looks hardcoded, how can I customize? should I upgrade the library every time a new animation comes out?
 
 - I think `position` refers to the squares, or maybe the lines? I don't know
 
-These are all valid questions, some are simple and can be answered in a github issue, but some other needs attention and probably modifications of the code and a new release with adjustments.
+These are all pertinent questions. Some are simple enough to get answered in a github issue, but some other needs attention and potentially modifications of the codebase and so, a new release.
 
 ### From a maintainer perspective
 
@@ -92,7 +92,7 @@ The API is not clear and the consumer doesn't really know on which element the s
 
 With these APIs, we are explicit about which sizes we are talking about and on which elements they are applied. It provides clarity but also new perspectives concerning customizing the different placeholders.
 
-### Prop `lineNumber` is `4` and the components exposes `lastLineWidth` and `firstLineWidth`. How can I modify the third line width or color?
+### Prop `lineNumber` is `4` and the component exposes `lastLineWidth` and `firstLineWidth`. How can I modify the third line width or color?
 
 I'm feeling that this problem is less about clarity and more about cutomization. What is really great is that we can leverage the previously defined APIs, adding a bunch of `PlaceholderLine` and add an additional `color` prop to the components to make them fully customizable:
 
