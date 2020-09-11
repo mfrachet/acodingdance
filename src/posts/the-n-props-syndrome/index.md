@@ -58,3 +58,9 @@ If we look at the previous statement, a component `props` is like a function `ar
 **TL;DR: I strongly think that the more props you have on a component, the more the implementation will get complex, the harder it will be to maintain.**
 
 ## What I could have done?
+
+## Last note on this
+
+While I'm a strong believer on the smaller the component is, the easier it is to manage, I think that this approach fits very well for highly composable components like the one we like to use on UI components libraries.
+
+If you work on business oriented components, I think it's important to focus the API on business oriented things. For example, if you create a blog post make sure that your `BlogPostItem` owns the necessary business information (aka: the date, a link, a title, maybe a description) as props to fill the actual need. This `BlogPostItem` can use some highly composable UI elements as its implementation and leverage the things I've shared in this post.
