@@ -40,9 +40,20 @@ As a developer, I'm using other people tools because I have problems that need t
 
 I know that if a library that tries to solve my problems is not easy or not practical enough, I won't use it and try to find something else that better fits my needs. This is the same as the User Experience when building a product - if the experience is not good enough, people will use another product.
 
-A component with a lot of `props` scares me in the sense that it doesn't look easy to use but also because I'm feeling that it is trying to expose _some_ customization capabilities - with restrictions. We are limited by what the API is offering us.
+A component with a lot of `props` scares me in the sense that it doesn't look easy to use but also because I'm feeling that it is trying to expose _some_ customization capabilities - with restrictions. We are limited by what the API is offering and that's all. For example, I don't really like components looking like:
 
-Let's illustrate these statements by analyzing the rn-placeholder API above. Looking at it with a fresh eye, I have multiple questions coming to mind:
+```jsx
+<Input
+  label="Firstname"
+  value={firstName}
+  onChange={/*...*/}
+  labelStyle={{ color: "gray" }}
+/>
+```
+
+Since I don't have a total control over the form `label`. How am I suppose to add it additional props?
+
+I'm going to illustrate this a bit more by analyzing the rn-placeholder API showed above. Looking at it with a fresh eye, I have multiple questions coming to mind:
 
 - What does the `size` refer to? The square? The line? The whole thing?
 - `lineNumber` is `4` and the components exposes `lastLineWidth` and `firstLineWidth`. How can I modify the third line width or color?
