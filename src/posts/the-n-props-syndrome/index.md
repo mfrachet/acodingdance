@@ -77,7 +77,7 @@ And if the implementation gets more complex, then there are more places for bugs
 
 There are many roads to improve and grow, but I will go through the one I've chosen to make the experience at least a bit better. Remember that it's not a perfect solution but the one I chose.
 
-Let's answer the consumer questions and try to see how the API has moved according to them.
+I'm going to answer the consumer questions listed above and try to find ways to improve the API according to them.
 
 ### What does the `size` refer to? The square? The line? The whole thing?
 
