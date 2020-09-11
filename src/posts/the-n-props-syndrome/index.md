@@ -8,9 +8,9 @@ _This is a rewrite of my post ["A note on composing components" available on dev
 
 If you have already worked on a codebase having components with a lot of `props`, you might have been victim of what I call **"The N props syndrome"**.
 
-Let me explain what I mean there by telling you the story of my main Open Source project.
+Let me explain what I mean by telling you the story of my main Open Source project.
 
-Some years ago, I've released the first version of [rn-placeholder](https://github.com/mfrachet/rn-placeholder) that is a [react-native](https://reactnative.dev/) library aiming to provide UX friendly skeleton loaders as you may have already seen in the Facebook mobile application or Slack desktop:
+Some years ago, I've released the first version of [rn-placeholder](https://github.com/mfrachet/rn-placeholder) that is a [react-native](https://reactnative.dev/) library aiming to provide UX friendly skeleton loaders as you may have seen in the Facebook mobile application or Slack desktop:
 
 ![rn-placeholder example](./rn-placeholder.gif)
 
@@ -51,9 +51,9 @@ A component with a lot of `props` scares me in the sense that it doesn't look ea
 />
 ```
 
-Since I don't have a total control over the form `label`. How am I suppose to add it additional props?
+Since I don't have a total control over the form `label`. How am I supposed to add an additional props?
 
-I'm going to illustrate this a bit more by analyzing the rn-placeholder API showed above. Looking at it with a fresh eye, I have multiple questions coming to mind:
+Let's analyze the rn-placeholder API showed above for a real world example. Looking at its API with a fresh eye, I have multiple questions coming to mind:
 
 - What does the `size` refer to? The square? The line? The whole thing?
 - `lineNumber` is `4` and the components exposes `lastLineWidth` and `firstLineWidth`. How can I modify the third line width or color?
@@ -61,7 +61,7 @@ I'm going to illustrate this a bit more by analyzing the rn-placeholder API show
 
 - I think `position` refers to the squares, or maybe the lines? I don't know
 
-These are all valid questions, some are simple and can be answered in a github issue, but some other needs attention and probably modifications of the code and a new release with some fixes.
+These are all valid questions, some are simple and can be answered in a github issue, but some other needs attention and probably modifications of the code and a new release with adjustments.
 
 ### From a maintainer perspective
 
