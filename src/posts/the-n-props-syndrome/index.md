@@ -6,7 +6,7 @@ slug: "/the-n-props-syndrome"
 
 _This is a rewrite of my post ["A note on composing components" available on dev.to](https://dev.to/mfrachet/a-note-on-composing-components-with-react-5ee4) that is obsolete and not complete._
 
-If you are working or if you have worked on a codebase having components with a lot of props, you might have been victim of what I call **"The N props syndrome"**.
+If you have already worked on a codebase having components with a lot of `props`, you might have been victim of what I call **"The N props syndrome"**.
 
 Let me explain what I mean there by telling you the story of my main Open Source project.
 
@@ -14,7 +14,7 @@ Some years ago, I've released the first version of [rn-placeholder](https://gith
 
 ![rn-placeholder example](./rn-placeholder.gif)
 
-At that time, if you wanted to use the library, you would have to include the following to your codebase (all the props are listed):
+At that time, if you wanted to use the library, you had to include the following to your codebase (all the props are listed):
 
 ```jsx
 // The v1.0.0 README is available here: https://github.com/mfrachet/rn-placeholder/tree/v1.0.0
@@ -36,7 +36,7 @@ At that time, if you wanted to use the library, you would have to include the fo
 
 ### From a customer perspective
 
-As a developer (and a customer in this situation), I'm using other people tools because I have problems that need to be solved and I don't want to solve them by myself.
+As a developer (and a customer in this situation), I'm using other people tools because I have problems that need to be solved and that I don't want to solve them by myself.
 
 And I know that if a library that tries to solve my problems is not easy or not practical enough, I won't use it and try to find something else that better fits my need. This is the same as the User Experience when building a product - if the experience is not good enough, people will use another product.
 
@@ -47,15 +47,17 @@ Looking at the API with a fresh eye, I have multiple questions coming to mind:
 - `lineNumber` is `4` and the components exposes `lastLineWidth` and `firstLineWidth`. How can I modify the third line width or color?
 - I think `position` refers to the squares, but what if I want a circle and a square?
 
+These are all valid questions, some are simples and can be answered in a github issue, but some other needs attention and maybe a new release with some fixes inside. There are rooms for improvements.
+
 ### From a maintainer perspective
 
 From a maintainer perspective, having many `props` on the same component means that the component implementation itself has to deal with all of them.
 
 And if you step back from the React ecosystem, thinking about more "conventional programming": having functions with a lot of `arguments` often tend to have a lot of computational logic inside which makes them hard to read and to reason about. It's also a signal that, maybe, the function is doing too much and should potentially be split in smaller chunks.
 
-If we look at the previous statement, a component `props` is like a function `arguments`: the more you have, the more the implementation may become complex (it's not a rule of thumb, but think about bit).
+If we look at the previous statement, a component `props` is like a function `arguments`: the more you have, the more the implementation may become complex.
 
-**TL;DR: I strongly think that the more props you have on a component, the more the implementation will get complex, the harder it will be to maintain.**
+If the implementation is complex, then there are places for bugs implying more time trying to fix them and less time to focus on important things: solving customers problems.
 
 ## What I could have done?
 
