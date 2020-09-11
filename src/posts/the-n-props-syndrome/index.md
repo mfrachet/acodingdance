@@ -40,7 +40,9 @@ As a developer (and a consumer in this situation), I'm using other people tools 
 
 I know that if a library that tries to solve my problems is not easy or not practical enough, I won't use it and try to find something else that better fits my needs. This is the same as the User Experience when building a product - if the experience is not good enough, people will use another product.
 
-Looking at the API with a fresh eye, I have multiple questions coming to mind:
+A component with a lot of `props` scares me in the sense that it doesn't look easy to use but also because I'm feeling that the library is trying to expose some customization capabilities - with restrictions. We are limited by what the API is offering us.
+
+Let's jump in something more concrete and analyze the library I've written. Looking at its API with a fresh eye, I have multiple questions coming to mind:
 
 - What does the `size` refer to? The square? The line? The whole thing?
 - `lineNumber` is `4` and the components exposes `lastLineWidth` and `firstLineWidth`. How can I modify the third line width or color?
@@ -49,8 +51,6 @@ Looking at the API with a fresh eye, I have multiple questions coming to mind:
 - I think `position` refers to the squares, or maybe the lines? I don't know
 
 These are all valid questions, some are simple and can be answered in a github issue, but some other needs attention and probably modifications of the code and a new release with some fixes.
-
-There are clearly rooms for improvements.
 
 ### From a maintainer perspective
 
@@ -64,9 +64,9 @@ And if the implementation gets more complex, then there are more places for bugs
 
 ## What I could have done?
 
-There are many roads that I could have taken, but I will go through the one I've chosen to improve the experience. Remember that it's not a perfect thing and that it still can be improved.
+There are many roads to improve and grow, but I will go through the one I've chosen to make the experience at least a bit better. Remember that it's not a perfect solution but the one I chose.
 
-Let's start with answering the consumer questions and try to improve the API using the information they provide.
+Let's answer the consumer questions and try to see how the API has moved according to them.
 
 ### What does the `size` refer to? The square? The line? The whole thing?
 
