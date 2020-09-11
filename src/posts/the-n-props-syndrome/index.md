@@ -49,6 +49,12 @@ Looking at the API with a fresh eye, I have multiple questions coming to mind:
 
 ### From a maintainer perspective
 
-\$
+From a maintainer perspective, having many `props` on the same component means that the component implementation itself has to deal with all of them.
+
+And if you step back from the React ecosystem, thinking about more "conventional programming": having functions with a lot of `arguments` often tend to have a lot of computational logic inside which makes them hard to read and to reason about. It's also a signal that, maybe, the function is doing too much and should potentially be split in smaller chunks.
+
+If we look at the previous statement, a component `props` is like a function `arguments`: the more you have, the more the implementation may become complex (it's not a rule of thumb, but think about bit).
+
+**TL;DR: I strongly think that the more props you have on a component, the more the implementation will get complex, the harder it will be to maintain.**
 
 ## What I could have done?
