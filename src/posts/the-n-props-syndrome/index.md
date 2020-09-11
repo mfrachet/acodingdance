@@ -61,6 +61,14 @@ If the implementation is complex, then there are places for bugs implying more t
 
 ## What I could have done?
 
+There are many roads that I could have taken, but I will go through the one I've chosen to improve the experience. Remember that it's not a perfect things and that still needs some love, but I'm happy with the direction taken.
+
+So let's start with the question the customer may have.
+
+### What does the `size` refer to? The square? The line? The whole thing?
+
+What is the real need behind this question? I understand this in the sense that the customer wants to make the lines and shapes customizable, being able to decide the line width or heights or even the shape radius etc...
+
 ## Last note on this
 
 While I'm a strong believer on the smaller the component is, the easier it is to manage, I think that this approach fits very well for highly composable components like the one we like to use with UI components libraries.
