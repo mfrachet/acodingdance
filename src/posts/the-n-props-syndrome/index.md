@@ -36,9 +36,9 @@ At that time, if you wanted to use the library, you had to include the following
 
 ### From a consumer perspective
 
-As a developer, I'm using other people tools because I have problems that need to be solved and that I don't want to solve by myself.
+As a developer, I'm using other people tools because I have problems that need to be solved that I don't want to solve myself.
 
-I know that if a library that tries to solve my problems is not easy or not practical enough, I won't use it and try to find something else that better fits my needs. This is the same as the User Experience when building a product - if the experience is not good enough, people will use another product.
+I know that if a library trying to solve my problems is not easy nor practical enough, I won't use it and I will use something else that better fits my needs. This is the same as the _User Experience_ when building a product - if the experience is not good enough, people will use another product.
 
 A component with a lot of `props` scares me in the sense that it doesn't look easy to use but also because I'm feeling that it is trying to expose _some_ customization capabilities - with restrictions. We are limited by what the API is offering and that's all. For example, I don't really like components looking like:
 
