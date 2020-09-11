@@ -75,7 +75,7 @@ And if the implementation gets more complex, then there are more places for bugs
 
 ## What I could have done?
 
-There are many roads to improve and grow, but I will go through the one I've chosen to make the experience at least a bit better. Remember that it's not a perfect solution but the one I chose.
+There are many roads to improve, but I will go through the one I've chosen to make the experience better. Remember that it's not a perfect solution but the one I chose.
 
 I'm going to answer the consumer questions listed above and try to find ways to improve the API according to them.
 
