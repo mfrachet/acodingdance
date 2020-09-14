@@ -124,7 +124,9 @@ With this, we become explicit about sizes and their subjects. As a side effect, 
 
 ### Prop `lineNumber` is `4` and the component exposes `lastLineWidth` and `firstLineWidth`. How can I modify the third line width or color?
 
-I'm feeling that this problem is less about clarity and more about cutomization. What is really great is that we can leverage the previously defined APIs, adding a bunch of `PlaceholderLine` and add an additional `color` prop to the components to make them fully customizable:
+I'm feeling that this problem is less about clarity and more about customization. The real trouble is that the `<Placeholder.ImageContent />` component owns a `lineNumber` prop and we don't have control over every each of the lines - independently.
+
+Something great is that we can leverage the new API we have defined and add an additional `color` prop to the `PlaceholderLine` and `PlaceholderMedia` components:
 
 ```jsx
 import { PlaceholderLine } from "rn-placeholder";
@@ -133,12 +135,11 @@ import { PlaceholderLine } from "rn-placeholder";
   <PlaceholderLine width="10%" />
   <PlaceholderLine width="90%" color="red" />
   <PlaceholderLine width="30%" />
+  <PlaceholderMedia radius="50%" width="32px" height="32px" color="green" />
 </>;
 ```
 
-The problem we had before was that the `<Placeholder.ImageContent />` component was having a prop `lineNumber` but we didn't have control over every lines.
-
-Using this new approach, we are explicit about how many lines we want but we are also in a world where customization can be applied at the line level, not only at the top level of the placeholder.
+Using this new approach, we are explicit about how many lines we want but we are also in a world where customization can be applied at the line or media level, not only at the top level of the placeholder.
 
 ### Prop `animate` is hardcoded, can we customize it?
 
