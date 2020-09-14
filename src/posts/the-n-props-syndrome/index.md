@@ -134,7 +134,7 @@ Using this new approach, we are explicit about how many lines we want but we are
 
 ### Prop `animate` is hardcoded, can we customize it?
 
-The real problem that the consumer is facing is that with the older API, animations had to be part of the library's codebase - this is a **maintainer** problem.
+The real problem the consumer is facing is that with the older API, animations had to be part of the library's codebase - **this is a maintainer problem**.
 
 If the consumer wants to add a new animation, they have to clone the project, create a new animation, open a pull request, wait for maintainers validations, wait for a new version to get released and then be able to use the new animation. This is cumbersome.
 
@@ -154,40 +154,67 @@ import { MyCustomAnimation } from "./user-lands/MyCustomAnimaton";
 
 ### Does `position` refer to the squares, or maybe the lines?
 
-Historically, I wanted the prop to get some harmony in terms of spacing between the elements on each side and the "main" placeholder content.
+Historically, I added the prop to create harmony in terms of spacing between the elements on each sides and the "main" placeholder content to improve [the user experience in terms of rhythm](https://www.interaction-design.org/literature/article/repetition-pattern-and-rhythm).
 
-But what I find annoying with that is that we don't now if it's the lines that should be positioned or if it's the shape. Let's get more explicit about what should be positioned on the right side or the left side:
+At some points, I found it annoying. The idea behind looked interesting but the customization capability was bloated and not very expressive: is this about the shapes or about the lines positions? Let's imagine something more explicit for the consumer:
 
 ```jsx
+import { Placeholder, PlaceholderLine, PlaceholderMedia } from "rn-placeholder";
+import { MyCustomAnimation } from "./user-lands/MyCustomAnimaton";
+
 <Placeholder
-  Animation={Fade}
+  Animation={FaMyCustomAnimationde}
   Left={() => <PlaceholderMedia color="blue" />}
   Right={() => <PlaceholderMedia />}
 >
   <PlaceholderLine width="10%" />
   <PlaceholderLine width="90%" color="red" />
   <PlaceholderLine width="30%" />
-</Placeholder>
+</Placeholder>;
 ```
 
-This new API is known to be "more composable" than the old one. The old one acts as a standalone block, it was hard to customize it because we only have access to one set of `props` at one level only.
+## Summing up
+
+After answering the different customer questions, This is the new API that we have:
+
+```jsx
+import { Placeholder, PlaceholderLine, PlaceholderMedia } from "rn-placeholder";
+import { MyCustomAnimation } from "./user-lands/MyCustomAnimaton";
+
+<Placeholder
+  Animation={FaMyCustomAnimationde}
+  Left={() => <PlaceholderMedia color="blue" />}
+  Right={() => <PlaceholderMedia />}
+>
+  <PlaceholderLine width="10%" />
+  <PlaceholderLine width="90%" color="red" />
+  <PlaceholderLine width="30%" />
+</Placeholder>;
+```
+
+From a very complex component `Placeholder.ImageContent` with multiple props, this is what we created:
+
+- a `PlaceholderLine` component with its own dedicated props
+- a `PlaceholderMedia` component with its own dedicated props
+- a `Placeholder` component representing the whole concept
+- tweaking the `animate` to make it more powerful
+
+Let's step back from the business perspective and get back to more "convential programming" again.
+
+What we did is reducing the amount of logic and complexity of a single and big component into smaller chunks. Instead of having a big file with a lot of **very specific** computational logic, we extracted some code in other files and **composed** them to create a complex placeholder (and in fact we have opened the road for creating an infinite number of placeholders). Apart from answering the questions of the consumer, we also have opened doors for the creation of new components like `PlaceholderTriangle` or anything else, both in the library **but also in user lands**.
+
+With the previous statement, we can say that the library is closed to modifications and open for extension: we don't need to modify the "core" codebase and create new release. The user is able to do it in user-lands while still benefiting from what the library exposes. This is the [Open-Closed Principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle).
+
+This new API is known to be **more composable** than the old one. The old one acts as a big standalone block, it was hard to customize it because we only have access to one set of `props` at one level only.
 
 Taking benefit from composition, we can spread the responsibility at different levels where each component has its own API and is responsible for one thing only. Combining all together creates a better experience for the consumer that can basically do whatever it needs but also for the maintainer since everything is in its tiny box with clear responsibilities.
 
 ## Last note on this
 
-While I'm a strong believer on the smaller the component is, the easier it is to manage, I think that this approach fits very well for highly composable components like the one we like to use with UI components libraries.
+While I'm a strong believer on the smaller the component is, the easier it is to manage, remember that what we code is always a matter of tradeoffs that we can or that we want to do. This is not a golden rule and we should challenge APIs every time that we can. My main intent with this article is to make people wonder **why** they add props to components.
 
-If you work on business oriented components, I think it's important to focus the API on business oriented things.
-
-For example, if you create a new live streaming service, I think it's important to make sure that your `<LiveStream />` component owns the necessary business information (aka: the date, the stream URL, a title, maybe a description, the author etc...) as `props` to fill the actual need.
-
-This `<LiveStream />` can be written with highly composable components and leverage the things I've shared in this post.
-
-This is a rewrite of my post ["A note on composing components" available on dev.to](https://dev.to/mfrachet/a-note-on-composing-components-with-react-5ee4) that is obsolete and not complete.
+For example, if you've just started working on a new application, it's probably not the time to think about making "incredibly scalable components". Maybe focusing on having representation of the business is what is important. If you see and feel pattern emerging, they it's maybe time to re-think and adjust the codebase.ve shared in this post.
 
 ---
 
-Often times, the settings exposed to the outside are about the business of the component. If you take the example a component showing the Weather, you'll often time be able to choose the location, but you won't be able to tweak the label color or font on the screen.
-
-Since I don't have a total control over the form `label`. How am I supposed to add additional props?
+This is a rewrite of my post ["A note on composing components" available on dev.to](https://dev.to/mfrachet/a-note-on-composing-components-with-react-5ee4) that is obsolete and not complete.
