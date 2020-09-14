@@ -42,7 +42,7 @@ As a developer, I'm using other people tools because they solve problem that I d
 
 I know that if a library trying to solve my problems is not easy nor practical, I won't use it and I will use something else that better fits my needs. This is the same as the _User Experience_ when dealing with a product - if the experience is not good enough, people will use another product.
 
-A component with a lot of `props` scares me because it doesn't look easy to use: it seems to do a lot of things with a lot of different settings. I often see very interesting "business" oriented components (they solve complex and isolated problems) but they tend to lack UI customizations. The platform I'm using aims to provide a visual representation of a product. Since every product is different, I need to be able to customize the underlying styles of elements.
+A component with a lot of `props` scares me because it doesn't look easy to use: it seems to do a lot of things with a lot of different settings. I often see very interesting "business" oriented components (they solve complex and isolated problems) but they tend to lack UI customizations. **The platform I'm using aims to provide a visual representation of the business**. Since every product is different, I need to be able to customize the underlying styles of elements according to my context.
 
 For instance, I don't like components like:
 
@@ -57,9 +57,9 @@ For instance, I don't like components like:
 
 because they prevent me from having control over the underlying `input` and `label` elements.
 
-What if I have specific accessibility needs for the `input`? Or even for the `label`? I don't have control over them: this is blocking.
+What if I have specific accessibility needs for the `input`? Or even for the `label`? I don't have control over them and **this is blocking**.
 
-Also notice the `labelStyle` prop exposed: this an interesting way of solving _some_ of the problems but it prevents me from using other tools like [styled-components](https://styled-components.com/).
+Also notice the `labelStyle` prop exposed: this an interesting way of solving _some_ of the problems but **it prevents me** from using other tools like [styled-components](https://styled-components.com/).
 
 Getting back to the rn-placeholder story, let's take some time to analyze the API:
 
@@ -107,7 +107,7 @@ I'm going to answer the consumer questions listed above and try to find ways to 
 
 The API is not clear and the consumer doesn't know which element is concerned by the `size` prop. Also, this leads me to think that a size can be applied on both a line and a shape with different values. Right now, we only provide a vague `size` thing.
 
-We can quickly imagine solving this issue by adding a `lineSize` and a `shapeSize` props but this will lead us to add another piece of complexity to the existing API and I think that it already bloated enough.
+We can quickly imagine solving this issue by adding a `lineSize` and a `shapeSize` props but this will lead us to add another piece of complexity to the existing API and I think that it's already bloated enough.
 
 Let's try to think of a different way to write it that could solve these problems:
 
@@ -124,7 +124,7 @@ With this, we become explicit about sizes and their subjects. As a side effect, 
 
 ### Prop `lineNumber` is `4` and the component exposes `lastLineWidth` and `firstLineWidth`. How can I modify the third line width or color?
 
-I'm feeling that this problem is less about clarity and more about customization. The real trouble is that the `<Placeholder.ImageContent />` component owns a `lineNumber` prop and we don't have control over every each of the lines - independently.
+I'm feeling that this problem is less about clarity and more about customization. The real trouble is that the `<Placeholder.ImageContent />` component owns a `lineNumber` prop and we don't have control over each line independently.
 
 Something great is that we can leverage the new API we have defined and add an additional `color` prop to the `PlaceholderLine` and `PlaceholderMedia` components:
 
@@ -165,9 +165,9 @@ import { MyCustomAnimation } from "./user-lands/MyCustomAnimaton";
 
 Historically, I added the prop to create harmony in terms of spacing between the elements on each sides and the "main" placeholder content to improve [the user experience in terms of rhythm](https://www.interaction-design.org/literature/article/repetition-pattern-and-rhythm).
 
-At some points, I found this annoying to only be able to only on a string `left`, `right` or `both`. The idea behind this looked interesting but the customization capability were bloated and not very expressive: is this about the shapes or about the lines positions?
+At some points, I found this annoying to only be able to rely on `left`, `right` or `both`. The idea looked interesting but the customization capabilities were blocked and the API was not very expressive: is the position about the shapes or about the lines positions?
 
-Let's imagine something more explicit for the consumer:
+Here's something more explicit for the consumer:
 
 ```jsx
 import { Placeholder, PlaceholderLine, PlaceholderMedia } from "rn-placeholder";
@@ -186,7 +186,7 @@ import { MyCustomAnimation } from "./user-lands/MyCustomAnimaton";
 
 ## Summing up
 
-After answering the different customer questions, This is the new API that we have and this is the one you can use in your codebase if you use [rn-placeholder](https://github.com/mfrachet/rn-placeholder):
+After answering the different customer questions, This is the new API that we have and this is also the latest available in [rn-placeholder](https://github.com/mfrachet/rn-placeholder):
 
 ```jsx
 import { Placeholder, PlaceholderLine, PlaceholderMedia } from "rn-placeholder";
@@ -203,7 +203,7 @@ import { MyCustomAnimation } from "./user-lands/MyCustomAnimaton";
 </Placeholder>;
 ```
 
-We have split the `Placeholder.ImageContent` with a lot of props and we:
+To sum-up the situation, we split the `Placeholder.ImageContent` that had a lot of props and we:
 
 - made a `PlaceholderLine` component with its own dedicated props
 - made a `PlaceholderMedia` component with its own dedicated props
@@ -214,17 +214,19 @@ Let's step back and talk back again about more "conventional programming" and th
 
 What we did is reducing the amount of logic and complexity of a single and big component (`Placeholder.imageContent`) into smaller chunks. Instead of having a big file with a lot of **very specific** computational logic, we extracted code in other files, creating smaller units (`PlaceholderLine` and `PlaceholderMedia`) and **composed** them to create a complex placeholder.
 
-Apart from answering the questions of the consumer, we also have opened doors for the creation of new components like `PlaceholderTriangle` or anything else, both in the library **but also in user lands**. The consumer is not forced to open a pull request or to wait for a specific release to be able to use a new animation or a new component anymore - they can their **specific** ones as part of their codebase.
+Apart from answering the consumer's, we also have opened doors for the creation of new components like `PlaceholderTriangle` or anything else, both in the library **but also in user lands**. The consumer is not forced to open a pull request or to wait for a specific release to be able to use a new animation or a new component anymore - they can their **specific ones as part of their codebase**.
 
-With the previous statement, we can say that the library is **closed to modifications** and **open for extension**: we don't need to modify the "core" codebase nor to create new releases. The user is able to do it in user-lands while still benefiting from what the library exposes. This is about the [Open-Closed Principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle).
+With the previous statement, we can say that the library is **closed to modifications** and **open for extensions**: we don't need to modify the "core" codebase nor to create new releases to enhance the experience. The consumer is able to do it in user-lands while still benefiting from what the library exposes. This is about the [Open-Closed Principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle).
 
-I have feelings that **composition** is one way to align with the Open-Closed principle and that it works both for UI paradigms and for more conventional programming.
+I have feelings that creating **composable components** is one way to align with the Open-Closed principle and that it works both for UI paradigms and for more conventional programming.
 
 ## Last note on this
 
-While I'm a strong believer on the smaller the component is, the easier it is to manage, remember that what we code is always a matter of tradeoffs that we can or that we want to do. This is not a golden rule and we should challenge APIs every time that we can. My main intent with this article is to make people wonder **why** they add props to components.
+While I'm a strong believer on the smaller a component is, the easier it is to manage, **remember that writing code is always a matter of tradeoffs**. It's up to you and your team to take decisions on what is the best for you depending on your context.
 
-For example, if you've just started working on a new application, it's probably not the time to think about making "incredibly scalable components". Maybe focusing on having representation of the business is what is important. If you see and feel pattern emerging, they it's maybe time to re-think and adjust the codebase.ve shared in this post.
+This post is not about providing a source of truth. It's about challenging the APIs that we write as often as we can. My main intent with this article is to make people wonder **why they add another prop to a component** and to create connections to new ideas.
+
+If you've just started working on a new application, I won't advice to deeply think about making "incredibly scalable components". Maybe focusing on having a representation of the business is what is important _right now_. If you see and feel patterns emerging, they it could be time to re-think and adjust your codebase - but I would suggest to take time, getting confidence about the business and then adjust.
 
 ---
 
