@@ -139,7 +139,7 @@ import { PlaceholderLine } from "rn-placeholder";
 </>;
 ```
 
-Using this new approach, we are explicit about how many lines we want but we are also in a world where customization can be applied at the line or media level, not only at the top level of the placeholder.
+Using this new approach, we are explicit about how many lines we want but we are also in a world where customization can be applied at the line or shape level, not only at the top level of the placeholder.
 
 ### Prop `animate` is hardcoded, can we customize it?
 
@@ -147,7 +147,7 @@ The real problem the consumer is facing is that with the older API, animations h
 
 If the consumer wants to add a new animation, they have to clone the project, create a new animation, open a pull request, wait for maintainers validations, wait for a new version to get released and then be able to use the new animation. This is cumbersome.
 
-Instead of that, we can imagine a prop where we can _inject_ a custom animation **from user-lands** that will run seem-less-ly as part of the placeholder. And this is a very interesting idea because we're shifting the responsibility of creating animations **outside** the codebase meaning less problems for the maintainers and higher customization potential for the end user:
+Instead of that, we can imagine a prop where we can _inject_ a custom animation **from user-lands** that will run seem-less-ly as part of the placeholder. And this is a very interesting idea because we're shifting the responsibility of creating animations **outside** the codebase meaning less problems for the maintainers and higher customization potential for the consumer:
 
 ```jsx
 import { Placeholder, PlaceholderLine, PlaceholderMedia } from "rn-placeholder";
@@ -165,7 +165,9 @@ import { MyCustomAnimation } from "./user-lands/MyCustomAnimaton";
 
 Historically, I added the prop to create harmony in terms of spacing between the elements on each sides and the "main" placeholder content to improve [the user experience in terms of rhythm](https://www.interaction-design.org/literature/article/repetition-pattern-and-rhythm).
 
-At some points, I found it annoying. The idea behind looked interesting but the customization capability was bloated and not very expressive: is this about the shapes or about the lines positions? Let's imagine something more explicit for the consumer:
+At some points, I found this annoying to only be able to only on a string `left`, `right` or `both`. The idea behind this looked interesting but the customization capability were bloated and not very expressive: is this about the shapes or about the lines positions?
+
+Let's imagine something more explicit for the consumer:
 
 ```jsx
 import { Placeholder, PlaceholderLine, PlaceholderMedia } from "rn-placeholder";
@@ -184,7 +186,7 @@ import { MyCustomAnimation } from "./user-lands/MyCustomAnimaton";
 
 ## Summing up
 
-After answering the different customer questions, This is the new API that we have:
+After answering the different customer questions, This is the new API that we have and this is the one you can use in your codebase if you use [rn-placeholder](https://github.com/mfrachet/rn-placeholder):
 
 ```jsx
 import { Placeholder, PlaceholderLine, PlaceholderMedia } from "rn-placeholder";
@@ -201,22 +203,22 @@ import { MyCustomAnimation } from "./user-lands/MyCustomAnimaton";
 </Placeholder>;
 ```
 
-From a very complex component `Placeholder.ImageContent` with multiple props, this is what we created:
+We have split the `Placeholder.ImageContent` with a lot of props and we:
 
-- a `PlaceholderLine` component with its own dedicated props
-- a `PlaceholderMedia` component with its own dedicated props
-- a `Placeholder` component representing the whole concept
-- tweaking the `animate` to make it more powerful
+- made a `PlaceholderLine` component with its own dedicated props
+- made a `PlaceholderMedia` component with its own dedicated props
+- made a `Placeholder` component representing the whole concept
+- tweaked the `animate` prop to make it more powerful
 
-Let's step back from the business perspective and get back to more "convential programming" again.
+Let's step back and talk back again about more "conventional programming" and the situation of the library's codebase.
 
-What we did is reducing the amount of logic and complexity of a single and big component into smaller chunks. Instead of having a big file with a lot of **very specific** computational logic, we extracted some code in other files and **composed** them to create a complex placeholder (and in fact we have opened the road for creating an infinite number of placeholders). Apart from answering the questions of the consumer, we also have opened doors for the creation of new components like `PlaceholderTriangle` or anything else, both in the library **but also in user lands**.
+What we did is reducing the amount of logic and complexity of a single and big component (`Placeholder.imageContent`) into smaller chunks. Instead of having a big file with a lot of **very specific** computational logic, we extracted code in other files, creating smaller units (`PlaceholderLine` and `PlaceholderMedia`) and **composed** them to create a complex placeholder.
 
-With the previous statement, we can say that the library is closed to modifications and open for extension: we don't need to modify the "core" codebase and create new release. The user is able to do it in user-lands while still benefiting from what the library exposes. This is the [Open-Closed Principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle).
+Apart from answering the questions of the consumer, we also have opened doors for the creation of new components like `PlaceholderTriangle` or anything else, both in the library **but also in user lands**. The consumer is not forced to open a pull request or to wait for a specific release to be able to use a new animation or a new component anymore - they can their **specific** ones as part of their codebase.
 
-This new API is known to be **more composable** than the old one. The old one acts as a big standalone block, it was hard to customize it because we only have access to one set of `props` at one level only.
+With the previous statement, we can say that the library is **closed to modifications** and **open for extension**: we don't need to modify the "core" codebase nor to create new releases. The user is able to do it in user-lands while still benefiting from what the library exposes. This is about the [Open-Closed Principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle).
 
-Taking benefit from composition, we can spread the responsibility at different levels where each component has its own API and is responsible for one thing only. Combining all together creates a better experience for the consumer that can basically do whatever it needs but also for the maintainer since everything is in its tiny box with clear responsibilities.
+I have feelings that **composition** is one way to align with the Open-Closed principle and that it works both for UI paradigms and for more conventional programming.
 
 ## Last note on this
 
