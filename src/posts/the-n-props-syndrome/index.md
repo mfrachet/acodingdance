@@ -18,6 +18,8 @@ At that time, if you wanted to use the library, you had to include the following
 
 ```jsx
 // The v1.0.0 README is available here: https://github.com/mfrachet/rn-placeholder/tree/v1.0.0
+// There were some others components like Placeholder.Paragraph for example
+// The following is the most complete one (at that time) in term of experience
 <Placeholder.ImageContent
   size={60}
   animate="fade"
@@ -40,9 +42,9 @@ As a developer, I'm using other people tools because they solve problem that I d
 
 I know that if a library trying to solve my problems is not easy nor practical, I won't use it and I will use something else that better fits my needs. This is the same as the _User Experience_ when dealing with a product - if the experience is not good enough, people will use another product.
 
-A component with a lot of `props` scares me because it doesn't look easy to use: it seems to do a lot of things with a lot of different settings. I often see very interesting "business" oriented components (they solve complex and isolated problems) but they tend to lack UI customizations. The platform I'm using aims to provide a visual representation of a product. Since every product is different, I need to be able to customize the underlying styles of the elements.
+A component with a lot of `props` scares me because it doesn't look easy to use: it seems to do a lot of things with a lot of different settings. I often see very interesting "business" oriented components (they solve complex and isolated problems) but they tend to lack UI customizations. The platform I'm using aims to provide a visual representation of a product. Since every product is different, I need to be able to customize the underlying styles of elements.
 
-For instance, I don't like components looking like:
+For instance, I don't like components like:
 
 ```jsx
 <Input
@@ -55,9 +57,11 @@ For instance, I don't like components looking like:
 
 because they prevent me from having control over the underlying `input` and `label` elements.
 
-What if I have specific accessibility needs for the `input`? Or even for the `label`? I don't have control over them: this is blocking. Also notice the `labelStyle` prop exposed: this an interesting way of solving _some_ of the problems but it prevents me from using other tools like [styled-components](https://styled-components.com/).
+What if I have specific accessibility needs for the `input`? Or even for the `label`? I don't have control over them: this is blocking.
 
-Getting back to the rn-placeholder story, let's analyze the API with a fresh eye:
+Also notice the `labelStyle` prop exposed: this an interesting way of solving _some_ of the problems but it prevents me from using other tools like [styled-components](https://styled-components.com/).
+
+Getting back to the rn-placeholder story, let's take some time to analyze the API:
 
 ```jsx
 <Placeholder.ImageContent
@@ -74,14 +78,14 @@ Getting back to the rn-placeholder story, let's analyze the API with a fresh eye
 </Placeholder.ImageContent>
 ```
 
-As a consumer of the API, I have multiple questions:
+As a consumer, I have some questions:
 
 - What does the `size` refer to? The square? The line? The whole thing?
 - `lineNumber` is `4` and the component exposes `lastLineWidth` and `firstLineWidth`. How can I modify the third line width or color?
 - `animate` is hardcoded, can we customize it?
 - Does `position` refer to the squares, or maybe the lines?
 
-These are all pertinent questions. Some are simple enough to get answered in a github issue, but some other needs attention and potentially modifications of the codebase and so, new releases.
+These are all interesting questions. Some are simple enough to get answered in a github issue, but some other needs attention and potentially modifications of the codebase and so, new releases.
 
 ### From a maintainer perspective
 
@@ -101,7 +105,11 @@ I'm going to answer the consumer questions listed above and try to find ways to 
 
 ### What does the `size` refer to? The square? The line? The whole thing?
 
-The API is not clear and the consumer doesn't really know on which element the size would be applied on. Also, we can imagine that there are differences between setting a size on a line and setting a size on a shape component. Let's try to write an API that could solve this specific problem:
+The API is not clear and the consumer doesn't know which element is concerned by the `size` prop. Also, this leads me to think that a size can be applied on both a line and a shape with different values. Right now, we only provide a vague `size` thing.
+
+We can quickly imagine solving this issue by adding a `lineSize` and a `shapeSize` props but this will lead us to add another piece of complexity to the existing API and I think that it already bloated enough.
+
+Let's try to think of a different way to write it that could solve these problems:
 
 ```jsx
 import { PlaceholderLine, PlaceholderMedia } from "rn-placeholder";
@@ -112,7 +120,7 @@ import { PlaceholderLine, PlaceholderMedia } from "rn-placeholder";
 </>;
 ```
 
-With these APIs, we are explicit about which sizes we are talking about and on which elements they are applied. It provides clarity but also new perspectives concerning customizing the different placeholders.
+With this, we become explicit about sizes and their subjects. As a side effect, we can even become more explicit about the `PlaceholderMedia` sizes and give it an extra `height` prop.
 
 ### Prop `lineNumber` is `4` and the component exposes `lastLineWidth` and `firstLineWidth`. How can I modify the third line width or color?
 
