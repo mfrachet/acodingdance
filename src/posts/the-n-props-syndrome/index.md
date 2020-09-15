@@ -54,7 +54,7 @@ For instance, I don't like this kind of component:
 
 because they prevent me from having control over the underlying `input` and `label` elements.
 
-What if I have specific accessibility needs for the `input`? Or even for the `label`? I don't have control over them and **this is blocking**.
+What if I have specific accessibility needs for the `input`? Or even for the `label`? I don't have control over them and **this is blocking to me**.
 
 Also notice the `labelStyle` prop exposed: this is an interesting way of solving _some_ of the problems but **it prevents me** from using other tools like [styled-components](https://styled-components.com/).
 
@@ -104,7 +104,7 @@ I'm going to start by answering the consumer questions listed above and try to f
 
 The API is not clear and the consumer doesn't know which element is affected by the `size` prop.
 
-Also, this made me realize that both a line and a media can have a size, independently.
+Also, this made me realize that a line and a media can have different sizes in the same placeholder and this is actually not possible to differentiate them.
 
 We can imagine solving this issue by adding a `lineSize` and a `mediaSize` props but this will lead us to add another piece of complexity to the existing API that is already bloated enough.
 
@@ -119,7 +119,7 @@ import { PlaceholderLine, PlaceholderMedia } from "rn-placeholder";
 </>;
 ```
 
-With these modifications, we become explicit about sizes and their subjects. As a side effect, we even earn the possibility to add an extra `height` prop to the `PlaceholderMedia` component.
+With these modifications, we become explicit about sizes and their subjects. As a side effect, we are now able to customize both the line and the media independently: notice the `height` prop added to the `PlaceholderMedia` component but not to the `PlaceholderLine`.
 
 ### Prop `lineNumber` is `4` and the component exposes `lastLineWidth` and `firstLineWidth`. How can I modify the third line width or color?
 
@@ -138,7 +138,7 @@ import { PlaceholderLine } from "rn-placeholder";
 </>;
 ```
 
-Using this new approach, we have a total control over any of the lines of the placeholder.
+Using this new approach, we have total control over any of the lines of the placeholder.
 
 ### Prop `animate` is hardcoded, can I customize it?
 
@@ -155,9 +155,9 @@ If the consumer wants to add a new animation, they have to:
 
 This is cumbersome.
 
-Instead of that, we can imagine a prop in which we will _inject_ a custom animation **from user-lands** that will run seem-less-ly as part of the placeholder.
+Instead, we could imagine a prop in which we would _inject_ a custom animation **from user-lands** that will run seem-less-ly as part of the placeholder.
 
-And this is a very interesting idea because we're shifting the responsibility of creating animations **outside** the codebase meaning less problems for the maintainers and higher customization potential for the consumer:
+And this is a very interesting idea because we're shifting the responsibility of creating animations **outside the library's codebase** meaning less problems for maintainers and higher customization potential for the consumer:
 
 ```jsx
 import { Placeholder, PlaceholderLine, PlaceholderMedia } from "rn-placeholder";
@@ -175,7 +175,7 @@ import { MyCustomAnimation } from "./user-lands/MyCustomAnimaton";
 
 Historically, I added the prop to create harmony in terms of spacing between the elements on each sides of the "main" content to improve [the user experience in terms of rhythm](https://www.interaction-design.org/literature/article/repetition-pattern-and-rhythm).
 
-The position prop is confusing and prevents the consumer from displaying the kind of components they want on the side. What if they don't want medias (the squares)?
+Beside being confusing about its subject, the prop prevents us from having control over what kind of component we want to display on each side. What if I don't want to display `PlaceholderMedia` but `PlaceholderLine` on the right?
 
 Let's iterate a last time on the API:
 
@@ -196,7 +196,7 @@ import { MyCustomAnimation } from "./user-lands/MyCustomAnimaton";
 
 ## Summing up
 
-After iterating thanks to the consumer's feedbacks, here's the new API (this is the API available in the last version of [rn-placeholder](https://github.com/mfrachet/rn-placeholder)):
+After iterating thanks to the consumer's feedbacks, this is the API we end up with:
 
 ```jsx
 import { Placeholder, PlaceholderLine, PlaceholderMedia } from "rn-placeholder";
@@ -213,28 +213,28 @@ import { MyCustomAnimation } from "./user-lands/MyCustomAnimaton";
 </Placeholder>;
 ```
 
-To sum-up the situation, we split the `Placeholder.ImageContent` that had a lot of props and we:
+Thanks to the refactoring, we split the `Placeholder.ImageContent` that had a lot of props and we:
 
 - made a `PlaceholderLine` component with its own dedicated props
 - made a `PlaceholderMedia` component with its own dedicated props
 - made a `Placeholder` component representing the whole concept
 - tweaked the `animate` prop to make it more powerful
 
-Let's step back and talk back again about more "conventional programming" and the situation of the library's codebase after the refactoring.
+Let's step back and talk about more "conventional programming" again and the situation of the library's codebase after the modifications.
 
 What we did is reducing the amount of logic and complexity of a single and big component (`Placeholder.imageContent`) into smaller chunks. Instead of having a big file with a lot of **very specific** computational logic, we extracted code in other files, creating smaller units (`PlaceholderLine` and `PlaceholderMedia`) and **composed** them to create a complex placeholder.
 
 Apart from answering the consumer's questions, we also have opened doors for the creation of new components like `PlaceholderTriangle` or anything else, both in the library **but also in user-lands**. The consumer is not forced to open a pull request nor to wait for a specific release to be able to use a new animation or a new component anymore - they can use their own **specific ones as part of their codebase**.
 
-With the previous statement, we can say that the library is **closed to modifications** and **open for extensions**: we don't need to modify the _core_ codebase nor to create new releases to enhance the experience. The consumer is able to do it in user-lands while still benefiting from what the library exposes. This is about the [Open-Closed Principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle).
+We can now say that the library is **closed for modifications** and **open for extensions**: we don't need to _modify_ the core codebase nor to create new releases to _improve_ the experience. The consumer is able to do it in user-lands while still benefiting from what the library exposes. This is about the [Open-Closed Principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle).
 
-## Last note on this
+## Last note
 
 While I'm a strong believer on the smaller a component is, the easier it is to manage, **don't forget that writing code is always a matter of tradeoffs**. It's up to you and your team to take decisions on what is the best for you depending on your context.
 
 Everything here are my personal thoughts and this post is not about providing a source of truth. It's about challenging the APIs that we write as often as we can. My main intent being to make people wondering **why they add another prop to a component** and to create connections to new ideas.
 
-If you've just started working on a new application, I won't advice to deeply think about making "incredibly scalable components". Maybe focusing on having a representation of the business is what is important _right now_. If you see and feel patterns emerging, then it could be time to re-think and adjust your codebase - but I would suggest to take time, getting confidence about the business and then adjust.
+If you've just started working on a new project, I won't advice to deeply think about making "incredibly scalable components". Maybe focusing on having a representation of the business is what is important _right now_. If you see and feel patterns emerging, then it could be time to re-think and adjust your codebase - but I would suggest to take time, getting confidence about the business and then adjust.
 
 ---
 
