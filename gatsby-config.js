@@ -25,5 +25,17 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Marvin Frachet · Product engineering at scale`,
+        short_name: `Product engineering`,
+        start_url: `/`,
+        background_color: `#4051B5`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+      },
+    },
+    `gatsby-plugin-offline`,
   ],
 };
