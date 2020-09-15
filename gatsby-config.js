@@ -4,6 +4,15 @@ module.exports = {
     `gatsby-plugin-emotion`,
     `gatsby-plugin-sharp`,
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-178009040-1",
+        anonymize: true,
+        respectDNT: true,
+        defer: true,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
