@@ -74,7 +74,7 @@ Remember that JAMstack is about **building static pages**. Taking this notion to
 
 The idea now is to rely on some kind of proxy to route the different users to one of the two variants and make sure they always see that variant.
 
-As you remember, **we can't rely on runtime information to store the variant**, like an authenticated user id for example. We need to rely on something else. Hopefully it exists [HTTP Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) that allow for a client-server kind of data sharing. We can benefit from them to store the actual variant requested by the user and make sure that it will always get routed to that variant.
+As you remember, **we can't rely on runtime information to store the variant**, like an authenticated user id for example. We need to rely on something else. Hopefully it exists [HTTP Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) that allow for a client-server kind of data sharing. We can benefit from them to store the actual variant requested by the users and make sure that they will always get routed to that variant.
 
 ![Visual representation of a proxy routing an HTTP request to the good machine for an A/B test](./cookie-ab.png)
 
@@ -83,3 +83,7 @@ As you remember, **we can't rely on runtime information to store the variant**, 
 _Before going further, I have to mention that since we don't have access to runtime information, it's not possible to target an individual user. Also note that it's more complex to A/B test in a more JAMstack way and that it will potentially cost more money than a runtime solution. It's again about tradeoffs._
 
 ## References
+
+On a side note, I think that Netlify is using a similar approach but for something branch based with their [Split-testing product](https://docs.netlify.com/site-deploys/split-testing/).
+
+If you have any other references in mind concerning A/B testing on top of the JAMstack, feel free to drop them on [Twitter](https://twitter.com/mfrachet).
