@@ -19,7 +19,7 @@ According to [jamstack.org](https://jamstack.org/), we use it because:
 - static pages are basically HTML and thus **load very fast**
 - we benefit from **chip hosting** (putting HTML files on a server and there we go)
 - it's **highly scalable**, just put the files on another machine and scaling is done
-- it already exists great tools to create amazing applications ([Gatsbyjs](https://www.gatsbyjs.com/), [Nextjs](https://nextjs.org/), [11ty](https://www.11ty.dev/), [etc...](https://jamstack.org/generators/))
+- it already exists great tools to create amazing sites ([Gatsbyjs](https://www.gatsbyjs.com/), [Nextjs](https://nextjs.org/), [11ty](https://www.11ty.dev/), [etc...](https://jamstack.org/generators/))
 
 ## Why do we use A/B testing?
 
@@ -36,7 +36,7 @@ In applications that are not built on top of the JAMstack, the idea is quite str
 
 When opening the application in the browser, it will make a request to a remote server to get the different available variations. Then, based on some conditions in the codebase, we are able to display the good variation to the good user.
 
-Here's a code snippet of a tiny experiment written with React:
+Here's a code snippet of a tiny experiment written with [Reactjs](https://reactjs.org/):
 
 ```jsx
 const App = () => {
@@ -54,7 +54,7 @@ const App = () => {
 };
 ```
 
-As you see in the snippet, the code is executed in the user's browser. They may notice a loading information while the request is pending before being able to use the application.
+As you see in the snippet, the code is executed in the user's browser. Also notice **the loading information while the request is pending** before being able to use the application.
 
 ## Why A/B testing on the JAMstack is different?
 
@@ -62,18 +62,24 @@ Remember one of the main arguments of building on top of the JAMstack is perform
 
 While it's technically possible to use the "standard way" to rely on A/B tests (e.g making runtime requests), it will make performances worse and increase the first time to meaningful content on the page **because of the HTTP roundtrip that requires time and a potential UI fallback**. In some scenarios, I've seen [Lighthouse](https://developers.google.com/web/tools/lighthouse) performance score dropping by around `25` points (which is a big gap).
 
-Also note that some tools helping building applications using the JAMstack don't even run JavaScript at all, making runtime computations impossible.
+Also note that some tools helping building applications using the JAMstack **don't even run JavaScript at all**, making runtime computations impossible.
 
 ## How to make A/B testing in a JAMstack fashion?
 
-_Before going further, I have to mention that since we don't have access to runtime information, it's not possible to target an individual user. Also note that it's more complex to A/B test in a more JAMstack way and that it will potentially cost more money than a runtime solution. It's again about tradeoffs._
-
-Remember that JAMstack is about **building static pages**. Taking this notion to the extreme we can imagine creating a dedicated set of static pages for a dedicated variant.
+Remember that JAMstack is about **building static pages**. Taking this notion to the extreme, we can imagine creating a dedicated set of static pages for different variants and host them in different places, like for example, different machines.
 
 ![Visual representation of two machines hosting two different variants of an A/B test](./machine-ab.png)
 
-The machine 1 owns all the statically generated HTML pages impacted by the variant A and the machine 2 owns all of the statically generated HTML pages of the variant B.
+**The machine 1** owns all the statically generated HTML pages impacted by the variant A and **the machine 2** owns all of the statically generated HTML pages of the variant B.
 
-The idea is to rely on some kind of proxy to route the different users to one of the two variants and make sure they always see that variant. As you remember, we can't rely on runtime calculations for that. [HTTP Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) can be a valid solution to keep track of the actual variant of a given user.
+The idea now is to rely on some kind of proxy to route the different users to one of the two variants and make sure they always see that variant.
+
+As you remember, **we can't rely on runtime information to store the variant**, like an authenticated user id for example. We need to rely on something else. Hopefully it exists [HTTP Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) that allow for a client-server kind of data sharing. We can benefit from them to store the actual variant requested by the user and make sure that it will always get routed to that variant.
 
 ![Visual representation of a proxy routing an HTTP request to the good machine for an A/B test](./cookie-ab.png)
+
+## Observations on this approach
+
+_Before going further, I have to mention that since we don't have access to runtime information, it's not possible to target an individual user. Also note that it's more complex to A/B test in a more JAMstack way and that it will potentially cost more money than a runtime solution. It's again about tradeoffs._
+
+## References
