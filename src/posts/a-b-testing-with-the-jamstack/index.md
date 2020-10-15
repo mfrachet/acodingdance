@@ -68,6 +68,12 @@ Also note that some tools helping building applications using the JAMstack don't
 
 _Before going further, I have to mention that since we don't have access to runtime information, it's not possible to target an individual user. Also note that it's more complex to A/B test in a more JAMstack way and that it will potentially cost more money than a runtime solution. It's again about tradeoffs._
 
-- JAMstack is about generating static websites
-- So let's build whole new static websites for the different variants we have
-  - Since A/B testing is based on conditions, multiple sites may have to be build
+Remember that JAMstack is about **building static pages**. Taking this notion to the extreme we can imagine creating a dedicated set of static pages for a dedicated variant.
+
+![Visual representation of two machines hosting two different variants of an A/B test](./machine-ab.png)
+
+The machine 1 owns all the statically generated HTML pages impacted by the variant A and the machine 2 owns all of the statically generated HTML pages of the variant B.
+
+The idea is to rely on some kind of proxy to route the different users to one of the two variants and make sure they always see that variant. As you remember, we can't rely on runtime calculations for that. [HTTP Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) can be a valid solution to keep track of the actual variant of a given user.
+
+![Visual representation of a proxy routing an HTTP request to the good machine for an A/B test](./cookie-ab.png)
