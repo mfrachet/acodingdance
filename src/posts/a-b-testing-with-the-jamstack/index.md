@@ -16,8 +16,8 @@ According to [jamstack.org](https://jamstack.org/), we use it because:
 
 - it's about building **simple static pages** (HTML files)
 - most of the job is made at build-time, no potential leak at runtime, it's more **secured**
-- static pages are basically HTML and thus **load very fast**
-- we benefit from **chip hosting** (putting HTML files on a server and there we go)
+- static pages are basically HTML files and thus **load very fast**
+- we benefit from **chip hosting** (putting files on a server and there we go)
 - it's **highly scalable**, just put the files on another machine and scaling is done
 - it already exists great tools to create amazing sites ([Gatsbyjs](https://www.gatsbyjs.com/), [Nextjs](https://nextjs.org/), [11ty](https://www.11ty.dev/), [etc...](https://jamstack.org/generators/))
 
@@ -36,7 +36,7 @@ In applications that are not built on top of the JAMstack, the idea is quite str
 
 When opening the application, it will make a request to a remote server to get the different available variants. Then, based on some conditions in the codebase, we are able to display the good variant to the good user.
 
-The following is an example of a client-side based A/B test written with [Reactjs](https://reactjs.org/):
+The following is an example of a client-side A/B test written with [Reactjs](https://reactjs.org/):
 
 ```jsx
 const App = () => {
@@ -60,17 +60,17 @@ As you see in the snippet, the code is executed in the user's browser. Also noti
 
 Remember one of the main arguments of building on top of the JAMstack is **fast page loading** (performances).
 
-When using A/B testing using the "standard way", **we need to make an HTTP request to get the different variants**. Making an HTTP request means that **there is a delay** between the moment we ask for the variants and the moment we get them back from the server.
+When dealing with A/B tests the "standard way", **we need to make an HTTP request to get the different variants**. Making an HTTP request means that **there is a delay** between the moment we ask for the variants and the moment we get them back from the server.
 
 The problem is that **making the HTTP request is so critical** that we can't show anything else than a loading information to the user before resolving the variants and being able to show them the good content.
 
 **In a static environment, we are waiting for a dynamic information to display meaningful information.**
 
-Using A/B the "standard way" using runtime information will **make the application performances worse by increasing the time for the displaying the first meaningful content**. While it could be "instant" on static pages, relying on an HTTP request and an intermediate loading state before displaying the content will take extra time and decrease the experience.
+When A/B testing the "standard way", using runtime information will **make the application performances worse by increasing the time for the displaying the first meaningful content**. Loading static pages should be "instant" but relying on an HTTP request and an intermediate loading state before displaying the content will take extra time and decrease the experience.
 
-In some scenarios, I've seen [Lighthouse](https://developers.google.com/web/tools/lighthouse) performance score dropping by around `25` points (up to you to determine if it's significant or not).
+In some scenarios, [Lighthouse](https://developers.google.com/web/tools/lighthouse) performance score can drop by around `25` points (up to you to determine if it's significant or not).
 
-Also note that some tools helping building applications using the JAMstack **don't even run JavaScript at all**, making runtime computations impossible.
+Also note that some tools helping building applications using the JAMstack **don't even run JavaScript at all**, meaning that it's not possible to rely on HTTP requests to access remote data at runtime.
 
 ## How to make A/B testing in a JAMstack fashion?
 
@@ -82,7 +82,7 @@ The JAMstack is about **building static pages**. Taking this notion to the extre
 
 The idea now is to rely on some kind of proxy to route the different users to one of the two variants and make sure they always see that variant.
 
-As you remember, **we can't rely on runtime information to store the variant**, like an authenticated user id for example. We need to rely on something else. Hopefully it exists [HTTP Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) that allow for a client-server kind of data sharing. We can benefit from them to store the actual variant requested by the users and make sure that they will always get routed to that variant.
+As you remember, **we can't rely on runtime information to store the variant**, like an authenticated user id for example. We need to rely on something else. Hopefully it exists [HTTP Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) that allow for a client-server kind of data sharing. We can benefit from them to store the actual variant requested by the user and make sure that they will always get routed to that variant.
 
 ![Visual representation of a proxy routing an HTTP request to the good machine for an A/B test](./cookie-ab.png)
 
