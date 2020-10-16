@@ -34,9 +34,9 @@ If the visitors of the variant A come more often than the visitors of the varian
 
 In applications that are not built on top of the JAMstack, the idea is quite straightforward.
 
-When opening the application in the browser, it will make a request to a remote server to get the different available variations. Then, based on some conditions in the codebase, we are able to display the good variation to the good user.
+When opening the application, it will make a request to a remote server to get the different available variants. Then, based on some conditions in the codebase, we are able to display the good variant to the good user.
 
-Here's a code snippet of a tiny experiment written with [Reactjs](https://reactjs.org/):
+The following is an example of a client-side based A/B test written with [Reactjs](https://reactjs.org/):
 
 ```jsx
 const App = () => {
@@ -54,19 +54,27 @@ const App = () => {
 };
 ```
 
-As you see in the snippet, the code is executed in the user's browser. Also notice **the loading information while the request is pending** before being able to use the application.
+As you see in the snippet, the code is executed in the user's browser. Also notice **the loading information while the request is pending** before being able to display the variant content.
 
 ## Why A/B testing on the JAMstack is different?
 
-Remember one of the main arguments of building on top of the JAMstack is performances.
+Remember one of the main arguments of building on top of the JAMstack is **fast page loading** (performances).
 
-While it's technically possible to use the "standard way" to rely on A/B tests (e.g making runtime requests), it will make performances worse and increase the first time to meaningful content on the page **because of the HTTP roundtrip that requires time and a potential UI fallback**. In some scenarios, I've seen [Lighthouse](https://developers.google.com/web/tools/lighthouse) performance score dropping by around `25` points (which is a big gap).
+When using A/B testing using the "standard way", **we need to make an HTTP request to get the different variants**. Making an HTTP request means that **there is a delay** between the moment we ask for the variants and the moment we get them back from the server.
+
+The problem is that **making the HTTP request is so critical** that we can't show anything else than a loading information to the user before resolving the variants and being able to show them the good content.
+
+**In a static environment, we are waiting for a dynamic information to display meaningful information.**
+
+Using A/B the "standard way" using runtime information will **make the application performances worse by increasing the time for the displaying the first meaningful content**. While it could be "instant" on static pages, relying on an HTTP request and an intermediate loading state before displaying the content will take extra time and decrease the experience.
+
+In some scenarios, I've seen [Lighthouse](https://developers.google.com/web/tools/lighthouse) performance score dropping by around `25` points (up to you to determine if it's significant or not).
 
 Also note that some tools helping building applications using the JAMstack **don't even run JavaScript at all**, making runtime computations impossible.
 
 ## How to make A/B testing in a JAMstack fashion?
 
-Remember that JAMstack is about **building static pages**. Taking this notion to the extreme, we can imagine creating a dedicated set of static pages for different variants and host them in different places, like for example, different machines.
+The JAMstack is about **building static pages**. Taking this notion to the extreme, we can imagine creating a dedicated set of static pages for different variants and host them in different places, like for example, different machines.
 
 ![Visual representation of two machines hosting two different variants of an A/B test](./machine-ab.png)
 
