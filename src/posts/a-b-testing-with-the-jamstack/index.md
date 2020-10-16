@@ -1,6 +1,6 @@
 ---
 title: "A/B testing with the JAMstack"
-date: 2020-05-25
+date: 2020-10-25
 slug: "/a-b-testing-with-the-jamstack"
 ---
 
@@ -17,7 +17,7 @@ According to [jamstack.org](https://jamstack.org/), we use it because:
 - it's about building **simple static pages** (HTML files)
 - most of the job is made at build-time, no potential leak at runtime, it's more **secured**
 - static pages are basically HTML files and thus **load very fast**
-- we benefit from **chip hosting** (putting files on a server and there we go)
+- we benefit from **cheap hosting** (putting files on a server and there we go)
 - it's **highly scalable**, just put the files on another machine and scaling is done
 - it already exists great tools to create amazing sites ([Gatsbyjs](https://www.gatsbyjs.com/), [Nextjs](https://nextjs.org/), [11ty](https://www.11ty.dev/), [etc...](https://jamstack.org/generators/))
 
@@ -30,7 +30,7 @@ of some data and check which one attracts more people.
 
 If the visitors of the variant A come more often than the visitors of the variant B, then we can assume that variant A is a more viable solution to represent the data on the page.
 
-## How do we use A/B testing in none JAMstack applications?
+## How do we use A/B testing in non JAMstack applications?
 
 In applications that are not built on top of the JAMstack, the idea is quite straightforward.
 
@@ -58,7 +58,7 @@ As we see in the snippet, the code is executed in the user's browser. Also notic
 
 ## Why A/B testing on the JAMstack is different?
 
-Remember one of the main arguments of building on top of the JAMstack is **fast page loading** (performances).
+Remember one of the main arguments of building on top of the JAMstack is **fast page loading** (performance).
 
 When dealing with A/B tests the "standard way", **we need to make an HTTP request to get the different variants**. Making an HTTP request means that **there is a delay** between the moment we ask for the variants and the moment we get them back from the server.
 
@@ -96,7 +96,7 @@ const App = () => {
 
 The next step is to rely on some kind of proxy to route the different users to one of the two variants and make sure they always see that variant.
 
-Remember, **we can't rely on runtime information to store the variant**, like an authenticated user id for example. We need to rely on something else. Hopefully it exists [HTTP Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) that allow for a client-server kind of data sharing. We can benefit from them to store the actual variant requested by the user and make sure that they will always get routed to that variant.
+Remember, **we can't rely on runtime information to store the variant**, like an authenticated user id for example. We need to rely on something else. Hopefully, [HTTP Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) exist that allow for a client-server kind of data sharing. We can benefit from them to store the actual variant requested by the user and make sure that they will always get routed to that variant.
 
 ![Visual representation of a proxy routing an HTTP request to the good machine for an A/B test](./cookie-ab.png)
 
