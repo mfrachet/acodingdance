@@ -54,7 +54,7 @@ const App = () => {
 };
 ```
 
-As you see in the snippet, the code is executed in the user's browser. Also notice **the loading information while the request is pending** before being able to display the variant content.
+As we see in the snippet, the code is executed in the user's browser. Also notice **the loading information while the request is pending** before being able to display the variant content.
 
 ## Why A/B testing on the JAMstack is different?
 
@@ -80,18 +80,46 @@ The JAMstack is about **building static pages**. Taking this notion to the extre
 
 **The machine 1** owns all the statically generated HTML pages impacted by the variant A and **the machine 2** owns all of the statically generated HTML pages of the variant B.
 
-The idea now is to rely on some kind of proxy to route the different users to one of the two variants and make sure they always see that variant.
+Since pages are statically generated at build time, we can rely on environment variables to display the good variant content:
 
-As you remember, **we can't rely on runtime information to store the variant**, like an authenticated user id for example. We need to rely on something else. Hopefully it exists [HTTP Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) that allow for a client-server kind of data sharing. We can benefit from them to store the actual variant requested by the user and make sure that they will always get routed to that variant.
+```jsx
+const AB_EXPERIMENT_VARIANT = process.env.AB_EXPERIMENT_VARIANTS;
+
+const App = () => {
+  if (AB_EXPERIMENT_VARIANT === "A") {
+    return <div>Here's the A variant!</div>;
+  }
+
+  return <div>Here's the B variant!</div>;
+};
+```
+
+The next step is to rely on some kind of proxy to route the different users to one of the two variants and make sure they always see that variant.
+
+Remember, **we can't rely on runtime information to store the variant**, like an authenticated user id for example. We need to rely on something else. Hopefully it exists [HTTP Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) that allow for a client-server kind of data sharing. We can benefit from them to store the actual variant requested by the user and make sure that they will always get routed to that variant.
 
 ![Visual representation of a proxy routing an HTTP request to the good machine for an A/B test](./cookie-ab.png)
 
 ## Observations on this approach
 
-_Before going further, I have to mention that since we don't have access to runtime information, it's not possible to target an individual user. Also note that it's more complex to A/B test in a more JAMstack way and that it will potentially cost more money than a runtime solution. It's again about tradeoffs._
+The first observations to push upfront is that **we have kept the page loading performances provided by default by the JAMstack**. We don't have to wait for runtime computations to display content on the page.
+
+The second observation is about the tradeoffs we decided to make: we shifted the A/B testing responsibility **closer to the infrastructure layer**. The proxy has an important role to play in this scenario.
+
+Also note that we need more "places" to put the different variants: 1 variant corresponds to 1 website that corresponds to 1 set of static pages that should entirely be hosted. **The more we have variants, the more we may pay for hosting**:
+
+![A visual representation of a project having 4 different variants](./all-variants.png)
+
+There's also one side effect that I find positive (but it can feel negative) is that it can be hard to combine multiple A/B experiments.
+
+Let's say that we have 2 pages and that we want to run an experiment on both the pages:
+
+- What can be a visual representation of these scenarios at the hosting level?
+- Should we create 4 different websites, one for each variant?
+- Should we create N different websites with combinations of variants?
 
 ## References
 
-On a side note, I think that Netlify is using a similar approach but for something branch based with their [Split-testing product](https://docs.netlify.com/site-deploys/split-testing/).
+If you're using [Netlify]() for hosting your websites, they have a feature called [Split-testing](https://docs.netlify.com/site-deploys/split-testing/) that allows for these kind of testing using a branch based approach.
 
-If you have any other references in mind concerning A/B testing on top of the JAMstack, feel free to drop them on [Twitter](https://twitter.com/mfrachet).
+If you have any other references in mind concerning A/B testing or Split Testing on top of the JAMstack, feel free to drop them on [Twitter](https://twitter.com/mfrachet).
