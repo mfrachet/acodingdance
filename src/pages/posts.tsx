@@ -73,7 +73,7 @@ export default PostsPage;
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}) {
       edges {
         node {
           id
