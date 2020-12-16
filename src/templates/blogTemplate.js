@@ -57,7 +57,8 @@ export default function Template({ data }) {
         <html lang="en" />
         <title>{frontmatter.title}</title>
         <meta name="description" content={markdownRemark.excerpt} />
-
+        <meta name="twitter:creator" content="@mfrachet" />
+        <meta name="twitter:card" content="summary" />
         <meta property="og:url" content={`${SiteRoot}${frontmatter.slug}`} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={frontmatter.title} />
