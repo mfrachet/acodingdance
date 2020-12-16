@@ -2,6 +2,7 @@
  * Following: https://www.w3.org/TR/wai-aria-practices/#breadcrumb
  */
 import React, { useRef, useEffect } from "react";
+import { MdKeyboardArrowRight} from 'react-icons/md'
 
 export interface BreadCrumbProps extends React.HTMLAttributes<HTMLDivElement> {
   label: string;
@@ -43,6 +44,7 @@ const breadCrumbListCss = (theme) =>
     padding: 0,
     display: "flex",
     flexDirection: "column",
+    
 
     [theme.mq.desktop]: {
       flexDirection: "row",
@@ -76,29 +78,9 @@ export const BreadCrumbItem: React.FC<BreadCrumbItemProps> = ({
       css={(theme) => ({
         marginBottom: 0,
 
-        "&:before": {
-          content: '""',
-          background: theme.colors.background2,
-          border: `1px solid ${theme.colors.primary}`,
-          borderRadius: "50%",
-        },
-
         '[aria-current="page"]': {
-          color: emphasized ? theme.colors.primary : theme.colors.text,
+          color: emphasized ? theme.colors.secondary : theme.colors.text,
           textDecoration: "none",
-        },
-
-        "&:last-of-type:before": {
-          content: '""',
-          background: theme.colors.primary,
-          borderRadius: "50%",
-        },
-
-        [theme.mq.desktop]: {
-          "&:before": { content: "none" },
-          "&:last-of-type:before": {
-            content: "none",
-          },
         },
       })}
     >
@@ -114,26 +96,15 @@ export const BreadCrumbItemSeparator: React.FC<BreadCrumbItemProps> = ({
   return (
     <li
       {...props}
-      css={(theme) => ({
-        marginBottom: theme.spaces[2],
-        "&:before": { content: "none" },
-
-        span: {
-          display: "none",
-        },
-
-        [theme.mq.desktop]: {
-          span: {
-            display: "block",
-            width: theme.spaces[4],
-            textAlign: "center",
-          },
-        },
-      })}
       role="separator"
       aria-hidden={true}
+      css={theme => ({
+        display: 'flex',
+        alignItems: 'center',
+        margin: `0 ${theme.spaces[0]}`
+      })}
     >
-      <span>/</span>
+      <MdKeyboardArrowRight />
     </li>
   );
 };

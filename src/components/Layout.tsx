@@ -33,7 +33,7 @@ const defaultTheme = {
     64,
     96,
   ].map(toPx),
-  fontSizes: [0.8, 0.9, 1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 3].map(toRem),
+  fontSizes: [0.7, 0.9, 1, 1.2, 1.3, 1.4, 1.6, 1.8, 2.2, 2.6, 3].map(toRem),
   colors: {
     primary: `hsl(231, 48%, 48%)`,
     secondary: `hsl(340,82%,52%)`,
@@ -108,7 +108,7 @@ const makeGlobalStyles = (theme) => css`
   li {
     margin: 0;
     padding: 0;
-    margin-bottom: ${theme.spaces[2]};
+    margin-bottom: ${theme.spaces[1]};
     color: ${theme.colors.text};
     font-weight: ${theme.fontWeights.text};
 

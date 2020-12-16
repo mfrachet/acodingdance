@@ -13,7 +13,7 @@ export const Progressbar: React.FC<{ width: number }> = ({ width }) => {
         width: "100%",
         transform: `translateX(-${100 - width}%)`,
         height: theme.spaces[0],
-        background: theme.colors.primary,
+        backgroundImage: `linear-gradient(90deg, ${theme.colors.secondary}, ${theme.colors.primary})`,
       })}
     ></div>
   );
