@@ -203,6 +203,10 @@ const makeGlobalStyles = (theme) => css`
     color: ${theme.colors.text};
   }
 
+  .token.script.language-javascript,.token.tag,.token.constant {
+    color: #FF6347;
+  }
+
   ${theme.mq.desktop} {
     code.language-text {
       font-size: ${theme.fontSizes[1]};
