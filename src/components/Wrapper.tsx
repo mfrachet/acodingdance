@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const Wrapper: React.FC = ({ children }) => (
+export const Wrapper = ({ children }: { children: React.ReactNode }): JSX.Element => (
     <div
         css={(theme) => ({
             marginTop: theme.spaces[3],

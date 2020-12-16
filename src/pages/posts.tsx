@@ -11,7 +11,9 @@ const PostsPage = ({
     data: {
         allMarkdownRemark: { edges },
     },
-}) => {
+}: {
+    data: any;
+}): JSX.Element => {
     const Posts = edges
         .filter((edge) => !!edge.node.frontmatter.date)
         .map((edge) => (

@@ -77,7 +77,7 @@ export const BreadCrumbItem = ({ children, emphasized, ...props }: BreadCrumbIte
     );
 };
 
-export const BreadCrumbItemSeparator = ({ children, ...props }: BreadCrumbItemProps) => {
+export const BreadCrumbItemSeparator = ({ children, ...props }: BreadCrumbItemProps): JSX.Element => {
     return (
         <li
             {...props}

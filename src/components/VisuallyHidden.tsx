@@ -9,7 +9,11 @@ export const visuallyHiddenStyle = {
     whiteSpace: 'nowrap' /* added line */,
 } as any;
 
-export const VisuallyHidden: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => (
+export interface VisuallyHiddenProps extends React.HTMLAttributes<HTMLDivElement> {
+    children: React.ReactNode;
+}
+
+export const VisuallyHidden = ({ children, ...props }: VisuallyHiddenProps): JSX.Element => (
     <div css={visuallyHiddenStyle} {...props}>
         {children}
     </div>

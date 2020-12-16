@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { Helmet } from 'react-helmet';
@@ -11,7 +12,9 @@ import { Time } from '../components/Time';
 
 const SiteRoot = `https://mfrachet.github.io`;
 
-export default function Template({ data }) {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+
+export default function BlogTemplate({ data }) {
     const { markdownRemark } = data; // data.markdownRemark holds your post data
     const { frontmatter, html } = markdownRemark;
     const [percentage, setPercentage] = React.useState(0);

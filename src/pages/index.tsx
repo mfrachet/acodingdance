@@ -25,12 +25,12 @@ const IndexPage = () => {
                     <div css={(theme) => ({ marginTop: theme.spaces[8] })}>
                         <Title>
                             Hey there,
-                            <br /> I'm Marvin Frachet
+                            <br /> {`I'm Marvin Frachet`}
                         </Title>
                     </div>
 
                     <p css={(theme) => ({ marginTop: theme.spaces[5] })}>
-                        I'm a french software developer loving testing automation,{' '}
+                        {`I'm a french software developer loving testing automation,`}{' '}
                         <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer">
                             TypeScript
                         </a>
@@ -42,12 +42,12 @@ const IndexPage = () => {
                         <a href="https://reactnative.dev/" target="_blank" rel="noreferrer">
                             React Native
                         </a>
-                        . I'm mostly doing <strong>product engineering</strong> but I also like to dive into deep
+                        . {`I'm mostly doing`} <strong>product engineering</strong> but I also like to dive into deep
                         technical concepts and learn new languages.
                     </p>
 
                     <p>
-                        I'm actually building some pieces of{' '}
+                        {`I'm actually building some pieces of`}{' '}
                         <a href="https://gatsbyjs.com/" target="_blank" rel="noreferrer">
                             Gatsby Cloud
                         </a>{' '}

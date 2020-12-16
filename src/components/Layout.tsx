@@ -184,7 +184,7 @@ const makeGlobalStyles = (theme) => css`
 
 const GlobalStyles = withTheme(({ theme }) => <Global styles={makeGlobalStyles(theme)} />);
 
-export const Layout: React.FC = ({ children }) => {
+export const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
     return (
         <ThemeProvider theme={defaultTheme}>
             <GlobalStyles />

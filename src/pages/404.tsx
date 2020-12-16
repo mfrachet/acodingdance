@@ -23,7 +23,7 @@ const NotFoundPage = () => {
                     <h1>Woops!</h1>
 
                     <p>
-                        The page you're trying to access doesn't exist (yet?).{' '}
+                        {`The page you're trying to access doesn't exist (yet?)`}.{' '}
                         <Link to="/">Would you like to get back to the homepage?</Link>
                     </p>
                 </main>

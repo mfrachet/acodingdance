@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Progressbar: React.FC<{ width: number }> = ({ width }) => {
+export const Progressbar = ({ width }: { width: number }): JSX.Element => {
     return (
         <div
             aria-hidden={true}
