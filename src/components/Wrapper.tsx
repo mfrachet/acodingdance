@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 export const Wrapper: React.FC = ({ children }) => (
   <div
@@ -7,9 +7,8 @@ export const Wrapper: React.FC = ({ children }) => (
       marginLeft: theme.spaces[4],
       marginRight: theme.spaces[4],
       [theme.mq.desktop]: {
-        marginTop: theme.spaces[8],
-        width: "720px",
-        marginLeft: theme.spaces[8],
+       margin: `${theme.spaces[5]} auto`,
+        width: "65ch",
       },
     })}
   >

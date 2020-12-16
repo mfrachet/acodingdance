@@ -1,8 +1,11 @@
-import React from "react";
+import * as React from "react";
 import { withTheme, ThemeProvider, css, Global } from "@emotion/react";
 import bullet from "./bullet.svg";
 
+console.log('wtf', bullet)
+
 const toPx = (x) => `${x}px`;
+const toRem = (x) => `${x}rem`;
 
 const breakpoints = {
   mobile: 360,
@@ -32,22 +35,14 @@ const defaultTheme = {
     48,
     64,
     96,
-    128,
-    192,
-    256,
-    384,
-    512,
-    640,
-    768,
   ].map(toPx),
-  fontSizes: [12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72].map(toPx),
+  fontSizes: [0.8, 0.9, 1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9].map(toRem),
   colors: {
     primary: `hsl(231, 48%, 48%)`,
     text: `hsl(231, 48%, 22%)`,
-    background: `hsl(231, 48%, 98%)`,
+    background: `hsl(360, 100%, 100%)`,
     background2: `hsl(231, 48%, 90%)`,
   },
-
   fontWeights: {
     text: 400,
     heading: 600,
@@ -65,22 +60,17 @@ const makeGlobalStyles = (theme) => css`
   body {
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
       Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: ${theme.fontSizes[2]};
     background: ${theme.colors.background};
-  }
 
-  ${theme.mq.desktop} {
-    body {
-      font-size: ${theme.fontSizes[5]};
-    }
+    font-size: 16px;
+    line-height: 1.7;
   }
   /* end of body */
 
   p {
-    line-height: 1.7;
     margin: 0;
     padding: 0;
-    margin-bottom: ${theme.spaces[5]};
+    margin-bottom: ${theme.spaces[4]};
     color: ${theme.colors.text};
     font-weight: ${theme.fontWeights.text};
   }
@@ -99,7 +89,7 @@ const makeGlobalStyles = (theme) => css`
     margin: 0;
     padding: 0;
     list-style: none;
-    margin-bottom: ${theme.spaces[5]};
+    margin-bottom: ${theme.spaces[4]};
     margin-left: ${theme.spaces[2]};
   }
 
@@ -111,7 +101,7 @@ const makeGlobalStyles = (theme) => css`
   /* end of ul */
 
   .gatsby-highlight {
-    margin-bottom: ${theme.spaces[5]};
+    margin-bottom: ${theme.spaces[4]};
 
     font-size: ${theme.fontSizes[0]};
   }
@@ -121,14 +111,12 @@ const makeGlobalStyles = (theme) => css`
     margin: 0;
     padding: 0;
     margin-bottom: ${theme.spaces[2]};
-    line-height: 1.7;
     color: ${theme.colors.text};
     font-weight: ${theme.fontWeights.text};
 
     &:before {
       content: "";
       display: inline-block;
-
       height: ${theme.fontSizes[3]};
       width: ${theme.fontSizes[3]};
       background-image: url(${bullet});
@@ -145,16 +133,18 @@ const makeGlobalStyles = (theme) => css`
 
   ${theme.mq.desktop} {
     li {
+      display: flex;
+      
       &:before {
         content: "";
-        display: inline-block;
-
-        height: ${theme.fontSizes[5]};
-        width: ${theme.fontSizes[5]};
+        /* display: inline-flex; */
+        height: ${theme.fontSizes[3]};
+        width: ${theme.fontSizes[3]};
         background-image: url(${bullet});
         background-size: contain;
         background-repeat: no-repeat;
         margin-right: ${theme.spaces[1]};
+        margin-top: ${theme.spaces[0]};
         vertical-align: middle;
       }
     }
@@ -223,7 +213,7 @@ const makeGlobalStyles = (theme) => css`
   time {
     display: block;
     font-size: ${theme.fontSizes[1]};
-    margin-bottom: ${theme.spaces[5]};
+    margin-bottom: ${theme.spaces[4]};
   }
 `;
 
