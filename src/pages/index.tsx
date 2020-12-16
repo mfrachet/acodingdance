@@ -60,12 +60,22 @@ const IndexPage = () => {
                             margin: 0,
                             padding: 0,
                             display: 'flex',
-                            flexDirection: 'row',
+                            flexDirection: 'column',
+
                             li: {
-                                marginRight: theme.spaces[4],
+                                marginBottom: theme.spaces[4],
                             },
+
                             svg: {
                                 marginRight: theme.spaces[1],
+                            },
+
+                            [theme.mq.desktop]: {
+                                flexDirection: 'row',
+                                li: {
+                                    marginBottom: 'unset',
+                                    marginRight: theme.spaces[4],
+                                },
                             },
                         })}
                     >
