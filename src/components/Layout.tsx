@@ -124,17 +124,17 @@ const makeGlobalStyles = (theme) => css`
     /** h1,h2,h3 */
     h1 {
         color: ${theme.colors.primary};
-        margin-bottom: ${theme.spaces[2]};
+        margin-bottom: ${theme.spaces[1]};
         font-size: ${theme.fontSizes[5]};
     }
 
     h2 {
-        margin-bottom: ${theme.spaces[4]};
+        margin-bottom: ${theme.spaces[1]};
         font-size: ${theme.fontSizes[5]};
     }
 
     h3 {
-        margin-bottom: ${theme.spaces[3]};
+        margin-bottom: ${theme.spaces[1]};
         font-size: ${theme.fontSizes[3]};
     }
 
