@@ -1,6 +1,5 @@
 import React from "react";
-import { withTheme, ThemeProvider } from "emotion-theming";
-import { css, Global } from "@emotion/core";
+import { withTheme, ThemeProvider, css, Global } from "@emotion/react";
 import bullet from "./bullet.svg";
 
 const toPx = (x) => `${x}px`;
