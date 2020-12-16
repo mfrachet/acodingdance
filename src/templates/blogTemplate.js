@@ -17,12 +17,6 @@ import {
 
 const SiteRoot = `https://mfrachet.github.io`;
 
-const imgCss = (theme) => ({
-  maxWidth: "100%",
-  maxHeight: "464px",
-  marginBottom: theme.spaces[5],
-});
-
 export default function Template({ data }) {
   const { markdownRemark } = data; // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark;
@@ -106,16 +100,6 @@ export default function Template({ data }) {
           <h1>{frontmatter.title}</h1>
 
           <time dateTime={frontmatter.date}>{frontmatter.date}</time>
-
-          {frontmatter?.metaImage?.publicURL && (
-            <img
-              src={frontmatter.metaImage.publicURL}
-              css={imgCss}
-              alt=""
-              aria-hidden={true}
-              lazy
-            />
-          )}
 
           <div
             className="blog-post-content"

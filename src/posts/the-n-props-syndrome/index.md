@@ -6,6 +6,8 @@ metaImage: ./react.png
 metaKeywords: "react,react-native,frontend,javascript,props"
 ---
 
+![Reactjs](./react.png)
+
 If you have already worked on a codebase having components with a lot of `props`, you might have been victim of what I call **"The N props syndrome"**.
 
 Let me explain what I mean by telling you the story of my main Open Source project.

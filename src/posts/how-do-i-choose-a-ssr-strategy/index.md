@@ -6,6 +6,8 @@ metaImage: ./ssr-logo.jpg
 metaKeywords: "ssr,ssg,server side rendering,static side generation,crs,client side rendering,react,nextjs,gatsby"
 ---
 
+![A server sending information to a browser client](./ssr-logo.jpg)
+
 Server Side Rendering (or SSR) is a big trend. In the React ecosystem, we have plenty of tools that rely on it such as [Gatsbyjs](https://www.gatsbyjs.org/) or [Nextjs](https://nextjs.org/).
 
 Before getting further, let's see what happens when a user makes a request on a site that is not built using SSR:
