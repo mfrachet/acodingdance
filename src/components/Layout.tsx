@@ -2,8 +2,6 @@ import * as React from "react";
 import { withTheme, ThemeProvider, css, Global } from "@emotion/react";
 import bullet from "./bullet.svg";
 
-console.log('wtf', bullet)
-
 const toPx = (x) => `${x}px`;
 const toRem = (x) => `${x}rem`;
 
@@ -194,7 +192,6 @@ const makeGlobalStyles = (theme) => css`
   }
   /** end of h1,h2,h3 */
 
-  /* language-text */
   code.language-text {
     font-size: ${theme.fontSizes[0]};
     padding: ${theme.spaces[0]} ${theme.spaces[1]}!important;
