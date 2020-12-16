@@ -15,6 +15,10 @@ import {
   SkipToContentDestination,
 } from "../components/SkipToContent";
 
+const SiteRoot = `https://mfrachet.github.io`;
+
+const imgCss = (theme) => ({ maxWidth: "100%", marginBottom: theme.spaces[5] });
+
 export default function Template({ data }) {
   const { markdownRemark } = data; // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark;
@@ -51,10 +55,23 @@ export default function Template({ data }) {
     <Layout>
       <Helmet>
         <html lang="en" />
-
         <title>{frontmatter.title}</title>
-
         <meta name="description" content={markdownRemark.excerpt} />
+
+        <meta property="og:url" content={`${SiteRoot}${frontmatter.slug}`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={frontmatter.title} />
+        <meta property="og:description" content={markdownRemark.excerpt} />
+        {frontmatter?.metaImage?.publicURL && (
+          <meta
+            property="og:image"
+            content={`${SiteRoot}${frontmatter?.metaImage?.publicURL}`}
+          />
+        )}
+
+        {frontmatter.metaKeywords && (
+          <meta name="keywords" content={frontmatter.metaKeywords} />
+        )}
       </Helmet>
 
       <SkipToContent>Jump to content</SkipToContent>
@@ -84,6 +101,16 @@ export default function Template({ data }) {
           <h1>{frontmatter.title}</h1>
 
           <time dateTime={frontmatter.date}>{frontmatter.date}</time>
+
+          {frontmatter?.metaImage?.publicURL && (
+            <img
+              src={frontmatter.metaImage.publicURL}
+              css={imgCss}
+              alt=""
+              aria-hidden={true}
+            />
+          )}
+
           <div
             className="blog-post-content"
             dangerouslySetInnerHTML={{ __html: html }}
@@ -102,6 +129,10 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         slug
         title
+        metaImage {
+          publicURL
+        }
+        metaKeywords
       }
     }
   }
