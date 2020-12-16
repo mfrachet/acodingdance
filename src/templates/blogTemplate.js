@@ -98,6 +98,7 @@ export default function Template({ data }) {
         </nav>
 
         <SkipToContentDestination />
+
         <main>
           <Title>{frontmatter.title}</Title>
 
