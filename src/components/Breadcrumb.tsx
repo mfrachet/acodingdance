@@ -79,7 +79,7 @@ export const BreadCrumbItem: React.FC<BreadCrumbItemProps> = ({
         marginBottom: 0,
 
         '[aria-current="page"]': {
-          color: emphasized ? theme.colors.secondary : theme.colors.text,
+          color: emphasized ? theme.colors.primary : theme.colors.text,
           textDecoration: "none",
         },
       })}
