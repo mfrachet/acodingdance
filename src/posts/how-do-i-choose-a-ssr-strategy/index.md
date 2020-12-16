@@ -2,6 +2,8 @@
 title: "How do I choose which SSR strategy to adopt?"
 date: 2020-05-25
 slug: "/how-do-i-choose-a-ssr-strategy"
+metaImage: ./ssr-logo.jpg
+metaKeywords: "ssr,ssg,server side rendering,static side generation,crs,client side rendering,react,nextjs,gatsby"
 ---
 
 Server Side Rendering (or SSR) is a big trend. In the React ecosystem, we have plenty of tools that rely on it such as [Gatsbyjs](https://www.gatsbyjs.org/) or [Nextjs](https://nextjs.org/).

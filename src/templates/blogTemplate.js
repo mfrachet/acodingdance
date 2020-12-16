@@ -17,7 +17,11 @@ import {
 
 const SiteRoot = `https://mfrachet.github.io`;
 
-const imgCss = (theme) => ({ maxWidth: "100%", marginBottom: theme.spaces[5] });
+const imgCss = (theme) => ({
+  maxWidth: "100%",
+  maxHeight: "464px",
+  marginBottom: theme.spaces[5],
+});
 
 export default function Template({ data }) {
   const { markdownRemark } = data; // data.markdownRemark holds your post data
@@ -109,6 +113,7 @@ export default function Template({ data }) {
               css={imgCss}
               alt=""
               aria-hidden={true}
+              lazy
             />
           )}
 

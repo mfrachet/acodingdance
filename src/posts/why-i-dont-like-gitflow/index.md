@@ -2,6 +2,8 @@
 title: "Why I don't like Gitflow?"
 date: 2020-05-19
 slug: "/why-i-dont-like-gitflow"
+metaImage: ./gitflow-logo.png
+metaKeywords: "git,github,git flow,github flow,ship,feature flags,unleash,launch darkly"
 ---
 
 While I'm sure it can _probably_ be useful in certain situations, I don't like Gitflow and the ideas behind it. I think it's way too complex and that there are other easier solutions for a smoother workflow.

@@ -2,6 +2,8 @@
 title: "My toolbelt for safely building features"
 date: 2020-05-19
 slug: "/my-toolbelt"
+metaImage: ./belt.jpg
+metaKeywords: "test,auditing,feature flags,monitoring,alerting,monitoring,issue tracker"
 ---
 
 _This post won't cover any usage of the tools._

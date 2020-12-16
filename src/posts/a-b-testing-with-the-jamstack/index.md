@@ -3,7 +3,7 @@ title: "A/B testing with the JAMstack"
 date: 2020-10-25
 slug: "/a-b-testing-with-the-jamstack"
 metaImage: ./jamstack-logo.png
-metaKeywords: "jamstack,split testing,ab testing,netlify,gatsby,nextjs,11ty"
+metaKeywords: "jamstack,split testing,ab testing,netlify,gatsby,nextjs,11ty,react"
 ---
 
 The JAMstack has been talked about in recent years like a way to create static websites that scales very well in many different ways.

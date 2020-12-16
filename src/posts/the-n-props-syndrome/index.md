@@ -2,6 +2,8 @@
 title: "The N props syndrome"
 date: 2020-09-08
 slug: "/the-n-props-syndrome"
+metaImage: ./react.png
+metaKeywords: "react,react-native,frontend,javascript,props"
 ---
 
 If you have already worked on a codebase having components with a lot of `props`, you might have been victim of what I call **"The N props syndrome"**.
