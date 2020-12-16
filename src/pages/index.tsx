@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
 import { Helmet } from "react-helmet";
+import { FaTwitter, FaLinkedin, FaGithub,FaBook } from 'react-icons/fa'
 import { Layout } from "../components/Layout";
 import { Wrapper } from "../components/Wrapper";
+import { Title } from '../components/Title'
 
 const IndexPage = () => {
   return (
@@ -20,11 +22,13 @@ const IndexPage = () => {
 
       <Wrapper>
         <main>
-          <h1>
-            <span aria-hidden={true}>👋</span> Hey there, I'm Marvin Frachet
-          </h1>
+          <div  css={theme => ({marginTop: theme.spaces[8]})}>
+          <Title>
+            Hey there,<br /> I'm Marvin Frachet
+          </Title>
+          </div>
 
-          <p>
+          <p css={theme => ({marginTop: theme.spaces[5]})}>
             I'm a french software developer loving testing automation,{" "}
             <a
               href="https://www.typescriptlang.org/"
@@ -52,10 +56,15 @@ const IndexPage = () => {
             </a>{" "}
             that aims to be the fastest platform to build Gatsby sites.
           </p>
+          
 
-          <ul>
+          <ul css={theme => ({listStyleType: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'row', li: {
+            marginRight: theme.spaces[4]
+          }, svg: {
+            marginRight: theme.spaces[1]
+          }})}>
             <li>
-              <Link to="/posts">Blog posts</Link>
+              <Link to="/posts"><FaBook />Blog posts</Link>
             </li>
 
             <li>
@@ -64,6 +73,7 @@ const IndexPage = () => {
                 target="_blank"
                 rel="noreferrer"
               >
+                <FaGithub />
                 Github
               </a>
             </li>
@@ -74,6 +84,7 @@ const IndexPage = () => {
                 target="_blank"
                 rel="noreferrer"
               >
+                <FaTwitter />
                 Twitter
               </a>
             </li>
@@ -84,6 +95,7 @@ const IndexPage = () => {
                 target="_blank"
                 rel="noreferrer"
               >
+                <FaLinkedin />
                 LinkedIn
               </a>
             </li>

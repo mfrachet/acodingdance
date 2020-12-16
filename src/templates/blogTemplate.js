@@ -99,7 +99,7 @@ export default function Template({ data }) {
 
         <SkipToContentDestination />
 
-        <main>
+        <main css={{ position: "relative", zIndex: 2 }}>
           <Title>{frontmatter.title}</Title>
 
           <Time dateTime={frontmatter.date}>{frontmatter.date}</Time>

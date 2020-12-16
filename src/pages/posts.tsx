@@ -13,6 +13,7 @@ import {
   SkipToContentDestination,
 } from "../components/SkipToContent";
 import Helmet from "react-helmet";
+import { Title } from "../components/Title";
 
 const PostsPage = ({
   data: {
@@ -60,9 +61,9 @@ const PostsPage = ({
 
         <SkipToContentDestination />
         <main>
-          <h1>All posts</h1>
+          <Title>All posts</Title>
 
-          <ul>{Posts}</ul>
+          <ul css={theme => ({marginTop: theme.spaces[5]})}>{Posts}</ul>
         </main>
       </Wrapper>
     </Layout>

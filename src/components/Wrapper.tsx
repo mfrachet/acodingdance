@@ -6,6 +6,8 @@ export const Wrapper: React.FC = ({ children }) => (
       marginTop: theme.spaces[3],
       marginLeft: theme.spaces[4],
       marginRight: theme.spaces[4],
+      position: 'relative',
+
       [theme.mq.desktop]: {
        margin: `${theme.spaces[3]} auto`,
         width: "65ch",

@@ -36,10 +36,11 @@ const defaultTheme = {
   fontSizes: [0.7, 0.9, 1, 1.2, 1.3, 1.4, 1.6, 1.8, 2.2, 2.6, 3].map(toRem),
   colors: {
     primary: `hsl(231, 48%, 48%)`,
-    secondary: `hsl(340,82%,52%)`,
+    secondary: `rgb(233, 32, 99)`,
     text: `hsl(231, 48%, 22%)`,
     background: `hsl(360, 100%, 100%)`,
     background2: `hsl(231, 48%, 90%)`,
+    secondaryLight: `#F8BBD0`
   },
   fontWeights: {
     text: 400,
