@@ -33,9 +33,10 @@ const defaultTheme = {
     64,
     96,
   ].map(toPx),
-  fontSizes: [0.8, 0.9, 1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9].map(toRem),
+  fontSizes: [0.8, 0.9, 1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 3].map(toRem),
   colors: {
     primary: `hsl(231, 48%, 48%)`,
+    secondary: `hsl(340,82%,52%)`,
     text: `hsl(231, 48%, 22%)`,
     background: `hsl(360, 100%, 100%)`,
     background2: `hsl(231, 48%, 90%)`,
@@ -43,6 +44,7 @@ const defaultTheme = {
   fontWeights: {
     text: 400,
     heading: 600,
+    extraBold: 800
   },
 };
 

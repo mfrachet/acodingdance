@@ -14,6 +14,8 @@ import {
   SkipToContent,
   SkipToContentDestination,
 } from "../components/SkipToContent";
+import { Title } from "../components/Title";
+import { Time } from "../components/Time";
 
 const SiteRoot = `https://mfrachet.github.io`;
 
@@ -97,9 +99,9 @@ export default function Template({ data }) {
 
         <SkipToContentDestination />
         <main>
-          <h1>{frontmatter.title}</h1>
+          <Title>{frontmatter.title}</Title>
 
-          <time dateTime={frontmatter.date}>{frontmatter.date}</time>
+          <Time dateTime={frontmatter.date}>{frontmatter.date}</Time>
 
           <div
             className="blog-post-content"
