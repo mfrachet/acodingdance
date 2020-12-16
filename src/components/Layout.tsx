@@ -1,6 +1,5 @@
 import * as React from "react";
 import { withTheme, ThemeProvider, css, Global } from "@emotion/react";
-import bullet from "./bullet.svg";
 
 const toPx = (x) => `${x}px`;
 const toRem = (x) => `${x}rem`;
@@ -86,7 +85,6 @@ const makeGlobalStyles = (theme) => css`
   ul {
     margin: 0;
     padding: 0;
-    list-style: none;
     margin-bottom: ${theme.spaces[4]};
     margin-left: ${theme.spaces[2]};
   }
@@ -112,41 +110,12 @@ const makeGlobalStyles = (theme) => css`
     color: ${theme.colors.text};
     font-weight: ${theme.fontWeights.text};
 
-    &:before {
-      content: "";
-      display: inline-block;
-      height: ${theme.fontSizes[3]};
-      width: ${theme.fontSizes[3]};
-      background-image: url(${bullet});
-      background-size: contain;
-      background-repeat: no-repeat;
-      margin-right: ${theme.spaces[1]};
-      vertical-align: middle;
-    }
-
     &:last-of-type {
       margin-bottom: 0;
     }
   }
 
-  ${theme.mq.desktop} {
-    li {
-      display: flex;
-      
-      &:before {
-        content: "";
-        /* display: inline-flex; */
-        height: ${theme.fontSizes[3]};
-        width: ${theme.fontSizes[3]};
-        background-image: url(${bullet});
-        background-size: contain;
-        background-repeat: no-repeat;
-        margin-right: ${theme.spaces[1]};
-        margin-top: ${theme.spaces[0]};
-        vertical-align: middle;
-      }
-    }
-  }
+
   /* end of li */
 
   h1,
@@ -198,6 +167,7 @@ const makeGlobalStyles = (theme) => css`
     vertical-align: middle !important;
     background: ${theme.colors.background2}!important;
     color: ${theme.colors.text};
+    height: 100%;
   }
 
   .token.script.language-javascript,.token.tag,.token.constant {
