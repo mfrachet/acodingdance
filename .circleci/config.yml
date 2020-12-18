@@ -1,0 +1,27 @@
+version: 2.1
+jobs:
+  lint:
+    docker:
+      - image: circleci/node:14
+    steps:
+        - checkout
+        - run: yarn install
+        - run: yarn lint
+  e2e:
+    docker: 
+      - image: cypress/browsers:node14.7.0-chrome84
+    steps:
+      - checkout
+      - run: |
+          npm i -g serve
+          yarn install
+          yarn build 
+          yarn serve &
+          yarn e2e:audit:headless
+workflows:
+    version: 2.1
+    build:
+      jobs:
+        - lint
+        - e2e
+   
