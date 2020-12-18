@@ -9,7 +9,6 @@
     "gatsby": "^2.29.0",
     "gatsby-plugin-emotion": "^5.1.0",
     "gatsby-plugin-google-analytics": "^2.3.14",
-    "gatsby-plugin-offline": "^3.7.0",
     "gatsby-plugin-react-helmet": "^3.7.0",
     "gatsby-plugin-robots-txt": "^1.5.3",
     "gatsby-plugin-sharp": "^2.11.0",
@@ -27,19 +26,26 @@
   },
   "scripts": {
     "dev": "gatsby develop",
-    "build": "NODE_ENV=prod gatsby build ",
+    "build": "NODE_ENV=prod gatsby build",
+    "serve": "http-server ./public -p 6600",
     "deploy": "yarn build && gh-pages -d public -b master",
-    "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix"
+    "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
+    "e2e:audit": "cypress open",
+    "e2e:audit:headless": "cypress run --headless --browser chrome"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
+    "cypress": "^6.1.0",
+    "cypress-audit": "^0.2.4",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
     "gh-pages": "^3.1.0",
+    "http-server": "^0.12.3",
     "prettier": "^2.2.1",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.2",
+    "xml2js": "^0.4.23"
   }
 }

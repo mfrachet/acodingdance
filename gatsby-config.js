@@ -29,7 +29,6 @@ module.exports = {
                 ],
             },
         },
-        `gatsby-plugin-offline`,
         `gatsby-plugin-sitemap`,
         'gatsby-plugin-robots-txt',
     ],
