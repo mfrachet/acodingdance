@@ -23,7 +23,7 @@ Measuring things can start looking interesting to see the real benefit but also 
 
 Here comes [Lighthouse](https://developers.google.com/web/tools/lighthouse). Lighthouse is a tool built by Google that aims to audit frontend applications in order to give developers insights on performances, accessibility, PWA states and a lot of others things - including hints on how to improve.
 
-## Sounds great, but why that post?
+## Sounds great, but why a post about that?
 
 The problem I'm facing when dealing with Lighthouse is that **we tend to test only the main pages of a website**.
 
