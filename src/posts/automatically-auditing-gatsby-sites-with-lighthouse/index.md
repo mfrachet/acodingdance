@@ -23,7 +23,7 @@ Measuring things can start looking interesting to see the real benefit but also 
 
 Here comes [Lighthouse](https://developers.google.com/web/tools/lighthouse). Lighthouse is a tool built by Google that aims to audit frontend applications in order to give developers insights on performances, accessibility, PWA states and a lot of others things - including hints on how to improve.
 
-## Why to write a blog about these tools?
+## Sounds great, but why that post?
 
 The problem I'm facing when dealing with Lighthouse is that **we tend to test only the main pages of a website**.
 
@@ -32,6 +32,8 @@ How many times I faced myself only testing a homepage where I had hundred of pub
 In this post, I would like to provide a recipe on how to automatically run as many Lighthouse tests as the number of pages that a Gatsby site has.
 
 ## How to solve this problem?
+
+Obviously a solution is to test more pages to get confidence on the global performance (or anything else) status of the site.
 
 The solution I would like to introduce relies on a `sitemap.xml` file. This file is often used to provide search engine information about the different resources available in a site. 
 
