@@ -1,10 +1,12 @@
 context('Home', () => {
-    beforeEach(() => {
-        cy.visit('/');
-    });
+    it('verify all the pages shapes', () => {
+        cy.task('sitemap', { path: 'public' }).then((urls) => {
+            urls.forEach((url) => {
+                cy.visit(url);
+                cy.url().should('contain', url);
 
-    // https://on.cypress.io/interacting-with-elements
-    it('rocks', () => {
-        cy.lighthouse();
+                cy.lighthouse({ pwa: 0 });
+            });
+        });
     });
 });

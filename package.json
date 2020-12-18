@@ -27,7 +27,7 @@
   "scripts": {
     "dev": "gatsby develop",
     "build": "NODE_ENV=prod gatsby build",
-    "serve": "serve -s public -l 6600",
+    "serve": "http-server ./public -p 6600",
     "deploy": "yarn build && gh-pages -d public -b master",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
     "e2e:audit": "cypress open",
@@ -43,8 +43,9 @@
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
     "gh-pages": "^3.1.0",
+    "http-server": "^0.12.3",
     "prettier": "^2.2.1",
-    "serve": "^11.3.2",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.2",
+    "xml2js": "^0.4.23"
   }
 }
