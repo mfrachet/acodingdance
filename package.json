@@ -27,7 +27,7 @@
   "scripts": {
     "dev": "gatsby develop",
     "build": "NODE_ENV=prod gatsby build",
-    "serve": "http-server ./public -p 6600",
+    "serve": "http-server ./public -p 6600 -s",
     "deploy": "yarn build && gh-pages -d public -b master",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
     "e2e:audit": "cypress open",
