@@ -184,3 +184,6 @@ const auditUrls = async (urls) => {
 };
 ```
 
+### All in one
+
+![Lighthouse auditing a whole blog](./audit-blog.gif)

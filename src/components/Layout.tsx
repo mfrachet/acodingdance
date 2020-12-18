@@ -95,6 +95,10 @@ const makeGlobalStyles = (theme) => css`
         font-size: ${theme.fontSizes[0]};
     }
 
+    img {
+        max-width: 100%;
+    }
+
     /* li */
     li {
         margin: 0;
