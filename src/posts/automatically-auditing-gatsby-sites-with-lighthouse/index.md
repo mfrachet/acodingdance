@@ -100,7 +100,7 @@ const extractUrlsFromSitemap = async () => {
     // Resolve the path of the sitemap.xml file
     // By default, it's located in the ./public folder of your project
     // when running NODE_ENV=prod gatsby build
-    const filepath = join(process.cwd(), path, 'sitemap.xml');
+    const filepath = join(process.cwd(), 'public', 'sitemap.xml');
 
 
     // Read the string content of the sitemap.xml
@@ -133,3 +133,54 @@ const extractUrlsFromSitemap = async () => {
 
 module.exports = sitemapTask;
 ```
+
+### Running Lighthouse
+
+We now have a list of all the URLs that exist for the Gatsby site:
+
+```json
+[
+    "http://localhost:3000/a-b-testing-with-the-jamstack",
+    "http://localhost:3000/the-n-props-syndrome",
+    "http://localhost:3000/how-do-i-choose-a-ssr-strategy"
+]
+```
+
+The next step is to run a Lighthouse audit on every of these.
+
+Lighthouse can be used in different ways: using the cli, in [Cypress](https://www.cypress.io/) tests with [cypress-audit](https://github.com/mfrachet/cypress-audit) or using Node.js. For the sake of clarity, I've decided to use the node module in this example.
+
+```js
+// chrome-launcher is a tool that allows to start Chrome and to use the drive it with the devtools protocol
+const chromeLauncher = require("chrome-launcher");
+const lighthouse = require("lighthouse");
+
+// Let's define performance budgets for the global site
+const PERFORMANCE_BUDGET = 50;
+
+const auditUrls = async (urls) => {
+  // we create a chrome instance
+  const chrome = await chromeLauncher.launch();
+
+  // we create Lighthouse options so that it knows on which chrome instance it has to connect
+  const options = { port: chrome.port };
+
+  // for each URL, we run a Lighthouse audit
+  // we throw an error when the threshold is crossed.
+  // NB: lighthouse retrieves score in decimal like: 0.4. We need to multiply it by 100 to get a percentage value
+  for (const url of urls) {
+    const runnerResult = await lighthouse(url, options);
+    const performance = runnerResult.lhr.categories.performance;
+
+    if (performance.score * 100 < PERFORMANCE_BUDGET) {
+      await chrome.kill();
+      throw new Error("Oops! Performance thresholds crossed!");
+    }
+  }
+
+  // Nothing thrown, every tests have succeeded!
+  console.log("Everything is passing! Congrats!");
+  await chrome.kill();
+};
+```
+
