@@ -31,5 +31,12 @@ module.exports = {
         },
         `gatsby-plugin-sitemap`,
         'gatsby-plugin-robots-txt',
+        {
+            resolve: `gatsby-plugin-canonical-urls`,
+            options: {
+                siteUrl: `https://mfrachet.github.io`,
+                stripQueryString: true,
+            },
+        },
     ],
 };

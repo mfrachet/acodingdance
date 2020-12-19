@@ -5953,6 +5953,12 @@ gatsby-page-utils@^0.6.0:
     lodash "^4.17.20"
     micromatch "^4.0.2"
 
+gatsby-plugin-canonical-urls@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-canonical-urls/-/gatsby-plugin-canonical-urls-2.7.0.tgz#50a41c3bea81e6f820b956b51829e0781f7bab4f"
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+
 gatsby-plugin-emotion@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-emotion/-/gatsby-plugin-emotion-5.1.0.tgz#18b86ad1b9601bac529fc196a8f126962917f4f2"
