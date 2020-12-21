@@ -5,6 +5,7 @@ const timeCss = (theme) => ({
     fontSize: theme.fontSizes[0],
     color: theme.colors.text,
     marginLeft: theme.spaces[0],
+    marginBottom: 0,
 });
 
 export const Time = (props) => {

@@ -90,9 +90,11 @@ export default function BlogTemplate({ data }) {
                 <SkipToContentDestination />
 
                 <main css={{ position: 'relative', zIndex: 2 }}>
-                    <Title>{frontmatter.title}</Title>
+                    <div css={(theme) => ({ marginBottom: theme.spaces[4] })}>
+                        <Title>{frontmatter.title}</Title>
 
-                    <Time dateTime={frontmatter.date}>{frontmatter.date}</Time>
+                        <Time dateTime={frontmatter.date}>{frontmatter.date}</Time>
+                    </div>
 
                     <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: html }} />
                 </main>

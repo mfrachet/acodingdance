@@ -9,7 +9,6 @@ import { Title } from '../components/Title';
 const IndexPage = () => {
     const description =
         'Marvin Frachet is a senior software engineer building products at scale, with a passion for code quality, refactoring and automation.';
-
     const keywords = `react,react native,gatsby,nextjs,next,jamstack,javascript,nodejs,product engineering,feature flags, a/b testing`;
 
     return (
