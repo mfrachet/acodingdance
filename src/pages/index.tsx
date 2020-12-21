@@ -7,6 +7,11 @@ import { Wrapper } from '../components/Wrapper';
 import { Title } from '../components/Title';
 
 const IndexPage = () => {
+    const description =
+        'Marvin Frachet is a senior software engineer building products at scale, with a passion for code quality, refactoring and automation.';
+
+    const keywords = `react,react native,gatsby,nextjs,next,jamstack,javascript,nodejs,product engineering,feature flags, a/b testing`;
+
     return (
         <Layout>
             <Helmet>
@@ -14,10 +19,15 @@ const IndexPage = () => {
 
                 <title>Marvin Frachet · Product engineering at scale</title>
 
-                <meta
-                    name="description"
-                    content="Marvin Frachet is a senior software engineer building product at scale, with a passion for code quality and automation."
-                />
+                <meta name="description" content={description} />
+
+                <meta name="twitter:creator" content="@mfrachet" />
+                <meta name="twitter:card" content="summary" />
+                <meta property="og:url" content="https://mfrachet.github.io/" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Marvin Frachet · Product engineering at scale" />
+                <meta property="og:description" content={description} />
+                <meta name="keywords" content={keywords} />
             </Helmet>
 
             <Wrapper>
