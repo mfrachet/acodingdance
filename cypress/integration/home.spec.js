@@ -5,7 +5,13 @@ context('Home', () => {
                 cy.visit(url);
                 cy.url().should('contain', url);
 
-                cy.lighthouse({ pwa: 0 });
+                cy.lighthouse({
+                    performance: 90,
+                    accessibility: 100,
+                    'best-practices': 90,
+                    seo: 90,
+                    pwa: 0,
+                });
             });
         });
     });
