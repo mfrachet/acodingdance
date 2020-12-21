@@ -6,9 +6,9 @@ context('Home', () => {
                 cy.url().should('contain', url);
 
                 cy.lighthouse({
-                    performance: 90,
-                    accessibility: 100,
-                    'best-practices': 90,
+                    performance: 95,
+                    accessibility: 95,
+                    'best-practices': 95,
                     seo: 90,
                     pwa: 0,
                 });
