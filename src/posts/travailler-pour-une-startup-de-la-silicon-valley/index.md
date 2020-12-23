@@ -29,7 +29,7 @@ Cependant, Gatsby est une société qui n'existe qu'aux Etats Unis, et seulement
 Il existe néanmoins un moyen de travailler pour une société qui n'existe pas en France : **créer sa propre société**, et facturer l'autre société comme client. À chaque fin de mois, j'ai édité une facture à destination de Gatsby qui m'a versé une compensation pour les services de développement rendus.
 
 
-En France, il existe plusieurs statuts d'entreprise différents, avec différents avantages et inconvéniants. J'ai choisis, pour démarrer mon activité, un statut d'entreprise simplifié: [l'auto-entreprise]((http://autoentrepreneur.urssaf.fr/)).
+En France, il existe plusieurs statuts d'entreprise différents, avec différents avantages et inconvéniants. J'ai choisis, pour démarrer mon activité, un statut d'entreprise simplifié: [l'auto-entreprise](http://autoentrepreneur.urssaf.fr/).
 
 Avec ce statut, la gestion de l'entreprise est relativement simple : il faut déclarer son chiffre d'affaire mensuel sur le site de l'URSSAF, et payer en ligne directement. 
 Cependant, il n'est pas possible de dépasser les 70 000 euros de chiffres d'affaires à l'année. Bien que cela puisse sembler ennuyeux, **il est autorisé de dépasser ce montant pendant les deux premières années d'activités**. A partir de la troisième année de dépassement, l'auto-entrepreneur devra changer de statut et s'orienter vers quelque chose de moins avantageux financièrement tel que [l'entreprise individuelle (EI)](https://www.economie.gouv.fr/entreprises/statut-entreprise-individuelle) ou [la société par action simplifiée unipersonnelle (SASU)](https://www.economie.gouv.fr/entreprises/societe-par-actions-simplifiee-unipersonnelle-sasu)
