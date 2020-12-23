@@ -26,7 +26,7 @@ Lorsqu'on travaille en France pour une entreprise, cette entreprise doit posséd
 
 Cependant, Gatsby est une société qui n'existe qu'aux Etats Unis, et seulement la bas. C'est à dire qu'elle ne peut pas embaucher de salariés Français - directement sous statut salarié.
 
-Il existe néanmoins un moyen de travailler pour une société qui n'existe pas en France: créer sa propre société, et facturer l'autre société comme client. A chaque fin de mois, j'ai édité une facture à destination de Gatsby qui m'a versé une compensation pour les services de développement rendus.
+Il existe néanmoins un moyen de travailler pour une société qui n'existe pas en France: **créer sa propre société**, et facturer l'autre société comme client. A chaque fin de mois, j'ai édité une facture à destination de Gatsby qui m'a versé une compensation pour les services de développement rendus.
 
 ## La barrière de la langue en est une - mais pas vraiment.
 
@@ -36,8 +36,16 @@ Et c'est ça qui est important: **comprendre une idée, et transmettre une idée
 
 Les entreprises qui embauchent des salariés à l'étranger se fichent de savoir si vous êtes billingue ou pas. Ce qui les intéressent, c'est d'être capable de communiquer et de transmettre de l'information.
 
-Ce sont les connaissances techniques, la capacité de réflexion et comment la personne appréhende un problème qui est important.
-
 La langue, c'est quelque chose qui s'apprend.
 
+## Le développment est une histoire de contexte et d'opportunités
 
+C'est peut être la plus grande leçon que j'ai apprise durant cette période.
+
+Comme beaucoup de développeurs, je suis victime du **syndrome de l'imposteur**. Je pense que j'ai ce syndrome parce que j'essaie de comparer mon travail à celui des autres. Et j'ai tendance à comparer ce qui est visible: **les projets open source et les contributions open source**.
+
+A titre d'example, je me sens inférieur à une personne à partir du moment ou elle a contributé sur un projet que je ne comprends ou ne maitrise pas. Par exemple, [Webpack](https://webpack.js.org/) et [Babel](https://babeljs.io/) (leur codebase) me font peur. Et les personnes qui travaillent et contribuent sur ces outils sont pour moi des développeurs incroyables, et bien meilleurs que moi.
+
+En prenant du recul et ayant travaillé avec Gatbsy - qui éxploite Webpack en long, en large et en travers - je me suis rendu compte que finalement, être legitime et se sentir bien et fier de son code n'est pas une histoire de contributions. C'est une histoire de contexte.
+
+J'ai travaillé pendant la majeure partie de cette experience sur [Gatsby Cloud](https://www.gatsbyjs.com/dashboard), une application web, en utilisant des technos que je connaissais et sur laquelle j'avais déjà pratiqué.
