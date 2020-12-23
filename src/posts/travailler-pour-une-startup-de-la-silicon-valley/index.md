@@ -36,13 +36,22 @@ Cependant, il n'est pas possible de dépasser les 70 000 euros de chiffres d'aff
 
 _Notes: 70 000 euros de chiffres d'affaire, ce n'est pas ce qui rentre dans notre poche. Il faut déduire à cela les charges URSSAF et le paiement des impots personnels._
 
-Il est important de noter qu'ouvrir compte professionel peut être necessaire à la création d'une nouvelle activité. Dans mon cas, j'ai ouverts un compte dans une banque française qui recevait les paiements en dollars et prenait une marge sur la conversion (quelque chose comme 20 euros par transfert).
+Il est important de noter qu'ouvrir un compte professionel peut être necessaire à la création d'une nouvelle activité. Dans mon cas, j'ai ouverts un compte dans une banque française qui recevait les paiements en dollars et prenait une marge sur la conversion (quelque chose comme 20 euros par transfert).
 
 Je recommende très fortement de se renseigner et de vérifier [l'éligibilité à l'ACRE](https://www.portail-autoentrepreneur.fr/actualites/reforme-acre-2020) qui est une exonération des charges d'entreprise pendant quelque temps. J'ai par exemple payé seulement ~5% de taxes (si ma mémoire est bonne) grace à cela, contre 22% sans cette aide.
 
 ## Le fonctionnement d'une start-up en Amérique
 
-TODO
+Une start-up, c'est une entreprise à fort potentiel et qui est dans ses jeunes années. Il est possible de créer une entreprise et de se faire financer par des compagnies d'investissements. Pour se faire, la start-up doit créer un dossier très complet sur l'état du projet, sa direction, qu'est ce qu'elle cherche à accomplir, dans combien de temps, quels sont les plans des années à venir etc.
+
+Si l'entreprise réussit à se faire financer, on appelle ça une "levée de fond". Cette levée de fond va servir à embaucher et à payer des salaires afin d'accélérer la croissance de l'entreprise et d'essayer de devenir rentable le plus tôt possible.
+
+Les investisseurs, en échange de financement, reçoivent des parts de l'entreprise. Au jour 1 de la création de l'entreprise, c'est le fondateur qui possède 100 % des parts. Lors de l'investissement, le fondateur va échanger une partie de ses parts (par exemple 25% de la société) contre de l'argent. Il ne sera plus propriétaire que de 75 % de l'entreprise. 
+
+C'est un pari risqué pour les investisseurs, mais si ce business existe, c'est qu'il est rentable dans certains cas.
+
+Souvent, des "stock options" sont proposées aux employés en plus de leurs salaires. Ces "stock options" sont des options d'achat, c'est à dire qu'un employé peut les acheter pendant une période donnée. Je ne suis pas très à l'aise avec ce système, mais c'est quelque chose à garder à l'ésprit. [Plus d'informations ici](https://www.capital.fr/entreprises-marches/stock-options-1316552).
+
 
 ## La barrière de la langue en est une - mais pas vraiment.
 
@@ -54,21 +63,9 @@ Les entreprises qui embauchent des salariés à l'étranger se fichent de savoir
 
 **La langue, c'est quelque chose qui s'apprend.**
 
-## Le développement est une histoire de contexte et d'opportunités
+Le plus gros problème que j'ai eu et relatif à la langue concerne l'aspect social. Dans ce métier, il est assez facile de transmettre une idée ou de donner une opinion. C'en est une autre d'échanger librement, de raconter des blagues ou de parler de la vie du quotidien.
 
-C'est peut-être la plus grande leçon que j'ai reçue durant cette période.
-
-Comme beaucoup de développeurs, je suis victime du **syndrome de l'imposteur**. Je pense que j'ai ce syndrome parce que j'essaie de comparer mon travail à celui des autres. Et j'ai tendance à comparer ce qui est visible : **les projets open-source et les contributions open-source**.
-
-À titre d'exemple, je me sens inférieur à une personne à partir du moment ou elle a contribué sur un projet que je ne comprends ou ne maîtrise pas. Par exemple, [Webpack](https://webpack.js.org/) et [Babel](https://babeljs.io/) (leur codebase) me font peur. Et les personnes qui travaillent et contribuent sur ces outils sont pour moi des développeurs incroyables, et bien meilleurs que moi.
-
-En prenant du recul et ayant travaillé avec Gatbsy - qui exploite Webpack en long, en large et en travers - je me suis rendu compte que finalement, être légitime et se sentir bien et fier de son code n'est pas une histoire de contributions. **C'est une histoire de contexte**.
-
-J'ai travaillé pendant la majeure partie de cette expérience sur [Gatsby Cloud](https://www.gatsbyjs.com/dashboard), une application web, en utilisant des technos que je connaissais et avec lesquelles j'avais déjà pas mal pratiqué. Même en ayant plusieurs années d'expérience sur React et avec son écosystème, les premiers mois chez Gatsby ont été fastidieux pour moi et assez fatiguant. Je ne me retrouvais pas dans la base de code et je stressais beaucoup. Aujourd'hui, je suis capable de faire un peu n'importe quoi sur Gatsby Cloud, créer de nouvelles fonctionnalités, refactorer une page entière ou créer de nouvelles queries Graphql, **parce que j'ai acquis du contexte et du savoir en travaillant sur cette base de code pendant plusieurs mois**.
-
-Durant mes derniers mois chez Gatsby, j'ai travaillé un petit peu plus sur [le projet open-source](https://github.com/gatsbyjs/gatsby), et une nouvelle fois, j'ai eu peur. Tout me paraissait compliqué avec beaucoup de logique que je n'arrivais pas à appréhender ou, tout du moins, je n'arrivais pas à comprendre pourquoi telle portion de code se trouvait à tel endroit. **Et encore une fois, je manquais de contexte** : c'était la première fois que je mettais les pieds dans cette base de code, il me fallait du temps pour me familiariser avec ces nouveaux concepts.
-
-**À la fin de la journée, tout le monde écrit des conditions et des boucles.**
+Dans la vraie vie, je suis quelqu'un d'extraverti et je parle beaucoup. Malgrès cela, je pense que mes collègues m'ont perçu comme quelqu'un d'assez discret à cause de cette limite de compréhension et de manque de proximité sociale.
 
 ## Trouver sa place dans ce genre d'entreprise
 
@@ -76,8 +73,10 @@ Dans les entreprises de la Silicon Vallée, il faut s'attendre à travailler ave
 
 Chez Gatsby, il y a des contributeurs [Lighthouse](https://developers.google.com/web/tools/lighthouse), des personnes de la core team [Graphql](https://graphql.org/), des contributeurs [Babel](https://babeljs.io/), [le créateur de styled-component](https://twitter.com/mxstbr) et tant d'autres.
 
-Je me suis senti un peu insignifiant de travailler avec des personnes de "ce calibre". Mais la vraie histoire, c'est que tout le monde a quelque chose à apporter. **Personne n'excelle dans tous les domaines**. Une personne très douée pour travailler sur des ASTs n'est potentiellement pas là plus à même de créer une expérience utilisateur adéquate selon l'audience attendue.
+Lorsque j'ai rejoint la société, il m'a fallu plusieurs mois pour être en confiance. Je transpirais beaucoup pendant les appels, je travaillais plus tard le soir. Je me suis senti un peu insignifiant de travailler avec des personnes de "ce calibre" et j'essayais de compenser à ma manière.
 
-J'ai pour ma part, travaillé quelques années dans l'univers des sociétés de services en tant que consultant. Dans ce genre de société, on passe pas mal de temps à réparer les pots cassés et à s'assurer que le code puisse fonctionner dans le temps. À la carte, du refactoring, de l'automatisation de tests et beaucoup d'échange avec les personnes en charge du produit pour comprendre les besoins.
+Mais après quelque mois à apprendre et comprendre le fonctionnement de l'entreprise, je me suis rendus compte que **tout le monde a quelque chose à apporter**. **Personne n'excelle dans tous les domaines**. Une personne très douée pour travailler sur des ASTs n'est potentiellement pas là plus à même de créer une expérience utilisateur adéquate selon l'audience attendue.
 
-Le moment ou j'ai commencé à vraiment me sentir bien, c'est lorsque j'ai compris que ma force venait de mes expériences précédentes : j'ai fini par comprendre que mon rôle dans l'entreprise était celui de la sensibilité et la transition aux techniques de clean code, a l'automatisation des tests et à s'assurer que les produits que nous créons fonctionnent dans le temps.
+
+Pour la petite histoire, j'ai travaillé quelques années dans l'univers des sociétés de services en tant que consultant. Et quand j'ai rejoint Gatsby, je me demandais qu'est ce que je pouvais apporter à des équipes si talentueuses. Il s'avère qu'en société de service, on apprend un tas de trucs et notamment à réparer les pots cassés et à s'assurer que de nouveaux bugs ne voient pas le jour. C'est la que j'ai eu un impact : sensibiliser mes collègues au clean code et a l'automatisation des tests.
+
