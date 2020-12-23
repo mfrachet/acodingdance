@@ -73,7 +73,7 @@ Dans les entreprises de la Silicon Vallée, il faut s'attendre à travailler ave
 
 Chez Gatsby, il y a des contributeurs [Lighthouse](https://developers.google.com/web/tools/lighthouse), des personnes de la core team [Graphql](https://graphql.org/), des contributeurs [Babel](https://babeljs.io/), [le créateur de styled-component](https://twitter.com/mxstbr) et tant d'autres.
 
-Lorsque j'ai rejoint la société, il m'a fallu plusieurs mois pour être en confiance. Je transpirais beaucoup pendant les appels, je travaillais plus tard le soir. Je me suis senti un peu insignifiant de travailler avec des personnes de "ce calibre" et j'essayais de compenser à ma manière.
+Lorsque j'ai rejoint la société, il m'a fallu plusieurs mois pour être en confiance : je transpirais beaucoup pendant les appels, je travaillais plus tard le soir. Je me suis senti un peu insignifiant de travailler avec des personnes de "ce calibre" et j'essayais de compenser à ma manière.
 
 Mais après quelque mois à apprendre et comprendre le fonctionnement de l'entreprise, je me suis rendus compte que **tout le monde a quelque chose à apporter**. **Personne n'excelle dans tous les domaines**. Une personne très douée pour travailler sur des ASTs n'est potentiellement pas là plus à même de créer une expérience utilisateur adéquate selon l'audience attendue.
 
