@@ -49,7 +49,7 @@ export default function BlogTemplate({ data }) {
     return (
         <Layout>
             <Helmet>
-                <html lang="en" />
+                <html lang={frontmatter?.lang || 'en'} />
                 <title>{frontmatter.title}</title>
                 <meta name="description" content={markdownRemark.excerpt} />
                 <meta name="twitter:creator" content="@mfrachet" />
@@ -109,6 +109,7 @@ export const pageQuery = graphql`
                 date(formatString: "MMMM DD, YYYY")
                 slug
                 title
+                lang
                 metaImage {
                     publicURL
                 }

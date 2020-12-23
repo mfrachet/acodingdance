@@ -1,0 +1,43 @@
+---
+title: "Travailler pour une startup de la Silicon Valley"
+date: 2020-12-24
+slug: "/travailler-pour-une-startup-de-la-silicon-valley"
+metaKeywords: "test,auditing,feature flags,monitoring,alerting,monitoring,issue tracker"
+lang: "fr"
+---
+
+Dès le début de ma carrière, j'ai été très admiratif de la Silicon Valley et des personnes qui travaillent la bas. Pour moi, c'est l'endroit ou "les élites de l'industrie" se retrouvent pour fabriquer des outils et des applications à fort potentiel et tourner vers l'avenir.
+
+
+Pendant mes années de travail en France, je regardais cet endroit inaccessible qui semblait être un idéal et j'imaginais ça comme un objectif à atteindre: "il faut que j'arrive à travailler la bas".
+
+
+Entre l'année 2019 et l'année 2020, j'ai eu cette opportunité: j'ai travaillé avec une startup à fort potentiel de la Silicon Valley dans l'univers du dévelopement web.
+
+Je suis un très grand fan de la librairie [React](https://reactjs.org/) et c'est donc avec une très (très) grande excitation que j'ai rejoins [Gatsby](https://www.gatsbyjs.com/), une entreprise qui conçoit un des générateurs de sites statiques phares de l'écosystem: [https://github.com/gatsbyjs/gatsby](https://github.com/gatsbyjs/gatsby).
+
+Cet article a pour but de décortiquer cette experience et de partager mon ressentis.
+
+## Travailler légalement depuis la France pour les Etats unis
+
+J'ai travaillé 100% de mon temps en télétravail, depuis Strasbourg, avec des collègues établis un peu partout dans le monde (Etats-unis Est / Ouest, Afrique, Inde, France, Belgique, Angleterre, Norvège, Finland, Autriche etc...)
+
+Lorsqu'on travaille en France pour une entreprise, cette entreprise doit posséder un numéro de SIRET. Cela signifie que cette entreprise paye des taxes en France et qu'elle a le droit de pratiquer son activité sur le territoire.
+
+Cependant, Gatsby est une société qui n'existe qu'aux Etats Unis, et seulement la bas. C'est à dire qu'elle ne peut pas embaucher de salariés Français - directement sous statut salarié.
+
+Il existe néanmoins un moyen de travailler pour une société qui n'existe pas en France: créer sa propre société, et facturer l'autre société comme client. A chaque fin de mois, j'ai édité une facture à destination de Gatsby qui m'a versé une compensation pour les services de développement rendus.
+
+## La barrière de la langue en est une - mais pas vraiment.
+
+Je suis français, né en France et le seul autre pays dans lequel j'ai vécu, c'est le Canada français. Autant dire que mon niveau d'anglais se résumait à ce que j'ai appris à l'école et à l'ensemble de la documentation des outils techniques que nous lisons au quotidien. Avant cette éxperience, j'étais capable de faire quelque phrases construites et de transmettre une idée quand nécessaire, mais rien de plus.
+
+Et c'est ça qui est important: **comprendre une idée, et transmettre une idée**.
+
+Les entreprises qui embauchent des salariés à l'étranger se fichent de savoir si vous êtes billingue ou pas. Ce qui les intéressent, c'est d'être capable de communiquer et de transmettre de l'information.
+
+Ce sont les connaissances techniques, la capacité de réflexion et comment la personne appréhende un problème qui est important.
+
+La langue, c'est quelque chose qui s'apprend.
+
+
