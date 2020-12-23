@@ -34,9 +34,9 @@ Je suis français, né en France et le seul autre pays dans lequel j'ai vécu, c
 
 Et c'est ça qui est important: **comprendre une idée, et transmettre une idée**.
 
-Les entreprises qui embauchent des salariés à l'étranger se fichent de savoir si vous êtes billingue ou pas. Ce qui les intéressent, c'est d'être capable de communiquer et de transmettre de l'information.
+Les entreprises qui embauchent des salariés à l'étranger se fichent de savoir si nous sommes billingues ou pas. Ce qui les intéressent, c'est d'être capable de communiquer et de transmettre de l'information.
 
-La langue, c'est quelque chose qui s'apprend.
+**La langue, c'est quelque chose qui s'apprend.**
 
 ## Le développment est une histoire de contexte et d'opportunités
 
@@ -44,24 +44,24 @@ C'est peut être la plus grande leçon que j'ai reçu durant cette période.
 
 Comme beaucoup de développeurs, je suis victime du **syndrome de l'imposteur**. Je pense que j'ai ce syndrome parce que j'essaie de comparer mon travail à celui des autres. Et j'ai tendance à comparer ce qui est visible: **les projets open source et les contributions open source**.
 
-A titre d'example, je me sens inférieur à une personne à partir du moment ou elle a contributé sur un projet que je ne comprends ou ne maitrise pas. Par exemple, [Webpack](https://webpack.js.org/) et [Babel](https://babeljs.io/) (leur codebase) me font peur. Et les personnes qui travaillent et contribuent sur ces outils sont pour moi des développeurs incroyables, et bien meilleurs que moi.
+A titre d'example, je me sens inférieur à une personne à partir du moment ou elle a contribué sur un projet que je ne comprends ou ne maitrise pas. Par exemple, [Webpack](https://webpack.js.org/) et [Babel](https://babeljs.io/) (leur codebase) me font peur. Et les personnes qui travaillent et contribuent sur ces outils sont pour moi des développeurs incroyables, et bien meilleurs que moi.
 
-En prenant du recul et ayant travaillé avec Gatbsy - qui éxploite Webpack en long, en large et en travers - je me suis rendu compte que finalement, être legitime et se sentir bien et fier de son code n'est pas une histoire de contributions. C'est une histoire de contexte.
+En prenant du recul et ayant travaillé avec Gatbsy - qui éxploite Webpack en long, en large et en travers - je me suis rendu compte que finalement, être legitime et se sentir bien et fier de son code n'est pas une histoire de contributions. **C'est une histoire de contexte**.
 
-J'ai travaillé pendant la majeure partie de cette experience sur [Gatsby Cloud](https://www.gatsbyjs.com/dashboard), une application web, en utilisant des technos que je connaissais et sur laquelle j'avais déjà pratiqué. J'ai pas mal de contexte dessus et je suis capable d'ajouter ou de maintenir de nouvelles fonctionnalités assez aisément, **parce que j'ai acquis du contexte en travaillant sur cette base de code pendant plusieurs mois**. Croyez moi, à mon jour 1 chez Gatsby, j'étais bien moins à l'aise et j'étais même très stressé d'être à la hauteur. Avec du temps, cette base de code est devenu ma maison.
+J'ai travaillé pendant la majeure partie de cette experience sur [Gatsby Cloud](https://www.gatsbyjs.com/dashboard), une application web, en utilisant des technos que je connaissais et avec lesquelles j'avais déjà pas mal pratiqué. Même en ayant plusieurs années d'experience sur React et avec son ecosystème, les premiers mois chez Gatsby ont été fastidieux pour moi et assez fatiguant. Je ne me retrouvais pas dans la base de code et je stressais beaucoup. Aujourd'hui, je suis capable de faire un peu n'importe quoi sur Gatsby Cloud, créer de nouvelles fonctionnalités, refactorer une page entière ou créer de nouvelles queries Graphql, **parce que j'ai acquis du contexte et du savoir en travaillant sur cette base de code pendant plusieurs mois**.
 
-Durant les derniers mois passé chez Gatsby, j'ai travaillé un petit peu plus sur le projet open source, et une nouvelle fois, j'ai eu peur. Tout me paraissait compliqué avec beaucoup de logique que je n'arrivais pas à appréhender ou tout du même je n'arrivais pas à comprendre pourquoi tel portion de code se trouvait ici. **Et encore une fois, je manquais de contexte**: c'était la première fois que je mettais les pieds dans cette base de code, heureusement que je ne comprenais pas tout !
+Durant mes derniers mois chez Gatsby, j'ai travaillé un petit peu plus sur [le projet open source](https://github.com/gatsbyjs/gatsby), et une nouvelle fois, j'ai eu peur. Tout me paraissait compliqué avec beaucoup de logique que je n'arrivais pas à appréhender ou, tout du moins, je n'arrivais pas à comprendre pourquoi tel portion de code se trouvait à tel endroit. **Et encore une fois, je manquais de contexte**: c'était la première fois que je mettais les pieds dans cette base de code, il me fallait du temps pour me familiariser avec ces nouveaux concepts.
 
 **A la fin de la journée, tout le monde écrit des conditions et des boucles.**
 
 ## Trouver sa place dans ce genre d'entreprise
 
-Dans les entreprises de la Silicon Valley, il faut s'attendre à travailler avec des personnes avec un background impréssionnant.
+Dans les entreprises de la Silicon Valley, il faut s'attendre à travailler avec des personnes aux backgrounds impréssionnants.
 
-Chez Gatsby, il y a des contributeurs sur [Lighthouse](https://developers.google.com/web/tools/lighthouse), des personnes de la core team [Graphql](https://graphql.org/), des contributeurs [Babel](https://babeljs.io/), [le créateur de styled-component](https://twitter.com/mxstbr) et tant d'autres.
+Chez Gatsby, il y a des contributeurs [Lighthouse](https://developers.google.com/web/tools/lighthouse), des personnes de la core team [Graphql](https://graphql.org/), des contributeurs [Babel](https://babeljs.io/), [le créateur de styled-component](https://twitter.com/mxstbr) et tant d'autres.
 
-Je me suis sentis un peu insignifiant de travailler avec des personnes de "ce calibre". Mais la vraie histoire, c'est que tout le monde a quelque chose à apporter. **Personne n'excelle dans tout les domaines**. Une personne très doué pour travailler sur des ASTs ne serait potentiellement pas la plus à même de créer une experience web adéquate selon l'audience attendu.
+Je me suis sentis un peu insignifiant de travailler avec des personnes de "ce calibre". Mais la vraie histoire, c'est que tout le monde a quelque chose à apporter. **Personne n'excelle dans tout les domaines**. Une personne très doué pour travailler sur des ASTs n'est potentiellement pas la plus à même de créer une experience utilisateur adéquate selon l'audience attendu.
 
-J'ai pour ma part, travaillé quelques années dans l'univers des sociétés de services en tant que consultant. Dans ce genre de société, on passe pas mal de temps à réparer les pots cassés et à s'assurer que le code puisse fonctionner dans le temps. A la carte, du de refactoring, de l'automatisation de tests et beaucoup d'échange avec les personnes en charge du produit pour comprendre les besoins.
+J'ai pour ma part, travaillé quelques années dans l'univers des sociétés de services en tant que consultant. Dans ce genre de société, on passe pas mal de temps à réparer les pots cassés et à s'assurer que le code puisse fonctionner dans le temps. A la carte, du refactoring, de l'automatisation de tests et beaucoup d'échange avec les personnes en charge du produit pour comprendre les besoins.
 
-Ma force chez Gatsby a été l'accompagnement de mon équipe dans l'adaptation massive des tests automatisés et une sensibilisation au code un peu plus clean dans l'objectif de perenniser.
+Le moment ou j'ai commencé à vraiment me sentir bien, c'est lorsque j'ai compris que ma force venait de mes experiences précédentes: j'ai finis par comprendre que mon role dans l'entreprise état celui de la sensibilité et la transatition aux techniques de clean code, a l'automatisation des tests et à s'assurer que les produits que nous crééons fonctionnent dans le temps.
