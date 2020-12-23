@@ -28,6 +28,22 @@ Cependant, Gatsby est une société qui n'existe qu'aux Etats Unis, et seulement
 
 Il existe néanmoins un moyen de travailler pour une société qui n'existe pas en France : **créer sa propre société**, et facturer l'autre société comme client. À chaque fin de mois, j'ai édité une facture à destination de Gatsby qui m'a versé une compensation pour les services de développement rendus.
 
+
+En France, il existe plusieurs statuts d'entreprise différents, avec différents avantages et inconvéniants. J'ai choisis, pour démarrer mon activité, un statut d'entreprise simplifié: [l'auto-entreprise]((http://autoentrepreneur.urssaf.fr/)).
+
+Avec ce statut, la gestion de l'entreprise est relativement simple : il faut déclarer son chiffre d'affaire mensuel sur le site de l'URSSAF, et payer en ligne directement. 
+Cependant, il n'est pas possible de dépasser les 70 000 euros de chiffres d'affaires à l'année. Bien que cela puisse sembler ennuyeux, **il est autorisé de dépasser ce montant pendant les deux premières années d'activités**. A partir de la troisième année de dépassement, l'auto-entrepreneur devra changer de statut et s'orienter vers quelque chose de moins avantageux financièrement tel que [l'entreprise individuelle (EI)](https://www.economie.gouv.fr/entreprises/statut-entreprise-individuelle) ou [la société par action simplifiée unipersonnelle (SASU)](https://www.economie.gouv.fr/entreprises/societe-par-actions-simplifiee-unipersonnelle-sasu)
+
+_Notes: 70 000 euros de chiffres d'affaire, ce n'est pas ce qui rentre dans notre poche. Il faut déduire à cela les charges URSSAF et le paiement des impots personnels._
+
+Il est important de noter qu'ouvrir compte professionel peut être necessaire à la création d'une nouvelle activité. Dans mon cas, j'ai ouverts un compte dans une banque française qui recevait les paiements en dollars et prenait une marge sur la conversion (quelque chose comme 20 euros par transfert).
+
+Je recommende très fortement de se renseigner et de vérifier [l'éligibilité à l'ACRE](https://www.portail-autoentrepreneur.fr/actualites/reforme-acre-2020) qui est une exonération des charges d'entreprise pendant quelque temps. J'ai par exemple payé seulement ~5% de taxes (si ma mémoire est bonne) grace à cela, contre 22% sans cette aide.
+
+## Le fonctionnement d'une start-up en Amérique
+
+TODO
+
 ## La barrière de la langue en est une - mais pas vraiment.
 
 Je suis français, né en France et le seul autre pays dans lequel j'ai vécu, c'est le Canada français. Autant dire que mon niveau d'anglais se résumait à ce que j'ai appris à l'école et à l'ensemble de la documentation des outils techniques que nous lisons au quotidien. Avant cette expérience, j'étais capable de faire quelques phrases construites et de transmettre une idée quand nécessaire, mais rien de plus.
