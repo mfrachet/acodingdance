@@ -29,20 +29,20 @@ Cependant, Gatsby est une société qui n'existe qu'aux Etats Unis, et seulement
 Il existe néanmoins un moyen de travailler pour une société qui n'existe pas en France : **créer sa propre société**, et facturer l'autre société comme client. À chaque fin de mois, j'ai édité une facture à destination de Gatsby qui m'a versé une compensation pour les services de développement rendus.
 
 
-En France, il existe plusieurs statuts d'entreprise différents, avec différents avantages et inconvéniants. J'ai choisis, pour démarrer mon activité, un statut d'entreprise simplifié: [l'auto-entreprise](http://autoentrepreneur.urssaf.fr/).
+En France, il existe plusieurs statuts d'entreprise différents, avec différents avantages et inconvénients. J'ai choisi, pour démarrer mon activité, un statut d'entreprise simplifié : [l'auto-entreprise](http://autoentrepreneur.urssaf.fr/).
 
 Avec ce statut, la gestion de l'entreprise est relativement simple : il faut déclarer son chiffre d'affaire mensuel sur le site de l'URSSAF, et payer en ligne directement. 
-Cependant, il n'est pas possible de dépasser les 70 000 euros de chiffres d'affaires à l'année. Bien que cela puisse sembler ennuyeux, **il est autorisé de dépasser ce montant pendant les deux premières années d'activités**. A partir de la troisième année de dépassement, l'auto-entrepreneur devra changer de statut et s'orienter vers quelque chose de moins avantageux financièrement tel que [l'entreprise individuelle (EI)](https://www.economie.gouv.fr/entreprises/statut-entreprise-individuelle) ou [la société par action simplifiée unipersonnelle (SASU)](https://www.economie.gouv.fr/entreprises/societe-par-actions-simplifiee-unipersonnelle-sasu)
+Cependant, il n'est pas possible de dépasser les 70 000 euros de chiffres d'affaires à l'année. Bien que cela puisse sembler ennuyeux, **il est autorisé de dépasser ce montant pendant les deux premières années d'activités**. A partir de la troisième année de dépassement, l'auto-entrepreneur devra changer de statut et s'orienter vers quelque chose de moins avantageux financièrement tel que [l'entreprise individuelle (EI)](https://www.economie.gouv.fr/entreprises/statut-entreprise-individuelle) ou [la société par actions simplifiée unipersonnelle (SASU)](https://www.economie.gouv.fr/entreprises/societe-par-actions-simplifiee-unipersonnelle-sasu)
 
-_Notes: 70 000 euros de chiffres d'affaire, ce n'est pas ce qui rentre dans notre poche. Il faut déduire à cela les charges URSSAF et le paiement des impots personnels._
+_Note: 70 000 euros de chiffres d'affaire, ce n'est pas ce qui rentre dans notre poche. Il faut déduire de cela les charges URSSAF et le paiement des impôts personnels._
 
-Il est important de noter qu'ouvrir un compte professionel peut être necessaire à la création d'une nouvelle activité. Dans mon cas, j'ai ouverts un compte dans une banque française qui recevait les paiements en dollars et prenait une marge sur la conversion (quelque chose comme 20 euros par transfert).
+Il est important de noter qu'ouvrir un compte professionnel peut être nécessaire à la création d'une nouvelle activité. Dans mon cas, j'ai ouvert un compte dans une banque française qui recevait les paiements en dollars et prenait une marge sur la conversion (quelque chose comme 20 euros par transfert).
 
-Je recommende très fortement de se renseigner et de vérifier [l'éligibilité à l'ACRE](https://www.portail-autoentrepreneur.fr/actualites/reforme-acre-2020) qui est une exonération des charges d'entreprise pendant quelque temps. J'ai par exemple payé seulement ~5% de taxes (si ma mémoire est bonne) grace à cela, contre 22% sans cette aide.
+Je recommande très fortement de se renseigner et de vérifier [l'éligibilité à l'ACRE](https://www.portail-autoentrepreneur.fr/actualites/reforme-acre-2020) qui est une exonération des charges d'entreprise pendant quelque temps. J'ai par exemple payé seulement ~5 % de taxes (si ma mémoire est bonne) grâce à cela, contre 22 % sans cette aide.
 
 ## Le fonctionnement d'une start-up en Amérique
 
-Une start-up, c'est une entreprise à fort potentiel et qui est dans ses jeunes années. Il est possible de créer une entreprise et de se faire financer par des compagnies d'investissements. Pour se faire, la start-up doit créer un dossier très complet sur l'état du projet, sa direction, qu'est ce qu'elle cherche à accomplir, dans combien de temps, quels sont les plans des années à venir etc.
+Une start-up, c'est une entreprise à fort potentiel et qui est dans ses jeunes années. Il est possible de créer une entreprise et de se faire financer par des compagnies d'investissements. Pour se faire, la start-up doit créer un dossier très complet sur l'état du projet, sa direction, qu'est ce qu'elle cherche à accomplir, dans combien de temps, quels sont les plans des années à venir, etc.
 
 Si l'entreprise réussit à se faire financer, on appelle ça une "levée de fond". Cette levée de fond va servir à embaucher et à payer des salaires afin d'accélérer la croissance de l'entreprise et d'essayer de devenir rentable le plus tôt possible.
 
@@ -50,7 +50,7 @@ Les investisseurs, en échange de financement, reçoivent des parts de l'entrepr
 
 C'est un pari risqué pour les investisseurs, mais si ce business existe, c'est qu'il est rentable dans certains cas.
 
-Souvent, des "stock options" sont proposées aux employés en plus de leurs salaires. Ces "stock options" sont des options d'achat, c'est à dire qu'un employé peut les acheter pendant une période donnée. Je ne suis pas très à l'aise avec ce système, mais c'est quelque chose à garder à l'ésprit. [Plus d'informations ici](https://www.capital.fr/entreprises-marches/stock-options-1316552).
+Souvent, des "stock-options" sont proposées aux employés en plus de leurs salaires. Ces "stock-options" sont des options d'achat, c'est à dire qu'un employé peut les acheter pendant une période donnée. Je ne suis pas très à l'aise avec ce système, mais c'est quelque chose à garder à l'esprit. [Plus d'informations ici](https://www.capital.fr/entreprises-marches/stock-options-1316552).
 
 
 ## La barrière de la langue en est une - mais pas vraiment.
@@ -65,7 +65,7 @@ Les entreprises qui embauchent des salariés à l'étranger se fichent de savoir
 
 Le plus gros problème que j'ai eu et relatif à la langue concerne l'aspect social. Dans ce métier, il est assez facile de transmettre une idée ou de donner une opinion. C'en est une autre d'échanger librement, de raconter des blagues ou de parler de la vie du quotidien.
 
-Dans la vraie vie, je suis quelqu'un d'extraverti et je parle beaucoup. Malgrès cela, je pense que mes collègues m'ont perçu comme quelqu'un d'assez discret à cause de cette limite de compréhension et de manque de proximité sociale.
+Dans la vraie vie, je suis quelqu'un d'extraverti et je parle beaucoup. Malgré cela, je pense que mes collègues m'ont perçu comme quelqu'un d'assez discret à cause de cette limite de compréhension et de manque de proximité sociale.
 
 ## Trouver sa place dans ce genre d'entreprise
 
@@ -75,8 +75,11 @@ Chez Gatsby, il y a des contributeurs [Lighthouse](https://developers.google.com
 
 Lorsque j'ai rejoint la société, il m'a fallu plusieurs mois pour être en confiance : je transpirais beaucoup pendant les appels, je travaillais plus tard le soir. Je me suis senti un peu insignifiant de travailler avec des personnes de "ce calibre" et j'essayais de compenser à ma manière.
 
-Mais après quelque mois à apprendre et comprendre le fonctionnement de l'entreprise, je me suis rendus compte que **tout le monde a quelque chose à apporter**. **Personne n'excelle dans tous les domaines**. Une personne très douée pour travailler sur des ASTs n'est potentiellement pas là plus à même de créer une expérience utilisateur adéquate selon l'audience attendue.
+Mais après quelques mois à apprendre et comprendre le fonctionnement de l'entreprise, je me suis rendus compte que **tout le monde a quelque chose à apporter**. **Personne n'excelle dans tous les domaines**. Une personne très douée pour travailler sur des ASTs n'est potentiellement pas là plus à même de créer une expérience utilisateur adéquate selon l'audience attendue.
 
 
-Pour la petite histoire, j'ai travaillé quelques années dans l'univers des sociétés de services en tant que consultant. Et quand j'ai rejoint Gatsby, je me demandais qu'est ce que je pouvais apporter à des équipes si talentueuses. Il s'avère qu'en société de service, on apprend un tas de trucs et notamment à réparer les pots cassés et à s'assurer que de nouveaux bugs ne voient pas le jour. C'est la que j'ai eu un impact : sensibiliser mes collègues au clean code et a l'automatisation des tests.
+Pour la petite histoire, j'ai travaillé quelques années dans l'univers des sociétés de services en tant que consultant. Et quand j'ai rejoint Gatsby, je me demandais qu'est ce que je pouvais apporter à des équipes si talentueuses. Il s'avère qu'en société de service, on apprend un tas de trucs et notamment à réparer les pots cassés et à s'assurer que de nouveaux bugs ne voient pas le jour. C'est là que j'ai eu un impact : sensibiliser mes collègues au clean code et a l'automatisation des tests.
 
+---
+
+Si vous avez des questions au sujet de cette aventure, n'hésitez pas à me contacter sur [Twitter](https://twitter.com/mfrachet). Je pourrais agrémenter cet article (ou le corriger) ou simplement répondre à votre question.
