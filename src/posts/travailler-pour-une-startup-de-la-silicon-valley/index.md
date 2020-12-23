@@ -40,7 +40,7 @@ La langue, c'est quelque chose qui s'apprend.
 
 ## Le développment est une histoire de contexte et d'opportunités
 
-C'est peut être la plus grande leçon que j'ai apprise durant cette période.
+C'est peut être la plus grande leçon que j'ai reçu durant cette période.
 
 Comme beaucoup de développeurs, je suis victime du **syndrome de l'imposteur**. Je pense que j'ai ce syndrome parce que j'essaie de comparer mon travail à celui des autres. Et j'ai tendance à comparer ce qui est visible: **les projets open source et les contributions open source**.
 
@@ -48,4 +48,20 @@ A titre d'example, je me sens inférieur à une personne à partir du moment ou 
 
 En prenant du recul et ayant travaillé avec Gatbsy - qui éxploite Webpack en long, en large et en travers - je me suis rendu compte que finalement, être legitime et se sentir bien et fier de son code n'est pas une histoire de contributions. C'est une histoire de contexte.
 
-J'ai travaillé pendant la majeure partie de cette experience sur [Gatsby Cloud](https://www.gatsbyjs.com/dashboard), une application web, en utilisant des technos que je connaissais et sur laquelle j'avais déjà pratiqué.
+J'ai travaillé pendant la majeure partie de cette experience sur [Gatsby Cloud](https://www.gatsbyjs.com/dashboard), une application web, en utilisant des technos que je connaissais et sur laquelle j'avais déjà pratiqué. J'ai pas mal de contexte dessus et je suis capable d'ajouter ou de maintenir de nouvelles fonctionnalités assez aisément, **parce que j'ai acquis du contexte en travaillant sur cette base de code pendant plusieurs mois**. Croyez moi, à mon jour 1 chez Gatsby, j'étais bien moins à l'aise et j'étais même très stressé d'être à la hauteur. Avec du temps, cette base de code est devenu ma maison.
+
+Durant les derniers mois passé chez Gatsby, j'ai travaillé un petit peu plus sur le projet open source, et une nouvelle fois, j'ai eu peur. Tout me paraissait compliqué avec beaucoup de logique que je n'arrivais pas à appréhender ou tout du même je n'arrivais pas à comprendre pourquoi tel portion de code se trouvait ici. **Et encore une fois, je manquais de contexte**: c'était la première fois que je mettais les pieds dans cette base de code, heureusement que je ne comprenais pas tout !
+
+**A la fin de la journée, tout le monde écrit des conditions et des boucles.**
+
+## Trouver sa place dans ce genre d'entreprise
+
+Dans les entreprises de la Silicon Valley, il faut s'attendre à travailler avec des personnes avec un background impréssionnant.
+
+Chez Gatsby, il y a des contributeurs sur [Lighthouse](https://developers.google.com/web/tools/lighthouse), des personnes de la core team [Graphql](https://graphql.org/), des contributeurs [Babel](https://babeljs.io/), [le créateur de styled-component](https://twitter.com/mxstbr) et tant d'autres.
+
+Je me suis sentis un peu insignifiant de travailler avec des personnes de "ce calibre". Mais la vraie histoire, c'est que tout le monde a quelque chose à apporter. **Personne n'excelle dans tout les domaines**. Une personne très doué pour travailler sur des ASTs ne serait potentiellement pas la plus à même de créer une experience web adéquate selon l'audience attendu.
+
+J'ai pour ma part, travaillé quelques années dans l'univers des sociétés de services en tant que consultant. Dans ce genre de société, on passe pas mal de temps à réparer les pots cassés et à s'assurer que le code puisse fonctionner dans le temps. A la carte, du de refactoring, de l'automatisation de tests et beaucoup d'échange avec les personnes en charge du produit pour comprendre les besoins.
+
+Ma force chez Gatsby a été l'accompagnement de mon équipe dans l'adaptation massive des tests automatisés et une sensibilisation au code un peu plus clean dans l'objectif de perenniser.
