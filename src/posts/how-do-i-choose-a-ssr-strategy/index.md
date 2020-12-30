@@ -3,12 +3,16 @@ title: "How do I choose which SSR strategy to adopt?"
 date: 2020-05-25
 slug: "/how-do-i-choose-a-ssr-strategy"
 metaImage: ./ssr-logo.jpg
-metaKeywords: "ssr,ssg,server side rendering,static side generation,crs,client side rendering,react,nextjs,gatsby"
+metaKeywords: "ssr,ssg,server side rendering,static site generation,crs,client side rendering,react,nextjs,gatsby"
 ---
+
+*[SSR]: Server Side Rendering
+*[CSR]: Client Side Rendering
+
 
 ![A server sending information to a browser client](./ssr-logo.jpg)
 
-Server Side Rendering (or SSR) is a big trend. In the React ecosystem, we have plenty of tools that rely on it such as [Gatsbyjs](https://www.gatsbyjs.org/) or [Nextjs](https://nextjs.org/).
+SSR is a big trend. In the React ecosystem, we have plenty of tools that rely on it such as [Gatsbyjs](https://www.gatsbyjs.org/) or [Nextjs](https://nextjs.org/).
 
 Before getting further, let's see what happens when a user makes a request on a site that is not built using SSR:
 
@@ -18,7 +22,7 @@ Before getting further, let's see what happens when a user makes a request on a 
 - It executes the JavaScript code and only then the application can display the content
 
 This is how the good old [Angularjs](https://angularjs.org/) or [JQuery](https://jquery.com/) applications were working. And this is also what happens when we use [create-react-app](https://github.com/facebook/create-react-app).
-We say that these applications rely on "Client Side Rendering" (or CSR).
+We say that these applications rely on CSR.
 
 ## Why SSR has been invented?
 

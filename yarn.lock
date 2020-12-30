@@ -6119,6 +6119,13 @@ gatsby-recipes@^0.6.0:
     xstate "^4.9.1"
     yoga-layout-prebuilt "^1.9.6"
 
+gatsby-remark-abbr@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-abbr/-/gatsby-remark-abbr-2.0.0.tgz#c63540898ec2c2d51e251fc4b380d604202fb283"
+  integrity sha512-qU6fa7XZOpiNhE7Hn3hLqHRZYWborweGZnmqG8SMBLZf/XFHYEHyWlo4OFZKA81OoIfJycNrSO0RqpDFfgz+iA==
+  dependencies:
+    remark-abbr "^1.0.7"
+
 gatsby-remark-copy-linked-files@^2.7.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/gatsby-remark-copy-linked-files/-/gatsby-remark-copy-linked-files-2.7.0.tgz#8a7c336881f8a498cf58d295b181341067594e53"
@@ -11146,6 +11153,13 @@ regjsparser@^0.6.4:
   dependencies:
     jsesc "~0.5.0"
 
+remark-abbr@^1.0.7:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/remark-abbr/-/remark-abbr-1.4.0.tgz#97550af7d614308bf2bbd7ed3fced199fb35a4be"
+  integrity sha512-BNxNWicpYvaQUL/ozF+cPTIUPeFFfLnYTjnVxZvqYE4Eu5ns9rIxDac4+Y71cDCqQmFf9/Gdkyj6n2uc9hfB/Q==
+  dependencies:
+    unist-util-visit "^2.0.1"
+
 remark-mdx@^2.0.0-next.4:
   version "2.0.0-next.8"
   resolved "https://registry.yarnpkg.com/remark-mdx/-/remark-mdx-2.0.0-next.8.tgz#db1c3cbc606ea0d01526242199bb134d99020363"
@@ -13076,7 +13090,7 @@ unist-util-visit@^1.0.0, unist-util-visit@^1.1.0, unist-util-visit@^1.4.1:
   dependencies:
     unist-util-visit-parents "^2.0.0"
 
-unist-util-visit@^2.0.0, unist-util-visit@^2.0.2:
+unist-util-visit@^2.0.0, unist-util-visit@^2.0.1, unist-util-visit@^2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-2.0.3.tgz#c3703893146df47203bb8a9795af47d7b971208c"
   dependencies:
