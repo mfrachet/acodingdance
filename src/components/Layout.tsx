@@ -180,6 +180,11 @@ const makeGlobalStyles = (theme) => css`
         font-size: ${theme.fontSizes[1]};
         margin-bottom: ${theme.spaces[4]};
     }
+
+    abbr {
+        text-underline-position: under;
+        cursor: help;
+    }
 `;
 
 const GlobalStyles = withTheme(({ theme }) => <Global styles={makeGlobalStyles(theme)} />);
