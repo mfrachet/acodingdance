@@ -58,10 +58,14 @@ const IndexPage = () => {
 
                     <p>
                         {`I'm actually building some pieces of`}{' '}
-                        <a href="https://gatsbyjs.com/" target="_blank" rel="noreferrer">
+                        <a href="https://github.com/strapi" target="_blank" rel="noreferrer">
+                            Strapi
+                        </a>
+                        {', '}
+                        the next generation of Headless CMS. Previously working on{' '}
+                        <a href="https://www.gatsbyjs.com/" target="_blank" rel="noreferrer">
                             Gatsby Cloud
-                        </a>{' '}
-                        that aims to be the fastest platform to build Gatsby sites.
+                        </a>
                     </p>
 
                     <ul

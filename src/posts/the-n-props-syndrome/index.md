@@ -8,6 +8,8 @@ metaKeywords: "react,react-native,frontend,javascript,props"
 
 ![Reactjs](./react.png)
 
+_This blog post is about UI oriented components and does not deal with business oriented components where I understand the need to potentially have "more" props._
+
 If you have already worked on a codebase having components with a lot of `props`, you might have been victim of what I call **"The N props syndrome"**.
 
 Let me explain what I mean by telling you the story of my main Open Source project.
@@ -41,11 +43,12 @@ At that time, if you wanted to use the library, you had to include the following
 
 As a developer, I'm using other people tools because they solve problem that I don't want to deal with directly.
 
-I know that if a library trying to solve my problems is not easy nor practical, I won't use it and I will take something else that better fits my needs. This is the same as the _User Experience_ when dealing with a product - if the experience is not good enough, people will use another product.
+I know that if a tool trying to solve my problems is not easy nor practical, I won't use it and I will choose something else that better fits my needs. This is the same as the _User Experience_ when dealing with a product - if the experience is not good enough, people will use another product.
 
-A component with a lot of `props` scares me because it doesn't look easy to use: it seems to do a lot of things with a lot of different settings. I often see very interesting "business" oriented components (they solve complex and isolated problems) but they tend to lack UI customizations. **The platform I'm using aims to provide a visual representation of the business**. Since every product is different, I need to be able to customize the underlying **style of elements** according to my context.
+The notion of "practical", to me, when dealing with components, is about having something robust, with a balanced amount of configuration and easiness of use, but also extendability. If I have to spend 3 hours on a "Clock" component to modify the shape of the tiny watch pointer, I will certainly not use it.
 
-For instance, I don't like this kind of component:
+
+Let me try to put this in perspective with the following example, I will try to explain why I don't like this kind of components:
 
 ```jsx
 <Input
@@ -56,9 +59,13 @@ For instance, I don't like this kind of component:
 />
 ```
 
-because they prevent me from having control over the underlying `input` and `label` elements.
+The main reason why I don't like this one is because it prevents me from having total control over the underlying `input` and `label` elements.
 
-What if I have specific accessibility needs for the `input`? Or even for the `label`? I don't have control over them and **this is blocking to me**.
+What if I want to add a helper tooltip?
+
+What if I want to hide the label but still be accessible? ([visually hidden](https://css-tricks.com/inclusively-hidden/) for intance)
+
+
 
 Also notice the `labelStyle` prop exposed: this is an interesting way of solving _some_ of the problems but **it prevents me** from using other tools like [styled-components](https://styled-components.com/).
 
