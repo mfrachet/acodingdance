@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A/B testing with the JAMstack | On my way to product engineering</title>
+
+    <meta name="author" content="Marvin Frachet">
+    <meta name="description" content="The JAMstack has been talked about in recent years like a way to create static websites that scales very well in many different ways. Since it becomes more and more mainstream, it made sense to people to think about how to apply older patterns that we like in this quite particular context.">
+    <meta name="keywords" content="jamstack, split testing, ab testing, netlify, gatsby, nextjs, 11ty, react">
+
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+    
+
+    <style>
+      a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:"";content:none}table{border-collapse:collapse;border-spacing:0}*,:after,:before{box-sizing:border-box}body,html{height:100%}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif}iframe,img{max-width:100%}em{font-style:italic}strong{font-weight:700}.theme{--fs-0:0.7rem;--fs-1:0.9rem;--fs-2:1rem;--fs-3:1.2rem;--fs-4:1.3rem;--fs-5:1.4rem;--fs-6:1.6rem;--fs-7:1.8rem;--fs-8:2.2rem;--fs-9:2.6rem;--fs-10:3rem;--s-0:4px;--s-1:8px;--s-2:12px;--s-3:16px;--s-4:24px;--s-5:32px;--s-6:48px;--s-7:64px;--s-8:96px;--fw-text:400;--fw-heading:600;--fw-extraBold:800}.light{--primary-color:hsl(231deg, 48%, 48%);--primary-color-lighter:hsl(231deg, 48%, 96%);--secondary-color:hsl(340deg, 82%, 52%);--text-color:#272727;--bg-color:#fff;min-height:100%;background:var(--bg-color);color:var(--text-color)}.light :focus-visible{outline:3px dashed var(--secondary-color);outline-offset:3px}.light :focus:not(:focus-visible){outline:0;outline:1px dashed var(--primary-color)}.theme h1{font-size:var(--fs-10);font-weight:var(--fw-extraBold);line-height:1.4;margin-top:var(--s-4);margin-bottom:var(--s-4);background-image:linear-gradient(90deg,var(--primary-color),var(--secondary-color));background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;-moz-background-clip:text;-moz-text-fill-color:transparent}.theme h2{font-size:var(--fs-8);line-height:1.4;font-weight:var(--fw-heading);margin-bottom:var(--s-2);margin-top:var(--s-5)}.theme h2+h3{margin-top:var(--s-3)}.theme h3{font-size:var(--fs-6);line-height:1.4;margin-bottom:var(--s-2);margin-top:var(--s-5)}.theme h4{font-size:var(--fs-5);line-height:1.4;margin-bottom:var(--s-1);margin-top:var(--s-2)}.theme pre{margin-bottom:var(--s-4)}.theme p{font-size:var(--fs-2);line-height:1.8;margin-bottom:var(--s-4)}.theme ul{padding:0 var(--s-2);margin-bottom:var(--s-3);margin-left:var(--s-2)}.theme ul li{padding:var(--s-1);line-height:1.8;position:relative;font-size:var(--fs-2)}.theme ul li:before{content:"";position:absolute;width:8px;height:8px;background:var(--secondary-color);left:calc(var(--s-2) * -1);top:18px}.theme time{display:inline-block;font-size:var(--fs-0);font-style:italic}.post{margin-bottom:var(--s-5)}.theme.light a{color:var(--primary-color);padding-bottom:1px;text-decoration:none;border-bottom:1px solid var(--primary-color)}.theme .wrapper{max-width:70ch;margin:0 auto;padding:var(--s-3)}h2.post-title{margin-top:var(--s-1);font-size:var(--fs-6)}.theme.light p>code{color:var(--primary-color);background:var(--primary-color-lighter);padding:var(--s-0);border-radius:4px;font-size:var(--fs-1)}.theme.light li>code{color:var(--primary-color);background:var(--primary-color-lighter);padding:var(--s-0);border-radius:4px;font-size:var(--fs-1)}.theme nav.main-navigation ul{display:flex;align-items:center;margin:0;padding:0}.theme nav.main-navigation ul li a{font-size:var(--fs-2)}.theme nav.main-navigation ul li:before{content:unset}.theme nav.main-navigation li{margin-right:var(--s-2)}nav.main-navigation li:last-of-type{margin-right:0}#skip-to-content{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}#skip-to-content:focus{border:unset;clip:unset;height:unset;margin:unset;overflow:unset;padding:unset;position:absolute;width:unset;top:var(--s-2);left:var(--s-4);padding:var(--s-2);background:var(--primary-color);color:var(--bg-color);border-radius:4px}
+    </style>
+  </head>
+  <body>
+    <div class="theme light">
+      <a href="#main-content" id="skip-to-content">Skip to main content</a>
+
+      <div class="wrapper">
+        <nav class="main-navigation">
+    <ul>
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/blog">Blog posts</a>
+        </li>
+        <li>
+            <a href="https://github.com/mfrachet"  target="_blank" rel="noopener noreferrer">Github</a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/feed/"  target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </li>
+    </ul>
+</nav>
+
+        <main id="main-content">
+          <h1>A/B testing with the JAMstack</h1>
+
+          <p>The JAMstack has been talked about in recent years like a way to create static websites that scales very well in many different ways.
+Since it becomes more and more mainstream, it made sense to people to think about how to apply older patterns that we like in this
+quite particular context.</p>
+<p>In this post, I will share with you <strong>my vision</strong> of A/B testing with the JAMstack.</p>
+<h2>But first, why do we use the JAMstack?</h2>
+<p>According to <a href="https://jamstack.org/">jamstack.org</a>, we use it because:</p>
+<ul>
+<li>it's about building <strong>simple static pages</strong> (HTML files)</li>
+<li>most of the job is made at build-time, no potential leak at runtime, it's more <strong>secured</strong></li>
+<li>static pages are basically HTML files and thus <strong>load very fast</strong></li>
+<li>we benefit from <strong>cheap hosting</strong> (putting files on a server and there we go)</li>
+<li>it's <strong>highly scalable</strong>, just put the files on another machine and scaling is done</li>
+<li>it already exists great tools to create amazing sites (<a href="https://www.gatsbyjs.com/">Gatsbyjs</a>, <a href="https://nextjs.org/">Nextjs</a>, <a href="https://www.11ty.dev/">11ty</a>, <a href="https://jamstack.org/generators/">etc...</a>)</li>
+</ul>
+<h2>Why do we use A/B testing?</h2>
+<p>People use A/B testing to measure which variant of a website is more appreciated by their users. The idea is simply to provide different visual representations
+of some data and check which one attracts more people.</p>
+<p><img src="./ab-tests.png" alt="Visual representation of two different variants of an A/B tests"></p>
+<p>If the visitors of the variant A come more often than the visitors of the variant B, then we can assume that variant A is a more viable solution to represent the data on the page.</p>
+<h2>How do we use A/B testing in non JAMstack applications?</h2>
+<p>In applications that are not built on top of the JAMstack, the idea is quite straightforward.</p>
+<p>When opening the application, it will make a request to a remote server to get the different available variants. Then, based on some conditions in the codebase, we are able to display the good variant to the good user.</p>
+<p>The following is an example of a client-side A/B test written with <a href="https://reactjs.org/">Reactjs</a>:</p>
+<pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> <span class="token punctuation">{</span> variant<span class="token punctuation">,</span> isLoading <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useABVariant</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token keyword">if</span> <span class="token punctuation">(</span>isLoading<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">Preparing the application...</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token keyword">if</span> <span class="token punctuation">(</span>variant <span class="token operator">===</span> <span class="token string">"A"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">Here's the A variant!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">Here's the B variant!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>As we see in the snippet, the code is executed in the user's browser. Also notice <strong>the loading information while the request is pending</strong> before being able to display the variant content.</p>
+<p>The following is a tiny sandbox allowing to switch on and off a feature flag to display a new variant of a homepage. When using services like <a href="https://launchdarkly.com/">LaunchDarkly</a>, this is exactly the kind of actions you're provided with.</p>
+<h2>Why A/B testing on the JAMstack is different?</h2>
+<p>Remember one of the main arguments of building on top of the JAMstack is <strong>fast page loading</strong> (performance).</p>
+<p>When dealing with A/B tests the &quot;standard way&quot;, <strong>we need to make an HTTP request to get the different variants</strong>. Making an HTTP request means that <strong>there is a delay</strong> between the moment we ask for the variants and the moment we get them back from the server.</p>
+<p>The problem is that <strong>making the HTTP request is so critical</strong> that we can't show anything else than a loading information to the user before resolving the variants and being able to show them the good content.</p>
+<p><strong>In a static environment, we are waiting for a dynamic information to display meaningful information.</strong></p>
+<p>When A/B testing the &quot;standard way&quot;, using runtime information will <strong>make the application performances worse by increasing the time for the displaying the first meaningful content</strong>. Loading static pages should be &quot;instant&quot; but relying on an HTTP request and an intermediate loading state before displaying the content will take extra time and decrease the experience.</p>
+<p>In some scenarios, <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> performance score can drop by around <code>25</code> points (up to you to determine if it's significant or not).</p>
+<p>Also note that some tools helping building applications using the JAMstack <strong>don't even run JavaScript at all</strong>, meaning that it's not possible to rely on HTTP requests to access remote data at runtime.</p>
+<h2>How to make A/B testing in a JAMstack fashion?</h2>
+<p>The JAMstack is about <strong>building static pages</strong>. Taking this notion to the extreme, we can imagine creating a dedicated set of static pages for different variants and host them in different places, like for example, different machines.</p>
+<p><img src="./machine-ab.png" alt="Visual representation of two machines hosting two different variants of an A/B test"></p>
+<p><strong>The machine 1</strong> owns all the statically generated HTML pages impacted by the variant A and <strong>the machine 2</strong> owns all of the statically generated HTML pages of the variant B.</p>
+<p>Since pages are statically generated at build time, we can rely on environment variables to display the good variant content:</p>
+<pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token constant">AB_EXPERIMENT_VARIANT</span> <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">AB_EXPERIMENT_VARIANTS</span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">AB_EXPERIMENT_VARIANT</span> <span class="token operator">===</span> <span class="token string">"A"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">Here's the A variant!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">Here's the B variant!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>The next step is to rely on some kind of proxy to route the different users to one of the two variants and make sure they always see that variant.</p>
+<p>Remember, <strong>we can't rely on runtime information to store the variant</strong>, like an authenticated user id for example. We need to rely on something else. Hopefully, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies">HTTP Cookies</a> exist that allow for a client-server kind of data sharing. We can benefit from them to store the actual variant requested by the user and make sure that they will always get routed to that variant.</p>
+<p><img src="./cookie-ab.png" alt="Visual representation of a proxy routing an HTTP request to the good machine for an A/B test"></p>
+<h2>Observations on this approach</h2>
+<p>The first observations to push upfront is that <strong>we have kept the page loading performances provided by default by the JAMstack</strong>. We don't have to wait for runtime computations to display content on the page.</p>
+<p>The second observation is about the tradeoffs we decided to make: we shifted the A/B testing responsibility <strong>closer to the infrastructure layer</strong>. The proxy has an important role to play in this scenario.</p>
+<p>Also note that we need more &quot;places&quot; to put the different variants: 1 variant corresponds to 1 website that corresponds to 1 set of static pages that should entirely be hosted. <strong>The more we have variants, the more we may pay for hosting</strong>:</p>
+<p><img src="./all-variants.png" alt="A visual representation of a project having 4 different variants"></p>
+<p>There's also one side effect that I find positive (but it can feel negative) is that it can be hard to combine multiple A/B experiments.</p>
+<p>Let's say that we have 2 pages and that we want to run an experiment on both the pages:</p>
+<ul>
+<li>What can be a visual representation of these scenarios at the hosting level?</li>
+<li>Should we create 4 different websites, one for each variant?</li>
+<li>Should we create N different websites with combinations of variants?</li>
+</ul>
+<h2>References</h2>
+<p>If you're using <a href="">Netlify</a> for hosting your websites, they have a feature called <a href="https://docs.netlify.com/site-deploys/split-testing/">Split-testing</a> that allows for these kind of testing using a branch based approach.</p>
+<p>If you have any other references in mind concerning A/B testing or Split Testing on top of the JAMstack, feel free to drop them on <a href="https://twitter.com/mfrachet">Twitter</a>.</p>
+
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
