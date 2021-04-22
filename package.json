@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "eleventy start --serve",
-    "deploy": "yarn build && gh-pages -d public -b master"
+    "build": "eleventy",
+    "deploy": "yarn build && gh-pages -d _site -b master"
   },
   "keywords": [],
   "author": "",
