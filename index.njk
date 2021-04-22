@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>On my way to product engineering</title>
+
+        <meta name="author" content="Marvin Frachet">
+        <meta name="description" content="I'm a french software developer reconverted from the 'hype' to ethical and inclusive programming. I'm mostly building products, with React, React Native and TypeScript.">
+        <meta name="keywords" content="HTML, CSS, JavaScript, React, React Native, TypeScript, Testing automation, Cypress, Jest, Gatsby, Nextjs, Server Side Rendering, Client Side Rendering, Ethic, Accessibility">
+
+        {% set css %}
+        {% include "reset.css" %}
+        {% include "index.css" %}
+        {% endset %}
+
+        <style>
+            {{css | cssmin | safe}}
+        </style>
+    </head>
+    <body>
+        <div class="theme light">
+            {% include "layouts/skipnav.njk" %}
+
+            <div class="wrapper">
+                {% include "layouts/nav.njk" %}
+
+                <main id="main-content">
+                    <h1>Hello,<br/>I'm Marvin Frachet</h1>
+
+                    <p>I'm a french software developer reconverted from the "hype" to ethical and inclusive programming.</p>
+
+                    <p>I'm mostly building products, with <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">React</a>, <a href="https://reactnative.dev/" target="_blank" rel="noopener noreferrer">React Native</a> and <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">TypeScript</a>. I love testing automation and I'm trying my best to provide valid experience to people.</p>
+
+                    <p>I'm actually working on some pieces of <a href="https://github.com/strapi/" target="_blank" rel="noopener noreferrer">Strapi</a>, a Headless CMS, and used to work on building <a href="https://www.gatsbyjs.com/" target="_blank" rel="noopener noreferrer">Gatsby Cloud</a>.</p>
+
+                    <p>I secretly dream of becoming an IT teacher.</p>
+
+                    <p>
+                        <em>If you face any accessible trouble, please <a href="mailto:marvin.frachet@gmail.com">send me a request</a>.</em>
+                    </p>
+                </main>
+            </div>
+        </div>
+    </body>
+</html>

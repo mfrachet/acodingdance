@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | On my way to product engineering</title>
+
+    <meta name="author" content="Marvin Frachet">
+    <meta name="description" content="{{ excerpt }}">
+    <meta name="keywords" content="{{ metaKeywords }}">
+
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+    {% set css %}
+    {% include "reset.css" %}
+    {% include "index.css" %}
+    {% endset %}
+
+    <style>
+      {{css | cssmin | safe}}
+    </style>
+  </head>
+  <body>
+    <div class="theme light">
+      {% include "layouts/skipnav.njk" %}
+
+      <div class="wrapper">
+        {% include "layouts/nav.njk" %}
+
+        <main id="main-content">
+          <h1>{{ title }}</h1>
+
+          {{ content | safe }}
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

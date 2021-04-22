@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Blog posts | On my way to product engineering</title>
+
+        <meta name="author" content="Marvin Frachet">
+        <meta name="description" content="Blog posts. I'm a french software developer reconverted from the 'hype' to ethical and inclusive programming. I'm mostly building products, with React, React Native and TypeScript.">
+        <meta name="keywords" content="HTML, CSS, JavaScript, React, React Native, TypeScript, Testing automation, Cypress, Jest, Gatsby, Nextjs, Server Side Rendering, Client Side Rendering, Ethic, Accessibility">
+
+        {% set css %}
+        {% include "reset.css" %}
+        {% include "index.css" %}
+        {% endset %}
+
+        <style>
+            {{css | cssmin | safe}}
+        </style>
+    </head>
+    <body>
+        <div class="theme light">
+            {% include "layouts/skipnav.njk" %}
+
+            <div class="wrapper">
+                {% include "layouts/nav.njk" %}
+
+                <main id="main-content">
+                    <h1>Blog posts</h1>
+
+                    {%- for post in collections.post| reverse -%}
+                        <article aria-labelledby="{{ post.url }} {{ post.url }}-date" class="post">
+
+                            <time id="{{ post.url }}-date" aria-hidden="true">
+                            Published the {{ post.date | readableDate }}
+                            </time>
+
+                            <h2 id="{{ post.url }}" class="post-title">
+                                <a href="{{ post.url | url }}">{{ post.data.title }}</a>
+                            </h2>
+
+                            <p>{{ post.data.excerpt }}</p>
+                        </article>
+                    {%- endfor -%}
+                    {# {{ content | safe }} #}
+                </main>
+            </div>
+        </div>
+    </body>
+</html>
