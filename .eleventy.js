@@ -16,9 +16,9 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addLayoutAlias("posts", "layouts/posts.njk");
-  eleventyConfig.addPassthroughCopy("*/*.png");
-  eleventyConfig.addPassthroughCopy("*/*.jpg");
-  eleventyConfig.addPassthroughCopy("*/*.mp4");
+  eleventyConfig.addPassthroughCopy("./blog/**/*.png");
+  eleventyConfig.addPassthroughCopy("./blog/**/*.jpg");
+  eleventyConfig.addPassthroughCopy("./blog/**/*.mp4");
 
   eleventyConfig.addNunjucksFilter("readableDate", toReadableDate);
 
