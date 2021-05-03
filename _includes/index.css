@@ -14,11 +14,6 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-img,
-iframe {
-  max-width: 100%;
-}
-
 em {
   font-style: italic;
 }
@@ -252,4 +247,12 @@ nav.main-navigation li:last-of-type {
   background: var(--primary-color);
   color: var(--bg-color);
   border-radius: 4px;
+}
+
+video,
+iframe,
+img {
+  max-height: 100%;
+  max-width: 100%;
+  margin: 8px 0;
 }

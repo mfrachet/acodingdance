@@ -28,6 +28,10 @@ The following Codesandbox is an example of such a login form you can play with. 
 
 While this seems to follow the rules set before and that the UI seems to fill the designers' expectations, there is an issue. Let's check what happens when using this form with a screen reader in this video.
 
+<video controls="controls" title="Not accessible login form video">
+   <source src="./not-accessible.mp4" type="video/mp4"></source>
+</video>
+
 In this video, I'm using VoiceOver (the official OSX screen reader). While being able to navigate using it, **I don't have direct feedback about the invalid fields**. In order to get informed, **I need to scan the whole form again** and check every text content in it.
 
 With the intent tfo provide a better experience to screen reader users, we can:
@@ -37,6 +41,10 @@ With the intent tfo provide a better experience to screen reader users, we can:
 - remove the `disabled` attribute on the submit button so that the user can click on it. When pressing it, the browser will focus on the first field that is in an invalid state or submit the data if every field is valid.
 
 The following video shows how making these modifications help to provide feedback to screen reader users.
+
+<video controls="controls" title="Accessible login form video">
+   <source src="./accessible.mp4" type="video/mp4"></source>
+</video>
 
 In addition to this video, the following is a Codesandbox providing an example of the login form built in a more accessible way, also using [Formik](https://formik.org/).
 
